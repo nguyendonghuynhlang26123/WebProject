@@ -1,53 +1,11 @@
 <footer>
       <div class="site-footer">
-        <div id="footer-logo">
-          <img src="./images/logo.png" alt="" />
-          <a href="#">The Pen Daily</a>
-        </div>
+        <%- include('footerLogo/footerLogo'); %>
         
-        <div id="footer-news">
-          <h1 class="article-title">News</h1>
-          <ul class="footer-news-info">
-            <li><a href="" class="article-desc">Homepage</a></li>
-            <li><a href="" class="article-desc">Vietnam</a></li>
-            <li><a href="" class="article-desc">International</a></li>
-            <li><a href="" class="article-desc">Politics</a></li>
-            <li><a href="" class="article-desc">Lifestyle</a></li>
-            <li><a href="" class="article-desc">Sport</a></li>
-            <li><a href="" class="article-desc">Education</a></li>
-          </ul>
-        </div>
+        <%- include('footerNews/footerNews'); %>
         
-        <div id="help">
-          <h1 class="article-title">Contact us</h1>
-          <ul class="footer-news-info">
-            <li><a href="" class="article-desc">Licensing & Syndication</a></li>
-            <li><a href="" class="article-desc">Contact the Newsroom</a></li>
-            <li><a href="" class="article-desc">Advertise</a></li>
-            <li><a href="" class="article-desc">Request a Correction</a></li>
-            <li><a href="" class="article-desc">Send a new tip</a></li>
-          </ul>
-        </div>
+        <%- include('help/help'); %>
         
-
-        <div id="footer-subscribe">
-          <h1 class="article-title">Subscribe</h1>
-          <form action="" class="subscribe-form">
-            <label for="footer-email-input">Read our news in every morning!</label>
-            <input
-              type="email"
-              name="footer-email-input"
-              placeholder="Enter your email"
-            />
-            <button type="submit">Send</button>
-          </form>
-        
-          <h1 class="article-title">Our social media</h1>
-          <ul class="social flex-row">
-            <li><i class="fab fa-facebook fa-lg"></i></li>
-            <li><i class="fab fa-youtube fa-lg"></i></li>
-          </ul>
-        </div>
-        
+        <%- include('footerSubscribe/footerSubscribe'); %>
       </div>
 </footer>
