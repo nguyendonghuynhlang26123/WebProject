@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('head/head'); %>
+  </head>
+  <body>
+    <!-- ---------- HEADER------------------------ -->
+    <div class="header wrapper">
+      <!-- TOP BAR -->
+      <%- include('topBar/topBar'); %>
+      <hr class="dash" />
+
+      <!-- TITLE -->
+      <%- include('pageTitle/pageTitle'); %>
+      <hr class="dash" />
+
+      <!-- CATEGORIES LINKS -->
+      <%- include('categoryLinks/categoryLinks'); %>
+      <hr class="dash" />
+    </div>
+
+    <!-- ----------- Article -------------------- -->
+    <%- include('siteContent/siteContent'); %>
+
+    <!-- ------------- FOOTER ------------------- -->
+    <footer>
+      <div class="site-footer">
+        <%- include('footerLogo/footerLogo'); %> <%-
+        include('footerNews/footerNews'); %> <%-
+        include('help/help'); %> <%-
+        include('footerSubscribe/footerSubscribe'); %>
+      </div>
+    </footer>
+  </body>
+</html>
