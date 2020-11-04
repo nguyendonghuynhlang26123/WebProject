@@ -1,10 +1,31 @@
 <main id="site-content" class="wrapper">
   <!-- COVER PAGE -->
-  <%- include('coverPage/coverPage'); %>
+  <div id="cover-page" class="container grid-8-2">
+    <!-- BIGGEST ARTICLE -->
+    <div>
+      <!-- TOP NEWS -->
+      <%- include('topNews/topNews'); %>
+      <hr />
+  
+      <!-- LIFE STYLES NEWS -->
+      <%- include('lifeStyleNews/lifeStyleNews'); %>
+    </div>
+  
+    <%- include('sideBar/sideBar'); %>
+  </div>
   <hr />
 
   <!-- WORLD - EDUCATION - SPORT NEWS -->
-  <%- include('wesNews/wesNews'); %>
+  <div id="w-e-s-news" class="container">
+    <!-- WORLD NEWS -->
+    <%- include('worldNews/worldNews'); %>
+  
+    <!-- EDUCATION NEWS -->
+    <%- include('eduNews/eduNews'); %>
+  
+    <!-- SPORT NEWS -->
+    <%- include('sportNews/sportNews'); %>
+  </div>  
   <hr />
 
   <!-- FEATURES NEWS -->
