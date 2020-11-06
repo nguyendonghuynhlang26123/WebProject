@@ -11,6 +11,10 @@ app.get("/", function (req, res) {
   res.render("homePage/homePage");
 });
 
+app.get("/post/", function (req, res) {
+  res.render("post/post");
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
