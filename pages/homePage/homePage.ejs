@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%- include('../head/head'); %>
+    <%- include('../head/head', {link: "style/style.css"}); %>
   </head>
   <body>
     <!-- ---------- HEADER------------------------ -->
@@ -11,6 +11,6 @@
     <%- include('siteContent/siteContent'); %>
 
     <!-- ------------- FOOTER ------------------- -->
-    <%- include('footer/footer'); %>
+    <%- include('../footer/footer'); %>
   </body>
 </html>
