@@ -3,11 +3,13 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/:postId", async function (req, res) {
-  req.params.postId;
-  const post = await postService
-    .getPostById(req.params.postId)
-    .then((d) => console.log(d));
+  const post = await postService.getPostById(req.params.postId);
   res.send(post);
+});
+
+router.get("/", async function (req, res) {
+  const posts = await postService.getAllPost();
+  res.send(posts);
 });
 
 router.post("/", async function (req, res) {
@@ -22,6 +24,11 @@ router.post("/", async function (req, res) {
     req.body.post_tags
   );
   res.send(post);
+});
+
+router.delete("/:postId", async function (req, res) {
+  const result = await postService.deletePost(req.params.postId);
+  res.send(result);
 });
 
 module.exports = router;

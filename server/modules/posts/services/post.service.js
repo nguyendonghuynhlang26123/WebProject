@@ -29,4 +29,19 @@ async function getPostById(postId) {
   return post;
 }
 
-module.exports = { createPost: createPost, getPostById: getPostById };
+async function getAllPost() {
+  const posts = await Post.find();
+  return posts;
+}
+
+async function deletePost(postId) {
+  const result = await Post.deleteOne({ _id: postId }).exec();
+  return result;
+}
+
+module.exports = {
+  createPost: createPost,
+  getPostById: getPostById,
+  getAllPost: getAllPost,
+  deletePost: deletePost,
+};
