@@ -1,0 +1,140 @@
+@import "variables";
+@import "font";
+
+/** GLOBAL ---------------------------*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: ($bg-color);
+  position: initial;
+}
+
+.wrapper {
+  padding: 0 2%;
+  color: #222222;
+  max-width: 90%;
+  margin: auto;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+a {
+  text-decoration: none;
+  color: #222222;
+  font-family: ($article-link-font);
+}
+hr {
+  border: none;
+  margin: 0 1rem;
+  border-top: 1px solid ($hr-border-color);
+}
+
+hr.dash {
+  border-top: 1px dashed ($hr-border-color);
+}
+
+ul li {
+  list-style: none;
+}
+
+.article-title {
+  font-family: ($article-title-font);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.article-desc {
+  font-family: ($article-description-font);
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+.date {
+  font-family: ($date-font);
+  color: #8b8b8b;
+  font-size: 0.8rem;
+}
+
+/** CATEGORY NAME */
+.category-name {
+  font-family: ($category-font);
+  text-transform: uppercase;
+  padding: 0.4rem;
+  font-weight: 500;
+  font-size: 0.7rem;
+  background-color: ($category-color);
+}
+
+/** VIEW ALL LINK */
+.redirect-link {
+  color: ($button-color);
+  font-family: ($btn-font);
+  font-size: 0.9rem;
+  padding: 0.5rem;
+}
+
+/** BOTTOM BORDER */
+@each $pos in center, right, left {
+  .#{$pos}-border::after {
+    margin: 1rem 0;
+    height: 1px;
+    display: block;
+    width: 60%;
+    background: ($hr-border-color);
+    content: "";
+    @if $pos == left {
+      margin-right: auto;
+    } @else if $pos == right {
+      margin-left: auto;
+    } @else {
+      margin: 1rem auto;
+    }
+  }
+}
+
+/** SUBSCRIBE FORM---------------------------*/
+.subscribe-form {
+  label {
+    color: ($button-color);
+    font-family: ($article-title-font);
+    font-weight: 700;
+    font-size: 0.9rem;
+    gap: 0;
+  }
+
+  input {
+    margin: 0.8rem 0;
+    padding: 0.3rem;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid ($button-color);
+    transition: all ease-in-out 0.4s;
+  }
+
+  input[type="email"] {
+    &:focus {
+      outline: none;
+    }
+    &:invalid {
+      border-bottom-color: red;
+    }
+  }
+
+  button {
+    padding: 0.3rem;
+    margin: 0;
+    background-color: ($button-color);
+    color: white;
+    border: 2px solid ($button-color);
+    transform: translateX(-4px);
+  }
+}
