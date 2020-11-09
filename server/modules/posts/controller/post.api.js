@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get("/:postId", async function (req, res) {
   const post = await postService.getPostById(req.params.postId);
-  res.send(post);
+  res.render("post/post", { link: "../style/css/post.css", post: post });
 });
 
 router.get("/", async function (req, res) {
