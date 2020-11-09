@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const post = require("./server/modules/posts/controller/post.api");
+const upload = require("./server/modules/uploadImage/controller/uploadImage.api")
 const bodyParser = require("body-parser");
 
 // mongoose connect
@@ -14,8 +15,10 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 // app use
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use("/post", post);
+app.use('/upload', upload);
 app.use(express.static("public"));
 
 app.set("view engine", "ejs");
