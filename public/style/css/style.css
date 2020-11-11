@@ -47,6 +47,20 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "CrimsonPro";
+  src: local("CrimsonPro"), url("../../fonts/CrimsonPro-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CrimsonPro";
+  src: local("CrimsonPro"), url("../../fonts/CrimsonPro-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /** GLOBAL ---------------------------*/
 * {
   -webkit-box-sizing: border-box;
@@ -57,7 +71,11 @@
 
 html {
   background: #f2f2f2;
-  position: initial;
+}
+
+body {
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .wrapper {
@@ -279,7 +297,6 @@ ul li {
   font-size: 2.5rem;
   font-family: "Bitter";
   font-weight: bold;
-  text-decoration: underline;
 }
 
 .header .nav {
@@ -296,9 +313,9 @@ ul li {
   font-size: 0.8rem;
 }
 
-@media (max-width: 1023px) {
+@media (min-width: 1024px) {
   .header .nav {
-    width: 60%;
+    width: 65%;
   }
 }
 
@@ -476,7 +493,7 @@ footer .subscribe-form button {
           transform: translateX(-4px);
 }
 
-@media (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   footer .site-footer {
     width: 90%;
   }
@@ -566,6 +583,7 @@ ul.post-list .link-item {
 .img-card > .img-title {
   font-weight: bold;
   font-family: "Merriweather";
+  font-size: 0.8rem;
 }
 
 .img-card.box > .img-title {
@@ -651,11 +669,11 @@ ul.post-list .link-item {
   display: grid;
   -ms-grid-columns: 7fr 3fr;
       grid-template-columns: 7fr 3fr;
+  min-height: 500px;
   -webkit-column-gap: 1.5rem;
           column-gap: 1.5rem;
   margin-bottom: 2rem;
   overflow: hidden;
-  max-height: 70vh;
 }
 
 #top-news .big-image img {
@@ -664,17 +682,22 @@ ul.post-list .link-item {
 }
 
 #top-news .big-image .img-title {
-  font-size: 1.2rem;
+  font-size: 110%;
+  width: 100%;
 }
 
 #top-news .post-desc {
-  padding: 1rem;
+  padding: 0.5rem;
   font-family: "PT Serif";
   font-size: 1rem;
 }
 
 #top-news .top-stories {
   height: 100%;
+}
+
+#top-news .top-stories > ul {
+  max-height: 450px;
 }
 
 /** COVER PAGE - BREAKFAST NEWS---------------------------*/
@@ -829,7 +852,7 @@ ul.post-list .link-item {
 
 /** Politics ---------------------------*/
 /** MEDIA ---------------------------*/
-@media (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .wrapper {
     max-width: 100%;
     padding: 0 3%;
@@ -881,10 +904,10 @@ ul.post-list .link-item {
     padding: 1rem;
   }
   #cover-page #lifestyle-news .img-list {
-    padding: 1rem;
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
     row-gap: 1rem;
+    margin: 1rem 0;
   }
   #cover-page .subscribe-form {
     padding: 1.5rem;

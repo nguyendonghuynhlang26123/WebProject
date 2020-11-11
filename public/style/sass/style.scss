@@ -44,6 +44,7 @@ ul.post-list {
   > .img-title {
     font-weight: bold;
     font-family: ($article-title-font);
+    font-size: 0.8rem;
   }
 }
 
@@ -124,10 +125,10 @@ ul.post-list {
 #top-news {
   display: grid;
   grid-template-columns: 7fr 3fr;
+  min-height: 500px;
   column-gap: 1.5rem;
   margin-bottom: 2rem;
   overflow: hidden;
-  max-height: 70vh;
 
   .attention-post {
   }
@@ -137,17 +138,21 @@ ul.post-list {
   }
 
   .big-image .img-title {
-    font-size: 1.2rem;
+    font-size: 110%;
+    width: 100%;
   }
 
   .post-desc {
-    padding: 1rem;
+    padding: 0.5rem;
     font-family: ($article-description-font);
     font-size: 1rem;
   }
 
   .top-stories {
     height: 100%;
+    > ul {
+      max-height: 450px;
+    }
   }
 }
 
@@ -333,9 +338,9 @@ ul.post-list {
     }
 
     #lifestyle-news .img-list {
-      padding: 1rem;
       grid-template-columns: 1fr;
       row-gap: 1rem;
+      margin: 1rem 0;
     }
 
     .subscribe-form {

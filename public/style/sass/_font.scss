@@ -49,3 +49,19 @@
   font-weight: bold;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "CrimsonPro";
+  src: local("CrimsonPro"),
+    url("../../fonts/CrimsonPro-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CrimsonPro";
+  src: local("CrimsonPro"),
+    url("../../fonts/CrimsonPro-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

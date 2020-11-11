@@ -47,6 +47,20 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "CrimsonPro";
+  src: local("CrimsonPro"), url("../../fonts/CrimsonPro-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CrimsonPro";
+  src: local("CrimsonPro"), url("../../fonts/CrimsonPro-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /** GLOBAL ---------------------------*/
 * {
   -webkit-box-sizing: border-box;
@@ -57,7 +71,11 @@
 
 html {
   background: #f2f2f2;
-  position: initial;
+}
+
+body {
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .wrapper {
@@ -279,7 +297,6 @@ ul li {
   font-size: 2.5rem;
   font-family: "Bitter";
   font-weight: bold;
-  text-decoration: underline;
 }
 
 .header .nav {
@@ -296,9 +313,9 @@ ul li {
   font-size: 0.8rem;
 }
 
-@media (max-width: 1023px) {
+@media (min-width: 1024px) {
   .header .nav {
-    width: 60%;
+    width: 65%;
   }
 }
 
@@ -476,7 +493,7 @@ footer .subscribe-form button {
           transform: translateX(-4px);
 }
 
-@media (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   footer .site-footer {
     width: 90%;
   }
@@ -661,7 +678,7 @@ footer .subscribe-form button {
   font-weight: bold;
 }
 
-@media (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .post-container .grid-wrapper {
     display: block;
   }
