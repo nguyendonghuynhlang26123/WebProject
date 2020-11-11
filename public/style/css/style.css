@@ -254,16 +254,24 @@ ul li {
   border: none;
   background: transparent;
   padding: 0.5rem;
-  color: #d8d8d8;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.header .topbar .section-dropdown p {
+.header .topbar .section-dropdown button p {
   font-family: "Roboto", serif;
   margin-left: 0.3rem;
 }
 
 @media (max-width: 767px) {
-  .header .topbar .section-dropdown p {
+  .header .topbar .section-dropdown button p {
     display: none;
   }
 }
@@ -273,6 +281,12 @@ ul li {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+}
+
+@media (max-width: 767px) {
+  .header .topbar .date {
+    display: none;
+  }
 }
 
 .header .topbar #searchform {
@@ -297,6 +311,12 @@ ul li {
   font-size: 2.5rem;
   font-family: "Bitter";
   font-weight: bold;
+}
+
+@media (max-width: 767px) {
+  .header #page-title a {
+    font-size: 1.3rem;
+  }
 }
 
 .header .nav {
@@ -734,6 +754,13 @@ ul.post-list .link-item {
 #cover-page #trending {
   border: 1px dashed #cccccc;
   border-radius: 10px;
+}
+
+#cover-page #trending .category-name img[src*="trending"] {
+  width: 1rem;
+  display: inline-block;
+  position: relative;
+  bottom: -3px;
 }
 
 #cover-page #trending .trending-tags {

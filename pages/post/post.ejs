@@ -1,15 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%- include('../head/head', {link: link}); %>=
+    <%- include('../head/head', {link: link}); %>
   </head>
+
   <body>
     <!-- HEADER -->
     <%- include('minimizedHeader/minimizedHeader'); %>
 
     <!-- MAIN -->
-    <%- post.post_content %>
+    <main class="post-container">
+      <div class="post-info">
+        <a class="post-category"><%= post.post_category %></a>
+        <ul class="post-tags">
+          <% post.post_tags.forEach((e)=>{%>
+          <li class="post-tag">
+            <a href="#">
+              <% if(e == "trending") {%>
+              <img src="/images/icons/trending-white-24px.svg" alt="" />
+              <% } else {%> <%= e %> <% } %>
+            </a>
+          </li>
+          <% }); %>
+        </ul>
+      </div>
 
+      <h1 class="post-title"><%= post.post_title %></h1>
+      <p class="date"><%= (new Date(post.post_date)).toUTCString() %></p>
+      <figure class="post-thumbnail">
+        <img src="<%= post.post_thumbnail %>" alt="" />
+        <figcaption>
+          The dehydration room to make Hoshigaki from persimmons in Da Lat City,
+          Vietnam. Photo: Mai Vinh
+        </figcaption>
+      </figure>
+
+      <div class="grid-wrapper">
+        <div class="post-content">
+          <p><b><%= post.post_description %></b></p>
+          <%- post.post_content %>
+          <p class="post-author"><%= post.post_author %></p>
+        </div>
+
+        <%- include('recommendation/recommendation');%>
+      </div>
+    </main>
     <!-- FOOTER -->
     <%- include('../footer/footer'); %>
   </body>

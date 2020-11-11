@@ -50,6 +50,8 @@
         a {
           font-size: 0.9rem;
           color: white;
+          img {
+          }
         }
       }
     }
@@ -128,6 +130,11 @@
 
 @media #{$tablet} {
   .post-container {
+  }
+}
+
+@media #{$smartphone} {
+  .post-container {
     .grid-wrapper {
       display: block;
     }
@@ -136,11 +143,6 @@
       height: 8rem;
       align-items: center;
     }
-  }
-}
-
-@media #{$smartphone} {
-  .post-container {
     .post-info {
       flex-direction: column;
       .post-category {

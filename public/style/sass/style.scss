@@ -189,7 +189,14 @@ ul.post-list {
   #trending {
     border: 1px dashed ($hr-border-color);
     border-radius: 10px;
-
+    .category-name {
+      img[src*="trending"] {
+        width: 1rem;
+        display: inline-block;
+        position: relative;
+        bottom: -3px;
+      }
+    }
     .trending-tags {
       display: flex;
       flex-direction: row;

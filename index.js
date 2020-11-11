@@ -29,13 +29,13 @@ app.get("/", function (req, res) {
   res.render("homePage/homePage", { link: "style/css/style.css" });
 });
 
-// app.get("*", function (req, res, next) {
-//   let err = new Error("Page not found");
-//   err.statusCode = 404;
-//   next(err);
-// });
+app.get("*", function (req, res, next) {
+  let err = new Error("Page not found");
+  err.statusCode = 404;
+  next(err);
+});
 
-// app.use(errorHandler);
+app.use(errorHandler);
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
