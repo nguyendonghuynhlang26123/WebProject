@@ -426,6 +426,7 @@ footer {
   margin-top: 5rem;
   padding: 3rem 0;
   background-color: #333333;
+  position: relative;
 }
 
 footer h1 {
@@ -441,6 +442,18 @@ footer a {
 
 footer a:hover {
   font-weight: bold;
+}
+
+footer span {
+  font-family: "PT Serif";
+  color: white;
+  font-size: 0.7rem;
+  opacity: 0.5;
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 footer .site-footer {
@@ -486,11 +499,14 @@ footer .site-footer #footer-subscribe .social.flex-row {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  gap: 1rem;
 }
 
-footer .site-footer #footer-subscribe .social.flex-row li:hover i {
-  color: #0c79ff;
+footer .site-footer #footer-subscribe .social.flex-row li:hover {
+  border-bottom: white 2px solid;
+}
+
+footer .site-footer #footer-subscribe .social.flex-row a {
+  margin: 0 0.4rem;
 }
 
 footer .subscribe-form label {
@@ -503,6 +519,7 @@ footer .subscribe-form label {
 footer .subscribe-form input {
   border-bottom: 2px solid white;
   display: inline-block;
+  width: 60%;
 }
 
 footer .subscribe-form button {
@@ -525,6 +542,10 @@ footer .subscribe-form button {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -545,8 +566,11 @@ footer .subscribe-form button {
     margin-top: 2rem;
   }
   footer .site-footer #footer-subscribe .subscribe-form {
-    width: 55%;
+    width: 60%;
     margin: auto;
+  }
+  footer .site-footer #footer-subscribe .subscribe-form input {
+    width: 100%;
   }
   footer .site-footer #footer-subscribe .social.flex-row {
     -webkit-box-pack: center;

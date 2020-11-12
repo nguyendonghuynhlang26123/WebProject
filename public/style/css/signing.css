@@ -1,0 +1,503 @@
+footer {
+  margin-top: 5rem;
+  padding: 3rem 0;
+  background-color: #333333;
+  position: relative;
+}
+
+footer h1 {
+  margin: 0.6rem;
+}
+
+footer a {
+  color: white;
+  display: inline-block;
+  margin: 0.4rem 0;
+  font-size: 0.8rem;
+}
+
+footer a:hover {
+  font-weight: bold;
+}
+
+footer span {
+  font-family: "PT Serif";
+  color: white;
+  font-size: 0.7rem;
+  opacity: 0.5;
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+footer .site-footer {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(3rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
+  color: white;
+  margin: 0 auto;
+  width: 70%;
+}
+
+footer .site-footer #footer-logo {
+  -ms-flex-item-align: center;
+      align-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 80%;
+}
+
+footer .site-footer #footer-logo a {
+  font-family: "Bitter";
+  font-size: 1.3rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+footer .site-footer #footer-logo img {
+  width: 100%;
+}
+
+footer .site-footer #footer-news {
+  padding-left: 2rem;
+}
+
+footer .site-footer #footer-subscribe .social.flex-row {
+  margin: 1rem 0;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+footer .site-footer #footer-subscribe .social.flex-row li:hover {
+  border-bottom: white 2px solid;
+}
+
+footer .site-footer #footer-subscribe .social.flex-row a {
+  margin: 0 0.4rem;
+}
+
+footer .subscribe-form label {
+  color: white;
+  font-weight: normal;
+  font-size: 0.8rem;
+  display: inline-block;
+}
+
+footer .subscribe-form input {
+  border-bottom: 2px solid white;
+  display: inline-block;
+  width: 60%;
+}
+
+footer .subscribe-form button {
+  background: white;
+  color: #333333;
+  border: 2px solid white;
+  -webkit-transform: translateX(-4px);
+          transform: translateX(-4px);
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  footer .site-footer {
+    width: 90%;
+  }
+}
+
+@media (max-width: 767px) {
+  footer {
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  footer .site-footer {
+    display: block;
+    text-align: center;
+    border: 1px solid white;
+  }
+  footer .site-footer #footer-logo,
+  footer .site-footer #footer-news {
+    display: none;
+  }
+  footer .site-footer .article-title {
+    font-size: 1.2rem;
+    text-decoration: underline;
+    text-transform: uppercase;
+    margin-top: 2rem;
+  }
+  footer .site-footer #footer-subscribe .subscribe-form {
+    width: 60%;
+    margin: auto;
+  }
+  footer .site-footer #footer-subscribe .subscribe-form input {
+    width: 100%;
+  }
+  footer .site-footer #footer-subscribe .social.flex-row {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@font-face {
+  font-family: "Bitter";
+  src: local("Bitter"), url("../../fonts/Bitter-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto"), url("../../fonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../../fonts/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Merriweather";
+  src: local("Merriweather"), url("../../fonts/Merriweather-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Merriweather";
+  src: local("Merriweather"), url("../../fonts/Merriweather-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PT Serif";
+  src: local("PT Serif"), url("../../fonts/PTSerif-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PT Serif";
+  src: local("PT Serif"), url("../../fonts/PTSerif-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CrimsonPro";
+  src: local("CrimsonPro"), url("../../fonts/CrimsonPro-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CrimsonPro";
+  src: local("CrimsonPro"), url("../../fonts/CrimsonPro-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/** GLOBAL ---------------------------*/
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: #f2f2f2;
+}
+
+body {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  padding: 0 2%;
+  color: #222222;
+  max-width: 90%;
+  margin: auto;
+}
+
+.flex-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+a {
+  text-decoration: none;
+  color: #222222;
+  font-family: "PT Serif";
+}
+
+hr {
+  border: none;
+  margin: 0 1rem;
+  border-top: 1px solid #cccccc;
+}
+
+hr.dash {
+  border-top: 1px dashed #cccccc;
+}
+
+ul li {
+  list-style: none;
+}
+
+.article-title {
+  font-family: "Merriweather";
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.article-desc {
+  font-family: "PT Serif";
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+.date {
+  font-family: "PT Serif", Serif;
+  color: #8b8b8b;
+  font-size: 0.8rem;
+}
+
+/** CATEGORY NAME */
+.category-name {
+  font-family: "Roboto";
+  text-transform: uppercase;
+  padding: 0.4rem;
+  font-weight: 500;
+  font-size: 0.7rem;
+  background-color: #dfdfdf;
+}
+
+/** VIEW ALL LINK */
+.redirect-link {
+  color: #0c79ff;
+  font-family: "Roboto";
+  font-size: 0.9rem;
+  padding: 0.5rem;
+}
+
+/** BOTTOM BORDER */
+.center-border::after {
+  margin: 1rem 0;
+  height: 1px;
+  display: block;
+  width: 60%;
+  background: #cccccc;
+  content: "";
+  margin: 1rem auto;
+}
+
+.right-border::after {
+  margin: 1rem 0;
+  height: 1px;
+  display: block;
+  width: 60%;
+  background: #cccccc;
+  content: "";
+  margin-left: auto;
+}
+
+.left-border::after {
+  margin: 1rem 0;
+  height: 1px;
+  display: block;
+  width: 60%;
+  background: #cccccc;
+  content: "";
+  margin-right: auto;
+}
+
+/** SUBSCRIBE FORM---------------------------*/
+.subscribe-form label {
+  color: #0c79ff;
+  font-family: "Merriweather";
+  font-weight: 700;
+  font-size: 0.9rem;
+  gap: 0;
+}
+
+.subscribe-form input {
+  margin: 0.8rem 0;
+  padding: 0.3rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #0c79ff;
+  -webkit-transition: all ease-in-out 0.4s;
+  transition: all ease-in-out 0.4s;
+}
+
+.subscribe-form input[type="email"]:focus {
+  outline: none;
+}
+
+.subscribe-form input[type="email"]:invalid {
+  border-bottom-color: red;
+}
+
+.subscribe-form button {
+  padding: 0.3rem;
+  margin: 0;
+  background-color: #0c79ff;
+  color: white;
+  border: 2px solid #0c79ff;
+  -webkit-transform: translateX(-4px);
+          transform: translateX(-4px);
+}
+
+body {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0.4rem;
+}
+
+.header #page-title {
+  font-family: "Bitter";
+  color: #434343;
+  font-size: 1.5rem;
+}
+
+.login-container {
+  height: 95vh;
+  width: 100%;
+  overflow: hidden;
+  background: rgba(242, 242, 242, 0.52);
+  /* fallback colour. Make sure this is just one solid colour. */
+  background: url("/images/login-bg.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(242, 242, 242, 0.52)), to(rgba(51, 51, 51, 0.73))), url("/images/login-bg.jpg");
+  background: linear-gradient(rgba(242, 242, 242, 0.52), rgba(51, 51, 51, 0.73)), url("/images/login-bg.jpg");
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login-container form {
+  background: #f2f2f2;
+  border-radius: 14px;
+  -webkit-box-shadow: 1px 1px 16px 4px rgba(0, 0, 0, 0.43);
+          box-shadow: 1px 1px 16px 4px rgba(0, 0, 0, 0.43);
+  overflow: hidden;
+  width: 300px;
+  padding-top: 1rem;
+}
+
+.login-container form img {
+  background-color: #f2f2f2;
+  width: 50px;
+  display: block;
+  margin: 0 auto;
+}
+
+.login-container form .field {
+  margin: 1rem 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.login-container form .field label {
+  font-size: 1rem;
+  font-family: "Bitter";
+}
+
+.login-container form .field input {
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 0.3rem;
+  border: 2px solid #cccccc;
+  border-radius: 5px;
+}
+
+.login-container form .signup {
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.login-container form .agree {
+  margin: 1rem 1.5rem;
+  word-wrap: break-word;
+  font-size: 0.8rem;
+}
+
+.login-container form .agree a {
+  text-decoration: underline;
+}
+
+.login-container form button {
+  height: 3rem;
+  width: 100%;
+  border: 0;
+  color: white;
+  background-color: #333333;
+  -webkit-transition: all ease-in-out 0.4s;
+  transition: all ease-in-out 0.4s;
+  cursor: pointer;
+  font-family: "Roboto";
+  font-size: 1rem;
+}
+
+.login-container form button:hover {
+  opacity: 0.7;
+}
+
+footer {
+  margin-top: 0;
+}
+/*# sourceMappingURL=signing.css.map */

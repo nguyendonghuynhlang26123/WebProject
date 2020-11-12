@@ -29,7 +29,15 @@ app.set("view engine", "ejs");
 app.set("views", "./pages");
 
 app.get("/", function (req, res) {
-  res.render("homePage/homePage", { link: "style/css/style.css" });
+  res.render("homePage/homePage", { link: "/style/css/style.css" });
+});
+
+app.get("/login", (req, res) => {
+  res.render("signing/login");
+});
+
+app.get("/register", (req, res) => {
+  res.render("signing/register");
 });
 
 app.get("*", function (req, res, next) {
