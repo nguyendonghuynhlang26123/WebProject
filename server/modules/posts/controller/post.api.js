@@ -23,6 +23,7 @@ router.post("/", async function (req, res) {
     req.body.post_category,
     req.body.post_content,
     req.body.post_thumbnail,
+    req.body.post_thumbnail_description,
     req.body.post_author,
     req.body.post_date,
     req.body.post_tags
@@ -40,42 +41,9 @@ module.exports = router;
 // let data = {
 //   post_title: "Dried persimmons: The sun-kissed autumn treat of Da Lat.",
 //   post_description:
-//     "The dehydration room to make Hoshigaki from persimmons in Da Lat City, Vietnam. Photo: Mai Vinh",
-//   post_category: ["Lifestyle"],
-//   post_content: `<main class="post-container">
-//   <div class="post-info">
-//     <a class="post-category">Lifestyle</a>
-//     <ul class="post-tags">
-//       <li class="post-tag">
-//         <a href="#"><i class="fas fa-chart-line"></i></a>
-//       </li>
-//       <li class="post-tag"><a href="#">Dalat</a></li>
-//       <li class="post-tag"><a href="#">Hoshigaki</a></li>
-//       <li class="post-tag"><a href="#">persimmons</a></li>
-//     </ul>
-//   </div>
-
-//   <h1 class="post-title">
-//     Dried persimmons: The sun-kissed autumn treat of Da Lat.
-//   </h1>
-//   <p class="date">Sunday, November 01, 2020, 12:12 GMT+7</p>
-//   <figure class="post-thumbnail">
-//     <img src="../images/lifestyle3.jpg" alt="" />
-//     <figcaption>
-//       The dehydration room to make Hoshigaki from persimmons in Da Lat City,
-//       Vietnam. Photo: Mai Vinh
-//     </figcaption>
-//   </figure>
-
-//   <div class="grid-wrapper">
-//     <div class="post-content">
-//       <p class="post-description">
-//         In the late 190s and early 1990s, several years before the Central
-//         Highlands city of Da Lat became one of Vietnam’s biggest tourism
-//         draws, nearly every local household in the city proudly grew
-//         persimmon trees.
-//       </p>
-//       <p>
+//     "In the late 190s and early 1990s, several years before the Central     Highlands city of Da Lat became one of Vietnam’s biggest tourism     draws, nearly every local household in the city proudly grew     persimmon trees.",
+//   post_category: "5faceb2f14977a06f4db7307",
+//   post_content: `<p>
 //         Though barely taken care of by locals, the persimmon trees still
 //         manage to bear fruit each autumn, adding a tinge of orange to the
 //         hilly town’s rustic charm.
@@ -195,71 +163,9 @@ module.exports = router;
 
 //       <p>The duo disapproves of the ‘industrialized’ way of dehydrating persimmons by using honeycomb charcoal as fuel
 //         in order to decrease the amount of time it takes to produce a batch, claiming that using wood charcoal and hot
-//         air produces a final product that is more tender and chewy.</p>
-//       <p class="post-author">Xuan Tung - Mai Vinh</p>
-//     </div>
-
-//     <aside>
-//       <div class="recommendation">
-//         <a class="category-name">More from Lifestyle</a>
-//         <div>
-//           <div class="recommended-post">
-//             <img src="../images/lifestyle1.jpg" alt="" />
-//             <div class="recommended-post-title">
-//               <p class="date">Sunday, November 1, 18:00</p>
-//               <a href="">BritCham Vietnam’s Fun Run 2020 upholds charitable spirit amid health
-//                 crisis
-//               </a>
-//             </div>
-//           </div>
-//           <div class="recommended-post">
-//             <img src="../images/lifestyle2.jpg" alt="" />
-//             <div class="recommended-post-title">
-//               <p class="date">Sunday, November 1, 18:00</p>
-//               <a href="">
-//                 Hunting for clouds in Vietnam's remote northern highlands</a>
-//             </div>
-//           </div>
-//           <div class="recommended-post">
-//             <img src="../images/lifestyle4.jpg" alt="" />
-//             <div class="recommended-post-title">
-//               <p class="date">Sunday, November 1, 18:00</p>
-//               <a href="">
-//                 Vietnam leaves lasting impression at 2020 Aerial Photography Awards</a>
-//             </div>
-//           </div>
-
-//           <div class="recommended-post">
-//             <img src="../images/lifestyle1.jpg" alt="" />
-//             <div class="recommended-post-title">
-//               <p class="date">Sunday, November 1, 18:00</p>
-//               <a href="">BritCham Vietnam’s Fun Run 2020 upholds charitable spirit amid health
-//                 crisis
-//               </a>
-//             </div>
-//           </div>
-//           <div class="recommended-post">
-//             <img src="../images/lifestyle2.jpg" alt="" />
-//             <div class="recommended-post-title">
-//               <p class="date">Sunday, November 1, 18:00</p>
-//               <a href="">
-//                 Hunting for clouds in Vietnam's remote northern highlands</a>
-//             </div>
-//           </div>
-//           <div class="recommended-post">
-//             <img src="../images/lifestyle4.jpg" alt="" />
-//             <div class="recommended-post-title">
-//               <p class="date">Sunday, November 1, 18:00</p>
-//               <a href="">
-//                 Vietnam leaves lasting impression at 2020 Aerial Photography Awards</a>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </aside>
-//   </div>
-// </main>`,
+//         air produces a final product that is more tender and chewy.</p>`,
 //   post_thumbnail: "http://localhost:3000/images/lifestyle3.jpg",
+//   post_thumbnail_description: "The dehydration room to make Hoshigaki from persimmons in Da Lat City, Vietnam. Photo: Mai Vinh",
 //   post_author: "Xuan Tung - Mai Vinh",
 //   post_date: Date.now(),
 //   post_tags: ["trending", "Dalat", "Hoshigaki", "Persimmons"],
@@ -270,8 +176,9 @@ module.exports = router;
 //   data.post_category,
 //   data.post_content,
 //   data.post_thumbnail,
+//   data.post_thumbnail_description,
 //   data.post_author,
 //   data.post_date,
 //   data.post_tags
 // );
-// postService.getPostById("5fa6b46fb6fe6711b8bd6936").then((d) => console.log(d));
+//postService.getPostById("5faceef6fa85752b7cff9ade").then((d) => console.log(d.post_category[0].category_name));

@@ -6,6 +6,7 @@ async function createPost(
   post_category,
   post_content,
   post_thumbnail,
+  post_thumbnail_description,
   post_author,
   post_date,
   post_tags
@@ -16,6 +17,7 @@ async function createPost(
     post_category: post_category,
     post_content: post_content,
     post_thumbnail: post_thumbnail,
+    post_thumbnail_description: post_thumbnail_description,
     post_author: post_author,
     post_date: post_date,
     post_tags: post_tags,
@@ -25,12 +27,12 @@ async function createPost(
 }
 
 async function getPostById(postId) {
-  const post = await Post.findOne({ _id: postId });
+  const post = await Post.findOne({ _id: postId }).populate("post_category");
   return post;
 }
 
-async function getAllPost() {
-  const posts = await Post.find();
+async function getAllPost(select, limit) {
+  const posts = await Post.find({}, select, { limit: limit });
   return posts;
 }
 

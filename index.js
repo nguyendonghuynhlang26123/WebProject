@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const post = require("./server/modules/posts/controller/post.api");
+const postService = require("./server/modules/posts/services/post.service");
+const category = require("./server/modules/categories/controller/category.api");
 const upload = require("./server/modules/uploadImage/controller/uploadImage.api");
 const bodyParser = require("body-parser");
 const errorHandler = require("./server/modules/errorHandler/errorHandler");
@@ -20,6 +22,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use("/post", post);
+app.use("/category", category);
 app.use("/upload", upload);
 
 app.set("view engine", "ejs");
