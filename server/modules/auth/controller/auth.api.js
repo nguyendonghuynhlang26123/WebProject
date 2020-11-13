@@ -30,4 +30,10 @@ router.get("/register", (req, res) => {
   res.render("signing/register");
 });
 
+router.get("/logout", (req, res) => {
+  req.session.destroy(() => {
+    res.redirect("/");
+  });
+});
+
 module.exports = router;
