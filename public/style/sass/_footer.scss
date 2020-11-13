@@ -64,7 +64,12 @@ footer {
         margin: 1rem 0;
         justify-content: flex-start;
         li:hover {
-          border-bottom: white 2px solid;
+          #fb {
+            fill: #4267b2;
+          }
+          #youtube {
+            fill: #ff0000;
+          }
         }
         a {
           margin: 0 0.4rem;

@@ -74,8 +74,10 @@ html {
 }
 
 body {
-  max-width: 1440px;
+  max-width: 2000px;
   margin: 0 auto;
+  -webkit-box-shadow: 5px 2px 15px 1px #000000;
+          box-shadow: 5px 2px 15px 1px #000000;
 }
 
 .wrapper {
@@ -501,8 +503,12 @@ footer .site-footer #footer-subscribe .social.flex-row {
           justify-content: flex-start;
 }
 
-footer .site-footer #footer-subscribe .social.flex-row li:hover {
-  border-bottom: white 2px solid;
+footer .site-footer #footer-subscribe .social.flex-row li:hover #fb {
+  fill: #4267b2;
+}
+
+footer .site-footer #footer-subscribe .social.flex-row li:hover #youtube {
+  fill: #ff0000;
 }
 
 footer .site-footer #footer-subscribe .social.flex-row a {
@@ -647,6 +653,10 @@ footer .subscribe-form button {
 .post-container .post-info ul.post-tags .post-tag a {
   font-size: 0.9rem;
   color: white;
+}
+
+.post-container .post-info ul.post-tags .post-tag a svg {
+  height: 70%;
 }
 
 .post-container .date {

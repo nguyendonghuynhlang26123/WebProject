@@ -40,6 +40,10 @@ app.get("/register", (req, res) => {
   res.render("signing/register");
 });
 
+app.get("/writer", (req, res) => {
+  res.render("writerPage/dashboard");
+});
+
 app.get("*", function (req, res, next) {
   let err = new Error("Page not found");
   err.statusCode = 404;

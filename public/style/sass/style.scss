@@ -44,7 +44,9 @@ ul.post-list {
   > .img-title {
     font-weight: bold;
     font-family: ($article-title-font);
-    font-size: 0.8rem;
+    @media (max-width: 1200px) {
+      font-size: 0.8rem;
+    }
   }
 }
 
@@ -190,11 +192,10 @@ ul.post-list {
     border: 1px dashed ($hr-border-color);
     border-radius: 10px;
     .category-name {
-      img[src*="trending"] {
-        width: 1rem;
+      svg {
+        height: 1rem;
         display: inline-block;
-        position: relative;
-        bottom: -3px;
+        transform: translateY(5px);
       }
     }
     .trending-tags {
