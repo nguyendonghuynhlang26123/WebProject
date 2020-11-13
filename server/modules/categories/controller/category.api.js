@@ -25,7 +25,7 @@ router.post("/", async function (req, res) {
 });
 
 router.delete("/:categoryId", async function (req, res) {
-  const result = await categoryService.deletePost(req.params.categoryId);
+  const result = await categoryService.deleteCategory(req.params.categoryId);
   res.send(result);
 });
 
