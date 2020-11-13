@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('../head/head', {link: "/style/css/signing.css" }); %>
-  </head>
-  <body>
-    <!-- ---------- HEADER------------------------ -->
-    <div class="header">
-      <h1 id="page-title">The Pen Daily</h1>
-    </div>
 
-    <!-- ----------- Article -------------------- -->
-    <div class="login-container">
-      <form action="/login" method="POST">
-        <img src="/images/icons/account-24px.svg" alt="" />
-        <div class="field">
-          <label for="username">Username</label>
-          <input type="text" name="username" />
-        </div>
-        <div class="field">
-          <label for="password">Password</label>
-          <input type="password" name="password" />
-        </div>
-        <div class="signup">
-          <a href="/register" class="redirect-link">Create new account</a>
-        </div>
-        <button class="login">Log-in</button>
-      </form>
-    </div>
-    <!-- ------------- FOOTER ------------------- -->
-    <%- include('../footer/footer'); %>
-  </body>
+<head>
+  <%- include('../head/head', {link: "/style/css/signing.css" }); %>
+</head>
+
+<body>
+  <!-- ---------- HEADER------------------------ -->
+  <div class="header">
+    <h1 id="page-title">The Pen Daily</h1>
+  </div>
+
+  <!-- ----------- Article -------------------- -->
+  <div class="login-container">
+    <form action="/auth/login" method="POST">
+      <img src="/images/icons/account-24px.svg" alt="" />
+      <div class="field">
+        <label for="username">Username</label>
+        <input type="text" name="username" />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" name="password" />
+      </div>
+      <div class="signup">
+        <a href="/auth/register" class="redirect-link">Create new account</a>
+      </div>
+      <button class="login">Log-in</button>
+    </form>
+  </div>
+  <!-- ------------- FOOTER ------------------- -->
+  <%- include('../footer/footer'); %>
+</body>
+
 </html>

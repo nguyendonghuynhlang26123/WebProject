@@ -11,8 +11,8 @@ async function createUser(username, password, first_name, last_name) {
   let data = {
     username: username,
     password: password,
-    first_name: first_name,
-    last_name: last_name,
+    first_name: first_name || null,
+    last_name: last_name || null,
     created_at: Date.now(),
   };
   data.password = await hashPassword(data.password);
@@ -35,9 +35,15 @@ async function deleteUser(userId) {
   return result;
 }
 
+async function getUserByUsername(username) {
+    const user = await User.findOne({ username: username });
+    return user;
+  }
+
 module.exports = {
   createUser: createUser,
   getUserById: getUserById,
   getAllUser: getAllUser,
   deleteUser: deleteUser,
+  getUserByUsername: getUserByUsername,
 };

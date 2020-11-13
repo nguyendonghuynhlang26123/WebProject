@@ -16,14 +16,23 @@ router.get("/", async function (req, res) {
   res.send(users);
 });
 
-router.post("/", async function (req, res) {
-  const user = await userService.createUser(
-    req.body.username,
-    req.body.password,
-    req.body.first_name,
-    req.body.last_name
-  );
-  res.send(user);
+router.post("/", async function (req, res, next) {
+  try {
+    if (req.body.password != req.body.confirm_password) {
+      res.redirect("/auth/register");
+      return;
+    }
+    const user = await userService.createUser(
+      req.body.username,
+      req.body.password,
+      req.body.confirm_password,
+      req.body.first_name,
+      req.body.last_name
+    );
+    res.redirect("/auth/login");
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.delete("/:userId", async function (req, res) {
