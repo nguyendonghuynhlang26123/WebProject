@@ -27,7 +27,8 @@ router.post("/", async function (req, res, next) {
       req.body.username,
       req.body.password,
       req.body.first_name,
-      req.body.last_name
+      req.body.last_name,
+      req.body.list_post
     );
     if (!user) {
       req.session.error = "Username already exists.";

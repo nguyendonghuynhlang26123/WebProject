@@ -7,7 +7,13 @@ async function hashPassword(password) {
   return hash;
 }
 
-async function createUser(username, password, first_name, last_name) {
+async function createUser(
+  username,
+  password,
+  first_name,
+  last_name,
+  list_post
+) {
   const user = await User.findOne({ username: username }, { password: 0 });
   if (user) return null;
   let data = {
@@ -15,6 +21,7 @@ async function createUser(username, password, first_name, last_name) {
     password: password,
     first_name: first_name || null,
     last_name: last_name || null,
+    list_post: list_post || [],
     created_at: Date.now(),
   };
   data.password = await hashPassword(data.password);
@@ -23,7 +30,10 @@ async function createUser(username, password, first_name, last_name) {
 }
 
 async function getUserById(userId) {
-  const user = await User.findOne({ _id: userId }, { password: 0 });
+  const user = await User.findOne({ _id: userId }, { password: 0 }).populate(
+    "list_post.post_id",
+    "post_title post_thumbnail"
+  );
   return user;
 }
 
