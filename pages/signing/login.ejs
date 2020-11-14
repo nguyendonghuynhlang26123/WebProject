@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <%- include('../head/head', {link: "/style/css/signing.css" }); %>
+  <%- include('../head/head', {link: link }); %>
 </head>
 
 <body>
@@ -32,5 +32,9 @@
   <!-- ------------- FOOTER ------------------- -->
   <%- include('../footer/footer'); %>
 </body>
+
+<% if(message) {%>
+<script>alert("<%= message %>")</script>
+<% } %>
 
 </html>

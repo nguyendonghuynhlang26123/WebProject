@@ -3,7 +3,10 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/login", (req, res) => {
-  res.render("signing/login");
+  res.render("signing/login", {
+    link: "/style/css/signing.css",
+    message: req.session.error,
+  });
 });
 
 router.post("/login", (req, res) => {
@@ -14,25 +17,26 @@ router.post("/login", (req, res) => {
       if (user) {
         req.session.regenerate(() => {
           req.session.auth = true;
-          req.session.success = "Login success.";
-          res.redirect("../../");
+          res.redirect("../writer");
         });
       } else {
-        req.session.error =
-          "Authentication failed, please check your username and password.";
-        res.redirect("/login");
+        req.session.error = `${err}. Authentication failed, please check your username and password.`;
+        res.redirect("/auth/login");
       }
     }
   );
 });
 
 router.get("/register", (req, res) => {
-  res.render("signing/register");
+  res.render("signing/register", {
+    link: "/style/css/signing.css",
+    message: req.session.error,
+  });
 });
 
 router.get("/logout", (req, res) => {
   req.session.destroy(() => {
-    res.redirect("/");
+    res.redirect("/auth/login");
   });
 });
 

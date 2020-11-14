@@ -9,6 +9,7 @@ const upload = require("./server/modules/uploadImage/controller/uploadImage.api"
 const auth = require("./server/modules/auth/controller/auth.api");
 const bodyParser = require("body-parser");
 const errorHandler = require("./server/modules/errorHandler/errorHandler");
+const authService = require("./server/modules/auth/services/auth.service");
 
 // mongoose connect
 const mongoose = require("mongoose");
@@ -47,7 +48,7 @@ app.get("/", function (req, res) {
   res.render("homePage/homePage", { link: "/style/css/style.css" });
 });
 
-app.get("/writer", (req, res) => {
+app.get("/writer", authService.restrict, (req, res) => {
   res.render("writerPage/dashboard");
 });
 

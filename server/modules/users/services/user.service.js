@@ -8,6 +8,8 @@ async function hashPassword(password) {
 }
 
 async function createUser(username, password, first_name, last_name) {
+  const user = await User.findOne({ username: username }, { password: 0 });
+  if (user) return null;
   let data = {
     username: username,
     password: password,
@@ -36,9 +38,9 @@ async function deleteUser(userId) {
 }
 
 async function getUserByUsername(username) {
-    const user = await User.findOne({ username: username });
-    return user;
-  }
+  const user = await User.findOne({ username: username });
+  return user;
+}
 
 module.exports = {
   createUser: createUser,
