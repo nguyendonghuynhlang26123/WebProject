@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('../head/head', {link: "/style/css/signing.css" }); %>
-  </head>
-  <body>
-    <!-- ---------- HEADER------------------------ -->
-    <div class="header">
-      <h1 id="page-title">The Pen Daily</h1>
-    </div>
 
-    <!-- ----------- Article -------------------- -->
-    <div id="signup" class="login-container">
-      <form action="/user" method="POST">
-        <div class="field">
-          <label for="username">Username</label>
-          <input type="text" name="username" />
-        </div>
-        <div class="field">
-          <label for="password">Password</label>
-          <input type="password" name="password" />
-        </div>
-        <div class="field">
-          <label for="confirm-password">Confirm your password</label>
-          <input type="password" name="confirm_password" />
-        </div>
+<head>
+  <%- include('../head/head', {link: link }); %>
+</head>
 
-        <div class="agree">
-          <p>
-            By creating an account, you agree to the
-            <a href="#">Terms of Service</a>
-          </p>
-        </div>
+<body>
+  <!-- ---------- HEADER------------------------ -->
+  <div class="header">
+    <h1 id="page-title">The Pen Daily</h1>
+  </div>
 
-        <button class="login">Sign-up</button>
-      </form>
-    </div>
-    <!-- ------------- FOOTER ------------------- -->
-    <%- include('../footer/footer'); %>
-  </body>
+  <!-- ----------- Article -------------------- -->
+  <div id="signup" class="login-container">
+    <form action="/user" method="POST">
+      <div class="field">
+        <label for="username">Username</label>
+        <input type="text" name="username" />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" name="password" />
+      </div>
+      <div class="field">
+        <label for="confirm-password">Confirm your password</label>
+        <input type="password" name="confirm_password" />
+      </div>
+
+      <div class="agree">
+        <p>
+          By creating an account, you agree to the
+          <a href="#">Terms of Service</a>
+        </p>
+      </div>
+
+      <button class="login">Sign-up</button>
+    </form>
+  </div>
+  <!-- ------------- FOOTER ------------------- -->
+  <%- include('../footer/footer'); %>
+</body>
+
+<% if(message) {%>
+<script>alert("<%= message %>")</script>
+<% } %>
+
 </html>

@@ -19,16 +19,21 @@ router.get("/", async function (req, res) {
 router.post("/", async function (req, res, next) {
   try {
     if (req.body.password != req.body.confirm_password) {
+      req.session.error = "Password and confirm password not match.";
       res.redirect("/auth/register");
       return;
     }
     const user = await userService.createUser(
       req.body.username,
       req.body.password,
-      req.body.confirm_password,
       req.body.first_name,
       req.body.last_name
     );
+    if (!user) {
+      req.session.error = "Username already exists.";
+      res.redirect("/auth/register");
+      return;
+    }
     res.redirect("/auth/login");
   } catch (err) {
     next(err);

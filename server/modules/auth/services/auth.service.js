@@ -13,7 +13,7 @@ function restrict(req, res, next) {
   if (req.session.auth) {
     next();
   } else {
-    req.session.error = "Access denied!";
+    req.session.error = "Access denied! Please login.";
     res.redirect("/auth/login");
   }
 }
