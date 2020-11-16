@@ -9,7 +9,7 @@ const UserSchema = new Schema({
   list_post: [
     {
       post_id: { type: Schema.Types.ObjectId, ref: "posts" },
-      status: { type: String, enum: ["Published", "Draft"] },
+      status: { type: String, enum: ["Published", "Draft", "Trash"] },
     },
   ],
   created_at: { type: Number, default: Date.now() },

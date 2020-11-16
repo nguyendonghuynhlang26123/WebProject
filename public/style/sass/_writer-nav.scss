@@ -18,22 +18,23 @@
     justify-content: center;
     transition: width 600ms ease;
     gap: 1rem;
+    overflow: hidden;
 
     .nav__item {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
+      cursor: pointer;
       padding: 0.6rem 0.8rem;
       transition: all 600ms ease;
+      position: relative;
 
       .nav__icon {
-        max-width: 100%;
-        width: 2rem;
+        max-width: 3rem;
+        min-width: 2rem;
       }
 
       .nav__link {
         display: flex;
         align-items: center;
+        white-space: nowrap;
         gap: 0.4rem;
 
         .nav__text {
@@ -57,8 +58,10 @@
       }
     }
 
-    .active .nav__icon {
-      fill: #6563ff;
+    .active {
+      .nav__icon {
+        fill: $purple-color;
+      }
     }
 
     &:hover .nav__text {
@@ -85,6 +88,7 @@
       margin: 0 auto;
       padding: 0.2rem 0.2rem;
       border: 3px solid $footer-color;
+
       .nav__item {
         .nav__icon {
           width: 2rem;

@@ -1,8 +1,10 @@
 @import "writer-nav";
+@import "profile";
 
 main {
   min-height: 100vh;
   margin-left: 6rem;
+
   display: grid;
   grid-template-columns: 7fr 3fr;
 }
@@ -15,68 +17,14 @@ button {
   padding: 0 1rem;
 }
 
-/** Profile---------------------------*/
-.small_profile {
-  background: white;
-  padding: 1.2rem;
-}
-
-.edit {
-  display: flex;
-  justify-content: flex-end;
-
-  svg {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-}
-
-.avatar {
-  padding: 2rem 0.4rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  span {
-    font-size: 1.5rem;
-    font-family: $article-title-font;
-    font-weight: bold;
-  }
-}
-
-.statistics {
-  margin-bottom: 4rem;
-  font-family: $category-font;
-  .statistics__entry {
-    display: flex;
-    justify-content: space-between;
-    padding: 1.2rem 0.5rem;
-
-    &:not(:last-child) {
-      margin-bottom: 1rem;
-      border-bottom: 1px solid $hr-border-color;
-    }
-
-    .description,
-    .quantity {
-      font-size: 1.2rem;
-    }
-
-    .description:hover {
-      outline: none;
-      color: $purple-color;
-    }
-
-    .quantity {
-      font-weight: 500;
-    }
-  }
+.disable {
+  display: none;
 }
 
 /** Header---------------------------*/
 .header {
   padding: 3rem 1rem 5rem 0;
-
+  grid-column: 1 span 1;
   .header__wrapper {
     display: flex;
     align-items: center;
@@ -219,10 +167,10 @@ button {
           font-family: $article-description-font;
           font-size: 0.8rem;
         }
-        .draft {
+        .Draft {
           color: red;
         }
-        .published {
+        .Published {
           color: green;
         }
       }
@@ -238,10 +186,6 @@ button {
     flex-direction: column-reverse;
   }
 
-  .small_profile {
-    padding: 0.4rem;
-  }
-
   .header__wrapper {
     flex-direction: column-reverse;
     gap: 1rem;
@@ -249,6 +193,9 @@ button {
 }
 
 @media (max-width: 650px) {
+  main {
+    margin-left: 0;
+  }
   .card-container {
     grid-template-columns: 1fr;
   }

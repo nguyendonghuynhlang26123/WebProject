@@ -230,6 +230,10 @@ footer .subscribe-form button {
   padding: 0;
 }
 
+:root {
+  font-size: 16px;
+}
+
 html {
   background: #f2f2f2;
 }
@@ -440,9 +444,10 @@ body {
   padding-top: 1rem;
 }
 
-.login-container form img {
+.login-container form svg {
   background-color: #f2f2f2;
-  width: 50px;
+  width: 3.5rem;
+  height: 3.5rem;
   display: block;
   margin: 0 auto;
 }

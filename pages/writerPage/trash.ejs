@@ -1,0 +1,8 @@
+<section id="trash-page">
+  <h1 class="section-title">Trash</h1>
+  <div class="card-container">
+    <% list_post.forEach(function(post){ %> <% if(post.status === "Trash") {%>
+    <%- include('card', {post:post.post_id, post_status: post.status}); %> <%
+    }%><% }); %>
+  </div>
+</section>

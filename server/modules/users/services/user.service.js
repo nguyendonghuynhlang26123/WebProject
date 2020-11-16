@@ -25,14 +25,13 @@ async function createUser(
     created_at: Date.now(),
   };
   data.password = await hashPassword(data.password);
-  user = await User.create(data);
-  return user;
+  return await User.create(data);
 }
 
 async function getUserById(userId) {
   const user = await User.findOne({ _id: userId }, { password: 0 }).populate(
     "list_post.post_id",
-    "post_title post_thumbnail"
+    "post_title post_thumbnail post_date"
   );
   return user;
 }
