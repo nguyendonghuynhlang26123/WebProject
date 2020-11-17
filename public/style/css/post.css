@@ -80,8 +80,6 @@ html {
 body {
   max-width: 2000px;
   margin: 0 auto;
-  -webkit-box-shadow: 5px 2px 15px 1px #000000;
-          box-shadow: 5px 2px 15px 1px #000000;
 }
 
 .wrapper {
@@ -229,6 +227,33 @@ ul li {
   border: 2px solid #0c79ff;
   -webkit-transform: translateX(-4px);
           transform: translateX(-4px);
+}
+
+/** LOGO - TITLE TEMPLATE---------------------------*/
+.title-logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: row;
+      -ms-flex: row;
+          flex: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+}
+
+.title-logo span {
+  fill: #333333;
+  font-size: 1.5rem;
+  font-family: "Bitter";
+  font-weight: bold;
+}
+
+.title-logo svg {
+  fill: #333333;
+  height: 3rem;
+  width: 3rem;
 }
 
 .header .topbar {
@@ -675,16 +700,20 @@ footer .subscribe-form button {
   word-break: keep-all;
 }
 
+.post-container .post-description {
+  font-size: 1rem;
+  color: #888888;
+  width: 80%;
+  margin: 0.1rem auto;
+  text-align: center;
+}
+
 .post-container .grid-wrapper {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 7fr 3fr;
       grid-template-columns: 7fr 3fr;
   grid-gap: 2rem;
-}
-
-.post-container .grid-wrapper .post-content .post-description {
-  font-weight: bold;
 }
 
 .post-container .grid-wrapper .post-content p {
@@ -758,6 +787,15 @@ footer .subscribe-form button {
   }
   .post-container .post-title {
     font-size: 1.5rem;
+    padding: 0.4rem 0;
+    text-align: left;
+  }
+  .post-container .post-description {
+    padding: 0.4rem 0;
+    text-align: left;
+    font-size: 0.8rem;
+    margin: 0;
+    width: 100%;
   }
   .post-container .grid-wrapper aside {
     border: none;

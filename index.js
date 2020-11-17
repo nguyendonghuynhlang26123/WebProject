@@ -36,7 +36,7 @@ app.use(
 
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/auth", auth);
 app.use("/post", post);
 app.use("/category", category);
@@ -51,12 +51,12 @@ app.get("/", function (req, res) {
 });
 
 app.get("/login", (req, res) => {
-  res.redirect("/auth/login");
+  res.redirect("auth/login");
 });
 
-// app.get("/writer", authService.restrict, async (req, res) => {
-
-// });
+app.get("/compose", async (req, res) => {
+  res.render("compose/compose");
+});
 
 app.get("*", function (req, res, next) {
   let err = new Error("Page not found");

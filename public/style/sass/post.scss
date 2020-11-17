@@ -71,6 +71,14 @@
     word-break: keep-all;
   }
 
+  .post-description {
+    font-size: 1rem;
+    color: #888888;
+    width: 80%;
+    margin: 0.1rem auto;
+    text-align: center;
+  }
+
   /** POST CONTENT---------------------------*/
   .grid-wrapper {
     display: grid;
@@ -78,10 +86,6 @@
     grid-gap: 2rem;
 
     .post-content {
-      .post-description {
-        font-weight: bold;
-      }
-
       p {
         margin-bottom: 1rem;
         line-height: 1.5rem;
@@ -154,6 +158,16 @@
 
     .post-title {
       font-size: 1.5rem;
+      padding: 0.4rem 0;
+      text-align: left;
+    }
+
+    .post-description {
+      padding: 0.4rem 0;
+      text-align: left;
+      font-size: 0.8rem;
+      margin: 0;
+      width: 100%;
     }
   }
 
