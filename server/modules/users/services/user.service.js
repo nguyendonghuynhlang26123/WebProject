@@ -1,4 +1,5 @@
 const User = require("../../../models/user.schema");
+const postService = require("../../posts/services/post.service");
 const bcrypt = require("bcrypt");
 
 async function hashPassword(password) {
@@ -41,7 +42,46 @@ async function getAllUser(limit) {
   return users;
 }
 
+async function updateUserById(userId, dataUpdate) {
+  const user = await User.findOne({ _id: userId });
+  if (!user) return;
+  delete dataUpdate.password;
+  const result = await User.updateOne({ _id: user._id }, dataUpdate);
+  return result;
+}
+
+async function addPostId(userId, postId) {
+  let user = await User.findOne({ _id: userId });
+  if (!user) return;
+  user.list_post.push(postId);
+  const result = await User.updateOne({ _id: user._id }, user);
+  return result;
+}
+
+async function delPostId(userId, postId) {
+  let user = await User.findOne({ _id: userId });
+  if (!user) return;
+  user.list_post.filter((e) => {
+    e != postId;
+  });
+  const result = await User.updateOne({ _id: user._id }, user);
+  return result;
+}
+
+async function changePassword(userId, newPassword) {
+  let user = await User.findOne({ _id: userId });
+  if (!user) return;
+  user.password = await hashPassword(newPassword);
+  const result = await User.updateOne({ _id: user._id }, user);
+  return result;
+}
+
 async function deleteUser(userId) {
+  const user = await User.findOne({ _id: userId });
+  if (!user) return;
+  user.list_post.forEach((e) => {
+    postService.deletePost(e);
+  });
   const result = await User.deleteOne({ _id: userId }).exec();
   return result;
 }
@@ -57,4 +97,8 @@ module.exports = {
   getAllUser: getAllUser,
   deleteUser: deleteUser,
   getUserByUsername: getUserByUsername,
+  updateUserById: updateUserById,
+  changePassword: changePassword,
+  addPostId: addPostId,
+  delPostId: delPostId,
 };
