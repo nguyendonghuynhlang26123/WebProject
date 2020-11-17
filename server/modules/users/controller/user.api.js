@@ -1,22 +1,12 @@
 const userService = require("../services/user.service");
+const authService = require("../../auth/services/auth.service");
 const express = require("express");
 const router = express.Router();
 
-router.get("/writer", async (req, res, next) => {
+router.get("/writer", authService.restrict, async (req, res, next) => {
   try {
-    if (!req.session.auth) res.redirect("../auth/login");
     let user = await userService.getUserById(req.session.userId);
-
     res.render("writerPage/dashboard", { user: user });
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.get("/:userId", async function (req, res, next) {
-  try {
-    const user = await userService.getUserById(req.params.userId);
-    res.send(user);
   } catch (err) {
     next(err);
   }
@@ -47,6 +37,34 @@ router.post("/", async function (req, res, next) {
       return;
     }
     res.redirect("/auth/login");
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put("/", authService.restrict, async function (req, res, next) {
+  try {
+    const result = await userService.updateUserById(
+      req.session.userId,
+      req.body
+    );
+    res.send(result);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put("/change-password", authService.restrict, async function (
+  req,
+  res,
+  next
+) {
+  try {
+    const result = await userService.changePassword(
+      req.session.userId,
+      req.body.newPassword
+    );
+    res.send(result);
   } catch (err) {
     next(err);
   }

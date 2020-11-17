@@ -1,39 +1,40 @@
 const Post = require("../../../models/post.schema");
 
-async function createPost(
-  post_title,
-  post_description,
-  post_category,
-  post_content,
-  post_thumbnail,
-  post_thumbnail_description,
-  post_author,
-  post_date,
-  post_tags
-) {
+async function createPost(post_author) {
   let data = {
-    post_title: post_title,
-    post_description: post_description,
-    post_category: post_category,
-    post_content: post_content,
-    post_thumbnail: post_thumbnail,
-    post_thumbnail_description: post_thumbnail_description,
     post_author: post_author,
-    post_date: post_date,
-    post_tags: post_tags,
   };
   post = await Post.create(data);
   return post;
 }
 
 async function getPostById(postId) {
-  const post = await Post.findOne({ _id: postId }).populate("post_category");
+  const post = await Post.findOne({ _id: postId }).populate(
+    "post_category post_author",
+    "first_name last_name category_name category_slug"
+  );
   return post;
 }
 
 async function getAllPost(select, limit) {
   const posts = await Post.find({}, select, { limit: limit });
   return posts;
+}
+
+async function updatePostById(postId, dataUpdate) {
+  const post = await Post.findOne({ _id: postId });
+  if (!post) return;
+  const result = await Post.updateOne({ _id: post._id }, dataUpdate);
+  return result;
+}
+
+async function delCategoryId(categoryId) {
+  const posts = await Post.find();
+  if (!posts) return;
+  posts.forEach((e) => {
+    e.post_category = null;
+    Post.updateOne({ _id: e._id }, e);
+  });
 }
 
 async function deletePost(postId) {
@@ -46,4 +47,6 @@ module.exports = {
   getPostById: getPostById,
   getAllPost: getAllPost,
   deletePost: deletePost,
+  updatePostById: updatePostById,
+  delCategoryId: delCategoryId,
 };

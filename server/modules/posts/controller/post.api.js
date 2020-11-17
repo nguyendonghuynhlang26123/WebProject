@@ -1,11 +1,30 @@
 const postService = require("../services/post.service");
+const authService = require("../../auth/services/auth.service");
+const userService = require("../../users/services/user.service");
 const express = require("express");
 const router = express.Router();
 
 router.get("/:postId", async function (req, res, next) {
   try {
     const post = await postService.getPostById(req.params.postId);
+    if (req.session.userId && req.session.userId == post.post_author._id) {
+      res.redirect(`./${post._id}/edit`);
+      return;
+    }
     res.render("post/post", { link: "/style/css/post.css", post: post });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/:postId/edit", authService.restrict, async function (
+  req,
+  res,
+  next
+) {
+  try {
+    const post = await postService.getPostById(req.params.postId);
+    res.send(post);
   } catch (err) {
     next(err);
   }
@@ -16,24 +35,39 @@ router.get("/", async function (req, res) {
   res.send(posts);
 });
 
-router.post("/", async function (req, res) {
-  const post = await postService.createPost(
-    req.body.post_title,
-    req.body.post_description,
-    req.body.post_category,
-    req.body.post_content,
-    req.body.post_thumbnail,
-    req.body.post_thumbnail_description,
-    req.body.post_author,
-    req.body.post_date,
-    req.body.post_tags
-  );
+router.post("/", authService.restrict, async function (req, res) {
+  const post = await postService.createPost(req.session.userId);
+  userService.addPostId(req.session.userId, post._id);
   res.send(post);
 });
 
-router.delete("/:postId", async function (req, res) {
-  const result = await postService.deletePost(req.params.postId);
-  res.send(result);
+router.put("/:postId", async function (req, res, next) {
+  try {
+    const result = await postService.updatePostById(
+      req.params.postId,
+      req.body
+    );
+    res.send(result);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete("/:postId", authService.restrict, async function (
+  req,
+  res,
+  next
+) {
+  try {
+    const post = await postService.getPostById(req.params.postId);
+    if (!post || post.post_author != req.session.userId)
+      return next({ message: "Access Denied" });
+    const result = await postService.deletePost(req.params.postId);
+    userService.delPostId(req.session.userId, post._id);
+    res.send(result);
+  } catch (err) {
+    next(err);
+  }
 });
 
 module.exports = router;

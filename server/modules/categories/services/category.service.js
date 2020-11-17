@@ -21,6 +21,13 @@ async function getAllCategory(select, limit) {
   return categorys;
 }
 
+async function updateCategoryById(categoryId, dataUpdate) {
+  const category = await Category.findOne({ _id: categoryId });
+  if (!category) return;
+  const result = await Category.updateOne({ _id: category._id }, dataUpdate);
+  return result;
+}
+
 async function deleteCategory(categoryId) {
   const result = await Category.deleteOne({ _id: categoryId }).exec();
   return result;
@@ -31,4 +38,5 @@ module.exports = {
   getCategoryById: getCategoryById,
   getAllCategory: getAllCategory,
   deleteCategory: deleteCategory,
+  updateCategoryById: updateCategoryById,
 };
