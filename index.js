@@ -9,11 +9,9 @@ const upload = require("./server/modules/uploadImage/controller/uploadImage.api"
 const auth = require("./server/modules/auth/controller/auth.api");
 const bodyParser = require("body-parser");
 const errorHandler = require("./server/modules/errorHandler/errorHandler");
-const authService = require("./server/modules/auth/services/auth.service");
 
 // mongoose connect
 const mongoose = require("mongoose");
-const { restrict } = require("./server/modules/auth/services/auth.service");
 const mongoDB =
   "mongodb+srv://admin:admin2020@cluster0.clc8a.azure.mongodb.net/pen-daily?retryWrites=true&w=majority";
 mongoose.connect(mongoDB, {
@@ -33,7 +31,6 @@ app.use(
     secret: "what does the cat says? Meow meow meow",
   })
 );
-
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
@@ -53,10 +50,6 @@ app.get("/", function (req, res) {
 app.get("/login", (req, res) => {
   res.redirect("/auth/login");
 });
-
-// app.get("/writer", authService.restrict, async (req, res) => {
-
-// });
 
 app.get("*", function (req, res, next) {
   let err = new Error("Page not found");
