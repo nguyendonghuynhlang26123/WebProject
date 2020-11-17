@@ -1,22 +1,36 @@
 @import "global";
 @import "header";
+@import "modal";
 
 .minimized-header {
-  //position: sticky;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: $bg-color;
+}
+
+:root {
+  font-size: 24px;
+}
+
+p {
+  margin-bottom: 1rem;
+  line-height: 1.5rem;
+  font-size: 1.1rem;
+  word-break: keep-all;
 }
 
 main.wrapper {
   margin-top: 4rem;
   font-family: $post-font;
-}
-
-.editor {
+  .editor {
+    border: 1px solid $hr-border-color;
+    margin: 1rem auto;
+    min-height: 5rem;
+  }
 }
 
 #title-editor {
-  border: 1px solid $hr-border-color;
-  margin: 1rem auto;
-  min-height: 5rem;
   text-align: center;
 }
 
@@ -24,4 +38,15 @@ main.wrapper {
   border: 1px solid $hr-border-color;
   margin: 1rem auto;
   min-height: 5rem;
+}
+
+.modal-content {
+  h2 {
+    font-size: 1rem;
+    margin: 0.8rem 0;
+  }
+  p {
+    font-size: 0.8rem;
+    margin: 0.3rem 0;
+  }
 }

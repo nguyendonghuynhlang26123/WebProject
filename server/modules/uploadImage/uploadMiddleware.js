@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage, fileFilter: imageFilter }).single(
-  "img"
+  "upload"
 );
 
 module.exports = upload;

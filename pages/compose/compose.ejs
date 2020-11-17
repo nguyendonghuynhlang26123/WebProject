@@ -7,5 +7,12 @@
     <%- include('../post/minimizedHeader/minimizedHeader', {btn_label:
     "Publish"}); %>
     <main class="wrapper"><%- include('editor'); %></main>
+    <%- include('../modal-popup/modal', {title: "This is your final step",
+    formHtml:'../compose/publishModal'});%>
+
+    <script src="/js/ckeditor.js"></script>
+    <script src="/js/editor-page.js"></script>
+    <script src="/js/tagContainer.js"></script>
+    <!-- <link rel="stylesheet" href="/style/css/editor_dark.css" /> -->
   </body>
 </html>

@@ -445,6 +445,11 @@ ul li {
   border-radius: 4px;
   -webkit-box-shadow: 1px 2px 3px gray;
           box-shadow: 1px 2px 3px gray;
+  cursor: pointer;
+}
+
+.minimized-header .btn-subscribe:hover {
+  opacity: 0.8;
 }
 
 @media (max-width: 767px) {

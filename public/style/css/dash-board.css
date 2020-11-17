@@ -435,6 +435,11 @@ ul li {
           align-items: center;
 }
 
+.avatar svg {
+  -webkit-transition: all 600ms ease;
+  transition: all 600ms ease;
+}
+
 .avatar span {
   font-size: 1.5rem;
   font-family: "Merriweather";
@@ -486,6 +491,9 @@ ul li {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   padding-bottom: 1rem;
   border-bottom: 1px solid #cccccc;
 }
@@ -514,14 +522,20 @@ ul li {
 }
 
 .small .info {
-  right: 0;
+  width: 100%;
+  height: auto;
+  visibility: visible;
+  overflow: hidden;
 }
 
 .info {
-  -webkit-transition: position 1s ease;
-  transition: position 1s ease;
-  position: relative;
-  right: -40rem;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+  white-space: nowrap;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
 }
 
 .info form h2 {
