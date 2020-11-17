@@ -2,14 +2,12 @@
 BalloonBlockEditor.create(document.querySelector("#main-editor"), {
   removePlugins: ["Title"],
   toolbar: {
-    items: ["bold", "italic", "link", "blockQuote"],
+    items: ["heading", "|", "bold", "italic", "link", "blockQuote"],
   },
   language: "en",
   blockToolbar: [
     "imageUpload",
     "mediaEmbed",
-    "|",
-    "heading",
     "|",
     "numberedList",
     "bulletedList",
@@ -36,7 +34,7 @@ BalloonBlockEditor.create(document.querySelector("#title-editor"), {
   },
   placeholder: "Post description",
   toolbar: {
-    items: ["bold"],
+    items: [],
   },
   language: "en",
   blockToolbar: ["imageUpload", "mediaEmbed"],
