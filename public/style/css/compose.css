@@ -464,4 +464,10 @@ main.wrapper {
   min-height: 5rem;
   text-align: center;
 }
+
+#main-editor {
+  border: 1px solid #cccccc;
+  margin: 1rem auto;
+  min-height: 5rem;
+}
 /*# sourceMappingURL=compose.css.map */

@@ -19,3 +19,9 @@ main.wrapper {
   min-height: 5rem;
   text-align: center;
 }
+
+#main-editor {
+  border: 1px solid $hr-border-color;
+  margin: 1rem auto;
+  min-height: 5rem;
+}
