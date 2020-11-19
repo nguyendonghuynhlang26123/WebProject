@@ -1,3 +1,11 @@
+.danger {
+  color: #9b0000;
+}
+
+.safe {
+  color: green;
+}
+
 @font-face {
   font-family: "Bitter";
   src: local("Bitter"), url("../../fonts/Bitter-Bold.ttf") format("truetype");
@@ -385,6 +393,14 @@ ul li {
   }
 }
 
+.danger {
+  color: #9b0000;
+}
+
+.safe {
+  color: green;
+}
+
 /** Profile---------------------------*/
 .profile {
   background: white;
@@ -585,9 +601,93 @@ ul li {
   opacity: 0.7;
 }
 
+#menu {
+  display: block;
+  background-color: white;
+  padding: 10px 0px;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 2px 30px lightgrey;
+          box-shadow: 2px 2px 30px lightgrey;
+  position: absolute;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  z-index: 100;
+  opacity: 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: opacity 0.2s, -webkit-transform 0.2s;
+  transition: opacity 0.2s, -webkit-transform 0.2s;
+  transition: transform 0.2s, opacity 0.2s;
+  transition: transform 0.2s, opacity 0.2s, -webkit-transform 0.2s;
+}
+
+#menu.show {
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+}
+
+.menu-item {
+  display: block;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  color: #666;
+  font-size: 14px;
+  width: 100%;
+}
+
+.menu-item svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.menu-item .danger svg {
+  fill: red;
+}
+
+.menu-item a {
+  padding: 10px 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+}
+
+.menu-item :hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+#outClick {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: none;
+}
+
+body {
+  position: relative;
+}
+
 main {
   min-height: 100vh;
   margin-left: 6rem;
+  position: relative;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 7fr 3fr;
@@ -720,6 +820,7 @@ button {
 }
 
 .card-container .card {
+  cursor: pointer;
   position: relative;
   background: white;
   border-radius: 24px;
@@ -732,6 +833,15 @@ button {
 .card-container .card:hover {
   -webkit-box-shadow: 4px 4px 15px -5px #000000;
           box-shadow: 4px 4px 15px -5px #000000;
+}
+
+.card-container .card button {
+  padding: 0.1rem;
+}
+
+.card-container .card button svg {
+  width: 100%;
+  height: 100%;
 }
 
 .card-container .card .tag {

@@ -1,3 +1,11 @@
+.danger {
+  color: #9b0000;
+}
+
+.safe {
+  color: green;
+}
+
 @font-face {
   font-family: "Bitter";
   src: local("Bitter"), url("../../fonts/Bitter-Bold.ttf") format("truetype");

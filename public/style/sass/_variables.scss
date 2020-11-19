@@ -31,3 +31,11 @@ $smartphone: "(max-width: 767px)";
   background: linear-gradient($color1, $color2), url($img);
   background-size: cover;
 }
+
+.danger {
+  color: rgb(155, 0, 0);
+}
+
+.safe {
+  color: green;
+}

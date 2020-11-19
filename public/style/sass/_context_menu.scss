@@ -6,7 +6,7 @@
   box-shadow: 2px 2px 30px lightgrey;
   position: absolute;
   transform-origin: center;
-  z-index: 2;
+  z-index: 100;
   opacity: 0;
   transform: scale(0);
   transition: transform 0.2s, opacity 0.2s;
@@ -20,22 +20,41 @@
 
 .menu-item {
   display: block;
-  padding: 10px 30px;
   transition: 0.1s;
   color: #666;
+  font-size: 14px;
+  width: 100%;
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .danger svg {
+    fill: red;
+  }
+
+  a {
+    padding: 10px 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  :hover {
+    background-color: #eee;
+    cursor: pointer;
+  }
 }
 
-.menu-item:hover {
-  background-color: #eee;
-  cursor: pointer;
-}
-
-#out-click {
+#outClick {
   height: 100vh;
   width: 100vw;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 99;
   display: none;
 }

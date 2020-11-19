@@ -20,8 +20,7 @@ function sendRequest(method, url, data) {
       });
     };
     if (method == "PUT" && data) {
-      console.log(data);
-      xhr.send({ post_content: "Hahah" });
+      xhr.send(JSON.stringify(data));
     } else {
       xhr.send();
     }
@@ -44,7 +43,7 @@ function sendRequest(method, url, data) {
 //         return;
 //       }
 
-//       // Examine the text in the response
+//       Examine the text in the response
 //       response.json().then(function (data) {
 //         console.log(data);
 //       });

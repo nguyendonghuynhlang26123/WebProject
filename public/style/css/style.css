@@ -1,3 +1,11 @@
+.danger {
+  color: #9b0000;
+}
+
+.safe {
+  color: green;
+}
+
 @font-face {
   font-family: "Bitter";
   src: local("Bitter"), url("../../fonts/Bitter-Bold.ttf") format("truetype");
@@ -256,6 +264,14 @@ ul li {
   width: 3rem;
 }
 
+.danger {
+  color: #9b0000;
+}
+
+.safe {
+  color: green;
+}
+
 .header .topbar {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -456,6 +472,14 @@ ul li {
   .minimized-header .btn-subscribe {
     display: none;
   }
+}
+
+.danger {
+  color: #9b0000;
+}
+
+.safe {
+  color: green;
 }
 
 footer {

@@ -1,3 +1,11 @@
+.danger {
+  color: #9b0000;
+}
+
+.safe {
+  color: green;
+}
+
 footer {
   margin-top: 5rem;
   padding: 3rem 0;
@@ -157,6 +165,14 @@ footer .subscribe-form button {
         -ms-flex-pack: center;
             justify-content: center;
   }
+}
+
+.danger {
+  color: #9b0000;
+}
+
+.safe {
+  color: green;
 }
 
 @font-face {

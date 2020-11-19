@@ -10,10 +10,21 @@
     <%- include('../modal-popup/modal', {title: "This is your final step",
     formHtml:'../compose/publishModal'});%>
 
+    <ul id="menu">
+      <li save class="menu-item">Save</li>
+      <li save_quit class="menu-item">Save and return to homepage</li>
+      <li quit class="menu-item">Discard this post and quit</li>
+    </ul>
+    <div id="out-click"></div>
+
     <script src="/js/ckeditor.js"></script>
     <script src="/js/sendRequest.js"></script>
     <script src="/js/editor-page.js"></script>
     <script src="/js/tagContainer.js"></script>
+    <script>
+      document.querySelector(".btn-section").classList.add("left_clickable");
+    </script>
+    <script src="/js/context-menu.js"></script>
     <!-- <link rel="stylesheet" href="/style/css/editor_dark.css" /><link
       rel="stylesheet"
       href="/style/css/editor_dark.css"

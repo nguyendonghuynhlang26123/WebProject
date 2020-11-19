@@ -43,13 +43,13 @@ router.post("/", authService.restrict, async function (req, res) {
 });
 
 router.put("/:postId", async function (req, res, next) {
-  console.log("PUT REQ RECEIVED", res.body);
+  console.log("PUT REQ RECEIVED", req.body);
   try {
     const result = await postService.updatePostById(
       req.params.postId,
       req.body
     );
-    res.redirect("./" + req.params.postId);
+    res.send({ status: 200 });
   } catch (err) {
     next(err);
   }

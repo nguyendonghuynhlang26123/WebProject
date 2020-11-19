@@ -1,5 +1,7 @@
 let title_editor;
 let main_editor;
+const HOMEPAGE = 0;
+const PREVIEW = 1;
 
 const imageConfig = {
   // Configure the available styles.
@@ -97,12 +99,13 @@ document
     document.getElementById("modal-toggle").checked = !check;
   });
 
-const saveEditorContent = (id, editorData) => {
+const saveEditorAndRedirect = (id, editorData, redirectUrl) => {
   sendRequest("PUT", "/post/" + id, editorData)
     .then(function (data) {
-      console.log("PUI PUI");
+      window.location.href = redirectUrl;
     })
     .catch((err) => {
+      alert("Sorry! Something stupid happen");
       console.error("Save Editor content: ", err);
     });
 };
@@ -114,7 +117,7 @@ const htmlToStrings = (htmlText) => {
 };
 
 /** PUT REQUEST---------------------------*/
-const save = (event) => {
+const save = (event, redirect) => {
   event.preventDefault();
 
   let id = window.location.pathname.split("/")[2];
@@ -124,12 +127,12 @@ const save = (event) => {
   let category = document.querySelector("[category]").value;
   let post_content = main_editor.getData();
 
-  console.log("TITLE", title);
-  console.log("Description", description);
-  console.log("Etc", rest);
-  console.log("CONTENT", post_content);
-  console.log("Category", category);
-  console.log("Tags", tags);
+  // console.log("TITLE", title);
+  // console.log("Description", description);
+  // console.log("Etc", rest);
+  // console.log("CONTENT", post_content);
+  // console.log("Category", category);
+  // console.log("Tags", tags);
 
   let data = {
     post_title: title,
@@ -141,9 +144,26 @@ const save = (event) => {
     post_tags: tags,
     post_status: "Publish",
   };
-  saveEditorContent(id, data);
+
+  if (redirect && redirect == PREVIEW) {
+    saveEditorAndRedirect(id, data, "/post/" + id);
+  } else if (redirect && redirect == HOMEPAGE) {
+    saveEditorAndRedirect(id, data, "/user/writer");
+  }
 };
 
 document.getElementById("send-btn").addEventListener("click", (e) => {
+  save(e, PREVIEW);
+});
+
+document.querySelector("[save]").addEventListener("click", (e) => {
   save(e);
+});
+
+document.querySelector("[save_quit]").addEventListener("click", (e) => {
+  save(e, HOMEPAGE);
+});
+
+document.querySelector("[save]").addEventListener("click", (e) => {
+  //TODO delete the post
 });
