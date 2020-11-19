@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/login", (req, res) => {
-  if (req.session.auth) res.redirect("../writer");
+  if (req.session.auth) res.redirect("../user/writer");
   res.render("signing/login", {
     link: "/style/css/signing.css",
     message: req.session.error,

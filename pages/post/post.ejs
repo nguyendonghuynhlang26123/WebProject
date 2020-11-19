@@ -10,7 +10,10 @@
     <!-- MAIN -->
     <main class="post-container">
       <div class="post-info">
-        <a class="post-category"><%= post.post_category.category_name %></a>
+        <a class="post-category"
+          ><%= (post.post_category && post.post_category.category_name) || ""
+          %></a
+        >
         <ul class="post-tags">
           <% post.post_tags.forEach((e)=>{%>
           <li class="post-tag">

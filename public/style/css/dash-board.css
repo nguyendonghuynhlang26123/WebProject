@@ -325,6 +325,14 @@ ul li {
   position: relative;
 }
 
+.nav .nav__list .nav__item button.nav__link {
+  width: 100%;
+}
+
+.nav .nav__list .nav__item button.nav__link:focus {
+  outline: none;
+}
+
 .nav .nav__list .nav__item:hover {
   background-color: #333333;
   border-radius: 20px;

@@ -493,22 +493,20 @@ ul li {
 }
 
 .modal-content-btn {
+  font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   cursor: pointer;
   background: #0c79ff;
-  color: #fff;
+  color: white;
   border-radius: 3px;
-  font-size: 0.7rem;
+  font-size: 0.7rem !important;
+  border: none;
   padding: 0.4rem;
   font-weight: normal;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
 }
 
 .modal-content-btn:hover {
-  color: #fff;
-  background: #365690;
+  opacity: 0.7;
 }
 
 #modal-toggle {
@@ -537,7 +535,6 @@ ul li {
   opacity: 1;
   background-color: #fff;
   padding: 10px 30px;
-  padding-bottom: 65px;
   position: fixed;
   left: calc(50% - 200px);
   top: 12%;
@@ -557,7 +554,7 @@ ul li {
   }
 }
 
-form.modal-form {
+.modal-form {
   margin-top: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -569,21 +566,24 @@ form.modal-form {
   width: 100%;
 }
 
-form.modal-form label {
+.modal-form label {
   font-size: 0.9rem;
 }
 
-form.modal-form input,
-form.modal-form textarea {
+.modal-form input,
+.modal-form textarea,
+.modal-form select {
   margin: 0.4rem auto;
   padding: 0.4rem;
-  width: 95%;
+  font-size: 0.7rem;
+  width: 100%;
   border-radius: 8px;
   border: 1px solid #cccccc;
   overflow-y: scroll;
+  outline: none;
 }
 
-form.modal-form .tag-container {
+.modal-form .tag-container {
   border: 2px solid #cccccc;
   border-radius: 3px;
   background: white;
@@ -597,7 +597,7 @@ form.modal-form .tag-container {
   overflow-x: auto;
 }
 
-form.modal-form .tag-container .tag {
+.modal-form .tag-container .tag {
   font-size: 0.7rem;
   height: 1.5rem;
   margin: 5px;
@@ -617,13 +617,13 @@ form.modal-form .tag-container .tag {
   cursor: default;
 }
 
-form.modal-form .tag-container .tag i {
+.modal-form .tag-container .tag i {
   font-size: 16px;
   color: #666;
   margin-left: 5px;
 }
 
-form.modal-form .tag-container input {
+.modal-form .tag-container input {
   padding: 5px;
   font-size: 16px;
   border: 0;
@@ -637,8 +637,10 @@ form.modal-form .tag-container input {
 .minimized-header {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   background-color: #f2f2f2;
+  z-index: 9;
 }
 
 :root {
@@ -681,5 +683,25 @@ main.wrapper .editor {
 .modal-content p {
   font-size: 0.8rem;
   margin: 0.3rem 0;
+}
+
+.modal-content .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin: 0.8rem 0;
+  padding: 0.2rem;
+  gap: 0.3rem;
+}
+
+.modal-content .proceed {
+  background-color: green;
 }
 /*# sourceMappingURL=compose.css.map */

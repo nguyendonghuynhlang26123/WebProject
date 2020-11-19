@@ -6,6 +6,7 @@ let tags = [];
 function createTag(label) {
   const div = document.createElement("div");
   div.setAttribute("class", "tag");
+  div.setAttribute("tag", "");
   const span = document.createElement("span");
   span.innerHTML = label;
   const closeIcon = document.createElement("i");
@@ -34,7 +35,7 @@ function addTags() {
 }
 
 input.addEventListener("keyup", (e) => {
-  if (e.key === "Enter") {
+  if (e.key === "Enter" || e.key === ",") {
     e.target.value.split(",").forEach((tag) => {
       tags.push(tag);
     });
@@ -44,7 +45,6 @@ input.addEventListener("keyup", (e) => {
   }
 });
 document.addEventListener("click", (e) => {
-  console.log(e.target.tagName);
   if (e.target.tagName === "I") {
     const tagLabel = e.target.getAttribute("data-item");
     const index = tags.indexOf(tagLabel);

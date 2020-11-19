@@ -1,8 +1,7 @@
 <section id="draft-page">
   <h1 class="section-title">Drafts</h1>
   <div class="card-container">
-    <% list_post.forEach(function(post){ %> <% if(post.status === "Draft") {%>
-    <%- include('card', {post:post.post_id, post_status: post.status}); %> <%
-    }%><% }); %>
+    <% list_post.forEach(function(post){ %> <% if(post.post_id.post_status ===
+    "Draft") {%> <%- include('card', {post:post.post_id}); %> <% }%><% }); %>
   </div>
 </section>

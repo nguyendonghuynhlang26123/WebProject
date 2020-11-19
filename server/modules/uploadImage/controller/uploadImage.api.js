@@ -10,7 +10,7 @@ router.post("/post-image", (req, res) => {
     }
     // Display uploaded image for user validation
     return res.json({
-      url: `./upload/${req.file.filename}`,
+      url: `/upload/${req.file.filename}`,
     });
   });
 });

@@ -32,7 +32,7 @@ async function createUser(
 async function getUserById(userId) {
   const user = await User.findOne({ _id: userId }, { password: 0 }).populate(
     "list_post.post_id",
-    "post_title post_thumbnail post_date"
+    "post_title post_thumbnail post_date post_status"
   );
   return user;
 }
@@ -44,16 +44,17 @@ async function getAllUser(limit) {
 
 async function updateUserById(userId, dataUpdate) {
   const user = await User.findOne({ _id: userId });
-  if (!user) return;
+  if (!user) throw new Error("Update error! Not found user");
   delete dataUpdate.password;
+  delete dataUpdate.username;
   const result = await User.updateOne({ _id: user._id }, dataUpdate);
   return result;
 }
 
 async function addPostId(userId, postId) {
   let user = await User.findOne({ _id: userId });
-  if (!user) return;
-  user.list_post.push(postId);
+  if (!user) throw new Error("Add error! Not found user");
+  user.list_post.push({ post_id: postId });
   const result = await User.updateOne({ _id: user._id }, user);
   return result;
 }
@@ -70,7 +71,7 @@ async function delPostId(userId, postId) {
 
 async function changePassword(userId, newPassword) {
   let user = await User.findOne({ _id: userId });
-  if (!user) return;
+  if (!user) throw new Error("Update password error! Not found user");
   user.password = await hashPassword(newPassword);
   const result = await User.updateOne({ _id: user._id }, user);
   return result;

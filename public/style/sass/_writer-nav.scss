@@ -45,6 +45,14 @@
           position: relative;
         }
       }
+
+      button.nav__link {
+        width: 100%;
+        &:focus {
+          outline: none;
+        }
+      }
+
       &:hover {
         background-color: $footer-color;
         border-radius: 20px;
