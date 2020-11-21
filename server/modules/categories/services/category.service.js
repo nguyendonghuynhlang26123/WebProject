@@ -16,6 +16,11 @@ async function getCategoryById(categoryId) {
   return category;
 }
 
+async function getCategoryBySlug(categorySlug) {
+  const category = await Category.findOne({ category_slug: categorySlug });
+  return category;
+}
+
 async function getAllCategory(select, limit) {
   const categorys = await Category.find({}, select, { limit: limit });
   return categorys;
@@ -39,4 +44,5 @@ module.exports = {
   getAllCategory: getAllCategory,
   deleteCategory: deleteCategory,
   updateCategoryById: updateCategoryById,
+  getCategoryBySlug: getCategoryBySlug,
 };

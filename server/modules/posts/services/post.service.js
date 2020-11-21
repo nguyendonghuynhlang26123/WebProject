@@ -16,8 +16,8 @@ async function getPostById(postId) {
   return post;
 }
 
-async function getAllPost(select, limit) {
-  const posts = await Post.find({}, select, { limit: limit });
+async function getAllPost(filter, select, limit) {
+  const posts = await Post.find(filter, select, { limit: limit });
   return posts;
 }
 

@@ -3,12 +3,20 @@ const postService = require("../../posts/services/post.service");
 const express = require("express");
 const router = express.Router();
 
-router.get("/:categoryId", async function (req, res, next) {
+router.get("/:categorySlug", async function (req, res, next) {
   try {
-    const category = await categoryService.getCategoryById(
-      req.params.categoryId
+    console.log(req.query || null);
+    let category = await categoryService.getCategoryBySlug(
+      req.params.categorySlug
     );
-    res.send(category);
+    const posts = await postService.getAllPost(
+      {
+        post_category: category._id,
+      },
+      req.query.select,
+      Number(req.query.n_post)
+    );
+    res.send(posts);
   } catch (err) {
     next(err);
   }
