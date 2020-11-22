@@ -1,4 +1,5 @@
 function sendRequest(method, url, data) {
+  console.log("SEND " + method + " REQ TO " + url);
   return new Promise(function (resolve, reject) {
     var xhr = new XMLHttpRequest();
     xhr.open(method, url, true);
@@ -19,7 +20,7 @@ function sendRequest(method, url, data) {
         statusText: xhr.statusText,
       });
     };
-    if (method == "PUT" && data) {
+    if ((method == "PUT" || method == "POST") && data) {
       xhr.send(JSON.stringify(data));
     } else {
       xhr.send();

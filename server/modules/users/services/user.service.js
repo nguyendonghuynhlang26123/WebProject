@@ -62,8 +62,8 @@ async function addPostId(userId, postId) {
 async function delPostId(userId, postId) {
   let user = await User.findOne({ _id: userId });
   if (!user) return;
-  user.list_post.filter((e) => {
-    e != postId;
+  user.list_post = user.list_post.filter((e) => {
+    return e.post_id.toString() !== postId.toString();
   });
   const result = await User.updateOne({ _id: user._id }, user);
   return result;

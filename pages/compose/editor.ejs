@@ -1,2 +1,17 @@
-<div id="title-editor" class="editor"></div>
-<div id="main-editor" class="editor"></div>
+<div id="title-editor" class="editor">
+  <% if (post !== null) { %>
+  <h2><%= post.post_title %></h2>
+  <p><%= post.post_description %></p>
+  <% } %>
+</div>
+
+<div id="thumbnail-editor" class="editor">
+  <figure class="image image-style-side">
+    <img src="<%=post.post_thumbnail%>" alt="" />
+    <figcaption><%= post.post_thumbnail_description%></figcaption>
+  </figure>
+</div>
+
+<div id="main-editor" class="editor">
+  <% if (post !== null) { %> <%= post.post_content %> <% } %>
+</div>

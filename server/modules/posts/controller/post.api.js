@@ -1,7 +1,9 @@
 const postService = require("../services/post.service");
+const categoryService = require("../../categories/services/category.service");
 const authService = require("../../auth/services/auth.service");
 const userService = require("../../users/services/user.service");
 const express = require("express");
+const { get } = require("mongoose");
 const router = express.Router();
 
 router.get("/:postId", async function (req, res, next) {
@@ -17,19 +19,20 @@ router.get("/:postId", async function (req, res, next) {
   }
 });
 
-router.get("/:postId/edit", authService.restrict, async function (
-  req,
-  res,
-  next
-) {
-  console.log(req.params.postId, post);
-  try {
-    const post = await postService.getPostById(req.params.postId);
-    res.render("compose/compose");
-  } catch (err) {
-    next(err);
+router.get(
+  "/:postId/edit",
+  authService.restrict,
+  async function (req, res, next) {
+    try {
+      const categoryLists = await categoryService.getAllCategory();
+      const post = await postService.getPostById(req.params.postId);
+      //console.log(req.params.postId, post);
+      res.render("compose/compose", { cateList: categoryLists, post: post });
+    } catch (err) {
+      next(err);
+    }
   }
-});
+);
 
 router.get("/", async function (req, res) {
   const posts = await postService.getAllPost();
@@ -55,21 +58,24 @@ router.put("/:postId", async function (req, res, next) {
   }
 });
 
-router.delete("/:postId", authService.restrict, async function (
-  req,
-  res,
-  next
-) {
-  try {
-    const post = await postService.getPostById(req.params.postId);
-    if (!post || post.post_author != req.session.userId)
-      return next({ message: "Access Denied" });
-    const result = await postService.deletePost(req.params.postId);
-    userService.delPostId(req.session.userId, post._id);
-    res.send(result);
-  } catch (err) {
-    next(err);
+router.delete(
+  "/:postId",
+  authService.restrict,
+  async function (req, res, next) {
+    try {
+      console.log("Delete req received");
+      const post = await postService.getPostById(req.params.postId);
+
+      if (!post || post.post_author._id != req.session.userId)
+        return next({ message: "Access Denied" });
+
+      userService.delPostId(req.session.userId, post._id);
+      result = await postService.deletePost(req.params.postId);
+      res.send(result);
+    } catch (err) {
+      next(err);
+    }
   }
-});
+);
 
 module.exports = router;

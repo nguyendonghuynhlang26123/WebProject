@@ -1,7 +1,7 @@
-<section id="home-page">
+<section id="page">
   <h1 class="section-title">Your recent works</h1>
-  <div class="card-container">
-    <% list_post.forEach(function(post){ %> <% if(post.post_id.post_status !==
-    "Trash") {%> <%- include('card', {post:post.post_id}); %> <% }%><% }); %>
+  <div class="card-container" id="home">
+    <% for( let i = list_post.length - 1; i >= 0; i-- ) { %> <%- include('card',
+    {post:list_post[i].post_id}); %> <% } %>
   </div>
 </section>

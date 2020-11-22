@@ -680,6 +680,30 @@ ul li {
   display: none;
 }
 
+#toast {
+  border-radius: 15px;
+  width: 0;
+  height: 0;
+  -webkit-transition: all 600ms ease;
+  transition: all 600ms ease;
+  background: white;
+  font-size: 0.9rem;
+  position: fixed;
+  left: 50%;
+  bottom: 10%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  border: none;
+}
+
+#toast.show {
+  width: auto;
+  height: auto;
+  padding: 5px 15px;
+  -webkit-box-shadow: 1px 1px 5px 1px black;
+          box-shadow: 1px 1px 5px 1px black;
+}
+
 body {
   position: relative;
 }
@@ -906,8 +930,22 @@ button {
   color: red;
 }
 
-.card-container .card .card-title .flex-row .Published {
+.card-container .card .card-title .flex-row .Publish {
   color: green;
+}
+
+.card-container#home .card.Trash {
+  display: none;
+}
+
+.card-container#draft .card.Trash,
+.card-container#draft .card.Publish {
+  display: none;
+}
+
+.card-container#trash .card.Draft,
+.card-container#trash .card.Publish {
+  display: none;
 }
 
 @media (max-width: 1024px) {

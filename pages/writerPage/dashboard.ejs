@@ -82,9 +82,8 @@
           </div>
         </header>
 
-        <%- include('./home', {list_post: user.list_post}); %> <%-
-        include('./draft', {list_post: user.list_post}); %> <%-
-        include('./trash', {list_post: user.list_post}); %>
+        <% if (user.list_post !== null) { %> <%- include('./home',
+        {list_post:user.list_post}); %> <%} %>
       </div>
 
       <%- include('profile'); %>
@@ -92,7 +91,7 @@
 
     <ul id="menu">
       <li class="menu-item">
-        <a href="">
+        <a data-value="preview">
           <svg
             id="bold"
             enable-background="new 0 0 24 24"
@@ -121,7 +120,7 @@
         </a>
       </li>
       <li class="menu-item">
-        <a href="">
+        <a data-value="edit">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -137,7 +136,7 @@
         </a>
       </li>
       <li class="menu-item">
-        <a class="danger" href="">
+        <a class="danger" data-value="delete">
           <svg
             id="Layer_1"
             enable-background="new 0 0 512 512"
@@ -155,11 +154,14 @@
               />
             </g>
           </svg>
-          Delete
+          Discard
         </a>
       </li>
     </ul>
 
+    <span id="toast"></span>
+    <script src="/js/sendRequest.js"></script>
+    <script src="/js/toast.js"></script>
     <script src="/js/dashboard_script.js"></script>
     <script>
       Array.from(document.querySelectorAll(".card button")).forEach((b) => {

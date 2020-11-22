@@ -1,10 +1,9 @@
 <div class="modal-form">
   <label for="category">Category</label>
   <select category name="category">
-    <option value="5facea6e14977a06f4db7302" selected>vietnam</option>
-    <option value="5faceab614977a06f4db7303">international</option>
-    <option value="5faceae514977a06f4db7304">politics</option>
-    <option value="5faceafc14977a06f4db7305">society</option>
+    <% parameters.forEach(element => { %>
+    <option value="<%= element._id %>"><%=element.category_name %></option>
+    <% }) %>
   </select>
   <label for="tags">Tags</label>
   <div class="tag-container">

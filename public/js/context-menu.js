@@ -16,7 +16,6 @@ if (menu) {
   const outClick = document.createElement("div");
   outClick.setAttribute("id", "outClick");
   menu.parentElement.appendChild(outClick);
-  console.log(left_clickable);
 
   if (right_clickable) {
     Array.from(right_clickable).forEach((c) => {

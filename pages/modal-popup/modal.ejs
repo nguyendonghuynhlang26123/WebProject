@@ -5,6 +5,6 @@
     <label class="modal-close" for="modal-toggle">&#x2715;</label>
     <h2><%= title%></h2>
     <hr />
-    <% if (formHtml) %> <%- include(formHtml); %>
+    <% if (formHtml) %> <%- include(formHtml, {parameters: parameters}); %>
   </div>
 </div>

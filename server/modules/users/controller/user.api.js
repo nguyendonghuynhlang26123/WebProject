@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/writer", authService.restrict, async (req, res, next) => {
   try {
     let user = await userService.getUserById(req.session.userId);
-    console.log(user.list_post.map((e) => e.post_id));
+    console.log(user.list_post, user.list_post.length);
     res.render("writerPage/dashboard", { user: user });
   } catch (err) {
     next(err);
@@ -55,21 +55,21 @@ router.put("/", authService.restrict, async function (req, res, next) {
   }
 });
 
-router.put("/change-password", authService.restrict, async function (
-  req,
-  res,
-  next
-) {
-  try {
-    const result = await userService.changePassword(
-      req.session.userId,
-      req.body.newPassword
-    );
-    res.send(result);
-  } catch (err) {
-    next(err);
+router.put(
+  "/change-password",
+  authService.restrict,
+  async function (req, res, next) {
+    try {
+      const result = await userService.changePassword(
+        req.session.userId,
+        req.body.newPassword
+      );
+      res.send(result);
+    } catch (err) {
+      next(err);
+    }
   }
-});
+);
 
 router.delete("/:userId", async function (req, res) {
   const result = await userService.deleteUser(req.params.userId);

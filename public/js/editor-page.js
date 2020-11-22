@@ -1,5 +1,6 @@
 let title_editor;
 let main_editor;
+let thumbnail_editor;
 const HOMEPAGE = 0;
 const PREVIEW = 1;
 
@@ -73,19 +74,34 @@ BalloonBlockEditor.create(document.querySelector("#title-editor"), {
   },
   placeholder: "Post description",
   toolbar: {
-    items: [],
+    items: ["link"],
   },
+  language: "en",
+  licenseKey: "",
+})
+  .then((editor) => {
+    title_editor = editor;
+  })
+  .catch((err) => {
+    console.error(err.stack);
+  });
+
+BalloonBlockEditor.create(document.querySelector("#thumbnail-editor"), {
+  toolbar: {
+    items: ["|", "link"],
+  },
+  removePlugins: ["Title"],
   language: "en",
   blockToolbar: ["imageUpload", "mediaEmbed"],
   simpleUpload: {
     // The URL that the images are uploaded to.
     uploadUrl: "/upload/post-image",
   },
-  image: imageConfig,
+  image: { styles: ["alignLeft", "alignCenter", "alignRight"] },
   licenseKey: "",
 })
   .then((editor) => {
-    title_editor = editor;
+    thumbnail_editor = editor;
   })
   .catch((err) => {
     console.error(err.stack);
@@ -102,6 +118,7 @@ document
 const saveEditorAndRedirect = (id, editorData, redirectUrl) => {
   sendRequest("PUT", "/post/" + id, editorData)
     .then(function (data) {
+      console.log(redirectUrl);
       window.location.href = redirectUrl;
     })
     .catch((err) => {
@@ -110,14 +127,26 @@ const saveEditorAndRedirect = (id, editorData, redirectUrl) => {
     });
 };
 
+const getThumbnails = (htmlText) => {
+  let element = document.createElement("div");
+  element.innerHTML = htmlText;
+  let imgElement = element.querySelector("img");
+  let captionElement = element.querySelector("figcaption");
+  let result = [];
+  if (imgElement !== null) result.push(imgElement.getAttribute("src"));
+  else result.push(null);
+  if (captionElement !== null) result.push(imgElement.textContent);
+  else result.push("");
+  return result;
+};
+
 const htmlToStrings = (htmlText) => {
-  console.log(htmlText);
   let splitting = htmlText.replace(/(<([^>]+)>)/gi, " ").split("  ");
   return splitting.map((s) => s.trim("."));
 };
 
 /** PUT REQUEST---------------------------*/
-const save = (event, redirect) => {
+const save = (event, status, redirect = null) => {
   event.preventDefault();
 
   let id = window.location.pathname.split("/")[2];
@@ -126,42 +155,41 @@ const save = (event, redirect) => {
   tags = Array.from(tags).map((t) => t.textContent.slice(0, -1));
   let category = document.querySelector("[category]").value;
   let post_content = main_editor.getData();
-
-  // console.log("TITLE", title);
-  // console.log("Description", description);
-  // console.log("Etc", rest);
-  // console.log("CONTENT", post_content);
-  // console.log("Category", category);
-  // console.log("Tags", tags);
+  let [post_thumbnail, thumb_desc] = getThumbnails(thumbnail_editor.getData());
+  console.log(post_thumbnail, thumb_desc);
 
   let data = {
     post_title: title,
     post_description: description,
     post_category: category,
     post_content: post_content,
-    post_thumbnail: "http://localhost:3000/images/alt.png",
-    post_thumbnail_description: "Thumbnail description",
+    post_thumbnail: post_thumbnail,
+    post_thumbnail_description: thumb_desc,
     post_tags: tags,
-    post_status: "Publish",
+    post_status: status,
   };
 
-  if (redirect && redirect == PREVIEW) {
+  if (redirect == PREVIEW) {
     saveEditorAndRedirect(id, data, "/post/" + id);
-  } else if (redirect && redirect == HOMEPAGE) {
+  } else if (redirect == HOMEPAGE) {
     saveEditorAndRedirect(id, data, "/user/writer");
+  } else {
+    sendRequest("PUT", "/post/" + id, data);
   }
 };
 
 document.getElementById("send-btn").addEventListener("click", (e) => {
-  save(e, PREVIEW);
+  save(e, "Publish", PREVIEW);
 });
 
 document.querySelector("[save]").addEventListener("click", (e) => {
-  save(e);
+  save(e, "Draft");
+  displayToast("Save!", 2000);
 });
 
 document.querySelector("[save_quit]").addEventListener("click", (e) => {
-  save(e, HOMEPAGE);
+  console.log("SAVE QUIT");
+  save(e, "Draft", HOMEPAGE);
 });
 
 document.querySelector("[save]").addEventListener("click", (e) => {

@@ -8,16 +8,20 @@
     "Publish"}); %>
     <main class="wrapper"><%- include('editor'); %></main>
     <%- include('../modal-popup/modal', {title: "This is your final step",
-    formHtml:'../compose/publishModal'});%>
+    formHtml:'../compose/publishModal', parameters: cateList});%>
 
     <ul id="menu">
-      <li save class="menu-item">Save</li>
-      <li save_quit class="menu-item">Save and return to homepage</li>
-      <li quit class="menu-item">Discard this post and quit</li>
+      <li save class="menu-item"><a>Save</a></li>
+      <li save_quit class="menu-item"><a>Save and return to homepage</a></li>
+      <li quit class="menu-item">
+        <a class="danger">Discard and return to homepage</a>
+      </li>
     </ul>
     <div id="out-click"></div>
+    <span id="toast" style="background-color: greenyellow"></span>
 
     <script src="/js/ckeditor.js"></script>
+    <script src="/js/toast.js"></script>
     <script src="/js/sendRequest.js"></script>
     <script src="/js/editor-page.js"></script>
     <script src="/js/tagContainer.js"></script>

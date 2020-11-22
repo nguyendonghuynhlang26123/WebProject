@@ -1,6 +1,7 @@
 @import "writer-nav";
 @import "profile";
 @import "context_menu";
+@import "toast";
 
 body {
   position: relative;
@@ -172,11 +173,31 @@ button {
         .Draft {
           color: red;
         }
-        .Published {
+        .Publish {
           color: green;
         }
       }
     }
+  }
+}
+
+.card-container#home {
+  .card.Trash {
+    display: none;
+  }
+}
+
+.card-container#draft {
+  .card.Trash,
+  .card.Publish {
+    display: none;
+  }
+}
+
+.card-container#trash {
+  .card.Draft,
+  .card.Publish {
+    display: none;
   }
 }
 
