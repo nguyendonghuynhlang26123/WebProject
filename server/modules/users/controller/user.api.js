@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/writer", authService.restrict, async (req, res, next) => {
   try {
     let user = await userService.getUserById(req.session.userId);
-    console.log(user.list_post, user.list_post.length);
+    //console.log(user.list_post, user.list_post.length);
     res.render("writerPage/dashboard", { user: user });
   } catch (err) {
     next(err);
