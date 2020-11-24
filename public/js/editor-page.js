@@ -156,7 +156,6 @@ const save = (event, status, redirect = null) => {
   let category = document.querySelector("[category]").value;
   let post_content = main_editor.getData();
   let [post_thumbnail, thumb_desc] = getThumbnails(thumbnail_editor.getData());
-  console.log(post_thumbnail, thumb_desc);
 
   let data = {
     post_title: title,
@@ -166,8 +165,9 @@ const save = (event, status, redirect = null) => {
     post_thumbnail: post_thumbnail,
     post_thumbnail_description: thumb_desc,
     post_tags: tags,
-    post_status: status,
   };
+
+  if (status) data = { ...data, post_status: status };
 
   if (redirect == PREVIEW) {
     saveEditorAndRedirect(id, data, "/post/" + id);
@@ -183,13 +183,12 @@ document.getElementById("send-btn").addEventListener("click", (e) => {
 });
 
 document.querySelector("[save]").addEventListener("click", (e) => {
-  save(e, "Draft");
+  save(e);
   displayToast("Save!", 2000);
 });
 
 document.querySelector("[save_quit]").addEventListener("click", (e) => {
-  console.log("SAVE QUIT");
-  save(e, "Draft", HOMEPAGE);
+  save(e, null, HOMEPAGE);
 });
 
 document.querySelector("[save]").addEventListener("click", (e) => {

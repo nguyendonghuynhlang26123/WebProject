@@ -30,10 +30,11 @@ async function createUser(
 }
 
 async function getUserById(userId) {
-  const user = await User.findOne({ _id: userId }, { password: 0 }).populate(
-    "list_post.post_id",
-    "post_title post_thumbnail post_date post_status"
-  );
+  const user = await User.findOne({ _id: userId }, { password: 0 }).populate({
+    path: "list_post.post_id",
+    select: "post_title post_thumbnail post_date post_status post_category",
+    populate: { path: "post_category", select: "category_name" },
+  });
   return user;
 }
 

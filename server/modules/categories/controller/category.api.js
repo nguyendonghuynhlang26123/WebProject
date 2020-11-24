@@ -5,7 +5,6 @@ const router = express.Router();
 
 router.get("/:categorySlug", async function (req, res, next) {
   try {
-    console.log(req.query || null);
     let category = await categoryService.getCategoryBySlug(
       req.params.categorySlug
     );

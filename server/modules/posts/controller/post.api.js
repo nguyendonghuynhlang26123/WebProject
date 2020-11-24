@@ -26,7 +26,7 @@ router.get(
     try {
       const categoryLists = await categoryService.getAllCategory();
       const post = await postService.getPostById(req.params.postId);
-      //console.log(req.params.postId, post);
+
       res.render("compose/compose", { cateList: categoryLists, post: post });
     } catch (err) {
       next(err);
