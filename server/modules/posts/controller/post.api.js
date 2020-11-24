@@ -69,8 +69,8 @@ router.delete(
       if (!post || post.post_author._id != req.session.userId)
         return next({ message: "Access Denied" });
 
-      userService.delPostId(req.session.userId, post._id);
-      result = await postService.deletePost(req.params.postId);
+      let result = await postService.deletePost(req.params.postId);
+      result = await userService.delPostId(req.session.userId, post._id);
       res.send(result);
     } catch (err) {
       next(err);
