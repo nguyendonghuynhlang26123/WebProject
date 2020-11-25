@@ -107,7 +107,7 @@ BalloonBlockEditor.create(document.querySelector("#thumbnail-editor"), {
     console.error(err.stack);
   });
 
-/** FUNCTIONING---------------------------*/
+/** FUNCTIONALITY---------------------------*/
 document
   .getElementsByClassName("btn-subscribe")[0]
   .addEventListener("click", (ev) => {

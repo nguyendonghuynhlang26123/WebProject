@@ -4,7 +4,7 @@
   class="card <%= post.post_status %>"
   href="../../post/<%=post._id%>"
 >
-  <span class="tag"><%= post.post_category %> </span>
+  <span class="tag"><%= post.post_category.category_name %> </span>
   <div class="card-img">
     <div>
       <img src="<%= post.post_thumbnail %>" alt="Post thumbnail" />

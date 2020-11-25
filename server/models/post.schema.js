@@ -7,7 +7,7 @@ const PostSchema = new Schema({
   post_category: {
     type: Schema.Types.ObjectId,
     ref: "categories",
-    default: null,
+    default: "5facea6e14977a06f4db7302",
   },
   post_content: { type: String, default: "" },
   post_thumbnail: {

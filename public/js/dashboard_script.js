@@ -11,14 +11,6 @@ let DEFAULT_TAB = "home";
 let currentTab = DEFAULT_TAB; // Show current tab
 const ACTIVE = "active";
 const DISABLE = "disable";
-
-//Disable all 'href' of anchor tag
-// Object.values(listNavItemElements).forEach((li) =>
-//   li.querySelector("a").removeAttribute("href")
-// );
-
-//Disable all tab except the default one
-
 //Active function
 const setActive = (nextTab) => {
   //remove current active nav item
@@ -30,21 +22,46 @@ const setActive = (nextTab) => {
   document.querySelector(".card-container").setAttribute("id", nextTab);
 
   currentTab = nextTab;
+  document.querySelector("#page .section-title").textContent = currentTab;
+  setContextMenu(currentTab);
+};
+const EDIT = "edit";
+const PREVIEW = "preview";
+const RESTORE = "restore";
+const DISCARD = "discard";
+const REMOVE = "remove";
+const setContextMenu = (tab) => {
+  const menu = document.getElementById("menu");
+  let listItems = [EDIT, PREVIEW, RESTORE, DISCARD, REMOVE];
+  let disableItems = [];
 
-  let element = document.querySelector('[data-value="delete"]');
-  if (currentTab === "trash") {
-    element.innerHTML = element.innerHTML.replace(
-      "Discard",
-      "Permanent remove"
-    );
-  } else {
-    element.innerHTML = element.innerHTML.replace(
-      "Permanent remove",
-      "Discard"
-    );
+  switch (tab) {
+    case "home":
+      disableItems = [RESTORE, REMOVE];
+      break;
+    case "draft":
+      disableItems = [REMOVE, RESTORE];
+      break;
+    case "trash":
+      disableItems = [EDIT, DISCARD];
+      break;
+    default:
+      break;
   }
+
+  listItems.forEach((item) => {
+    const itemElement = menu.querySelector(`[data-value="${item}"]`);
+
+    console.log(itemElement);
+    if (!disableItems.includes(item)) {
+      itemElement.classList.remove(DISABLE);
+    } else {
+      itemElement.classList.add(DISABLE);
+    }
+  });
 };
 
+setContextMenu(currentTab);
 //Set event listener
 Object.values(listNavItemElements).forEach((e) => {
   e.addEventListener("click", (event) => {
@@ -63,9 +80,7 @@ editButton.addEventListener("click", (event) => {
 });
 
 //Context menu
-const EDIT = "edit";
-const PREVIEW = "preview";
-const DELETE = "delete";
+
 let selectedCardId = null;
 
 const cards = document.querySelectorAll(".card");
@@ -86,44 +101,56 @@ const menuItems = document.querySelectorAll(".menu-item a");
 menuItems.forEach((item) => {
   item.addEventListener("click", (ev) => {
     let type = ev.target.getAttribute("data-value");
+    console.log(type);
 
     switch (type) {
       case PREVIEW:
-        window.location.href = "/post/" + selectedCardId;
+        window.location.href = "/post/" + selectedCardId + "?mode=preview";
         break;
 
       case EDIT:
         window.location.href = "/post/" + selectedCardId + "/edit";
         break;
 
-      case DELETE:
-        if (currentTab != "trash") {
-          sendRequest("PUT", "/post/" + selectedCardId, {
-            post_status: "Trash",
+      case RESTORE:
+        sendRequest("PUT", "/post/" + selectedCardId, {
+          post_status: "Draft",
+        })
+          .then(function (data) {
+            window.location.reload();
           })
+          .catch((err) => {
+            alert("Sorry! Something stupid happen");
+            console.error("Discard post ", err);
+          });
+        break;
+
+      case DISCARD:
+        sendRequest("PUT", "/post/" + selectedCardId, {
+          post_status: "Trash",
+        })
+          .then(function (data) {
+            window.location.reload();
+          })
+          .catch((err) => {
+            alert("Sorry! Something stupid happen");
+            console.error("Discard post ", err);
+          });
+        break;
+
+      case REMOVE:
+        let confirmation = confirm(
+          "All of the data will be removed from the system.\nDo you still want to delete this post?"
+        );
+        if (confirmation)
+          sendRequest("DELETE", "/post/" + selectedCardId)
             .then(function (data) {
-              window.location.reload();
+              window.location.replace("./writer");
             })
             .catch((err) => {
               alert("Sorry! Something stupid happen");
-              console.error("Discard post ", err);
+              console.error("Delete post ", err);
             });
-        } else {
-          let confimation = confirm(
-            "All of the data will be removed from the system.\nDo you still want to delete this post?"
-          );
-          if (confimation)
-            sendRequest("DELETE", "/post/" + selectedCardId)
-              .then(function (data) {
-                window.location.replace("./writer");
-              })
-              .catch((err) => {
-                alert("Sorry! Something stupid happen");
-                console.error("Delete post ", err);
-              });
-        }
-        break;
-
       default:
         break;
     }

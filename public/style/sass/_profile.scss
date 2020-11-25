@@ -43,9 +43,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  svg {
-    transition: all 600ms ease;
-  }
   span {
     font-size: 1.5rem;
     font-family: $article-title-font;

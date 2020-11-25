@@ -25,7 +25,7 @@ button {
 }
 
 .disable {
-  display: none;
+  display: none !important;
 }
 
 /** Header---------------------------*/
@@ -95,6 +95,7 @@ button {
   font-family: $category-font;
   font-size: 1.8rem;
   font-weight: 500;
+  text-transform: capitalize;
 }
 
 .card-container {
@@ -128,6 +129,7 @@ button {
     }
 
     .tag {
+      font-size: 0.8rem;
       position: absolute;
       top: 1rem;
       left: 1rem;
