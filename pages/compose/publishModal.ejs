@@ -1,0 +1,16 @@
+<div class="modal-form">
+  <label for="category">Category</label>
+  <select category name="category">
+    <% parameters.forEach(element => { %>
+    <option value="<%= element._id %>"><%=element.category_name %></option>
+    <% }) %>
+  </select>
+  <label for="tags">Tags</label>
+  <div class="tag-container">
+    <input />
+  </div>
+  <div class="row">
+    <label id="send-btn" class="modal-content-btn proceed">Publish</label>
+    <label for="modal-toggle" class="modal-content-btn cancel">Cancel</label>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="modal-container">
+  <input id="modal-toggle" type="checkbox" />
+  <label class="modal-backdrop" for="modal-toggle"></label>
+  <div class="modal-content">
+    <label class="modal-close" for="modal-toggle">&#x2715;</label>
+    <h2><%= title%></h2>
+    <hr />
+    <% if (formHtml) %> <%- include(formHtml, {parameters: parameters}); %>
+  </div>
+</div>

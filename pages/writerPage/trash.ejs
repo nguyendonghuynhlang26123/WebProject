@@ -1,0 +1,8 @@
+<section id="trash-page">
+  <h1 class="section-title">Trash</h1>
+  <div class="card-container">
+    <% for( let i = list_post.length - 1; i >= 0; i-- ) { %> <%
+    if(list_post[i].post_id.post_status === "Trash") {%> <%- include('card',
+    {post:list_post[i].post_id}); %> <% }%> <% } %>
+  </div>
+</section>

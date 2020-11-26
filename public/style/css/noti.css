@@ -1,0 +1,135 @@
+.danger {
+  color: #9b0000;
+}
+
+.safe {
+  color: green;
+}
+
+@font-face {
+  font-family: "Bitter";
+  src: local("Bitter"), url("../../fonts/Bitter-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto"), url("../../fonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../../fonts/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Merriweather";
+  src: local("Merriweather"), url("../../fonts/Merriweather-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Merriweather";
+  src: local("Merriweather"), url("../../fonts/Merriweather-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PT Serif";
+  src: local("PT Serif"), url("../../fonts/PTSerif-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PT Serif";
+  src: local("PT Serif"), url("../../fonts/PTSerif-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CrimsonPro";
+  src: local("CrimsonPro"), url("../../fonts/CrimsonPro-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CrimsonPro";
+  src: local("CrimsonPro"), url("../../fonts/CrimsonPro-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  background: white;
+}
+
+body {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.notify {
+  text-align: left;
+}
+
+.notify h1 {
+  font-family: "CrimsonPro";
+  margin: 0.4rem 0;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.notify h2 {
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.notify p {
+  margin: 1rem 0;
+  font-size: 1.3rem;
+}
+
+.notify > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.notify > div a {
+  text-decoration: none;
+  color: #0c79ff;
+  font-size: 1.2rem;
+  margin: 0.4rem 0;
+}
+
+.notify > div a:hover {
+  opacity: 0.7;
+}
+/*# sourceMappingURL=noti.css.map */

@@ -1,0 +1,8 @@
+<section id="draft-page">
+  <h1 class="section-title">Drafts</h1>
+  <div class="card-container">
+    <% for( let i = list_post.length - 1; i >= 0; i-- ) { %> <%
+    if(list_post[i].post_id.post_status === "Draft") {%> <%- include('card',
+    {post:list_post[i].post_id}); %> <% }%> <% } %>
+  </div>
+</section>

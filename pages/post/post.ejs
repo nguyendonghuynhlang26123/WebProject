@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../head/head', {link: link }); %>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <%- include('minimizedHeader/minimizedHeader', {btn_label: "Subscribe"}); %>
+
+    <!-- MAIN -->
+    <main class="post-container">
+      <div class="post-info">
+        <a class="post-category"
+          ><%= (post.post_category && post.post_category.category_name) || ""
+          %></a
+        >
+        <ul class="post-tags">
+          <% post.post_tags.forEach((e)=>{%>
+          <li class="post-tag">
+            <a href="#">
+              <% if(e == "trending") {%>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="white"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+              >
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"
+                />
+              </svg>
+              <% } else {%> <%= e %> <% } %>
+            </a>
+          </li>
+          <% }); %>
+        </ul>
+      </div>
+
+      <p class="date"><%= (new Date(post.post_date)).toUTCString() %></p>
+      <h1 class="post-title"><%= post.post_title %></h1>
+      <p class="post-description"><b><%= post.post_description %></b></p>
+      <figure class="post-thumbnail">
+        <img src="<%= post.post_thumbnail %>" alt="" />
+        <figcaption><%= post.post_thumbnail_description %></figcaption>
+      </figure>
+
+      <div class="grid-wrapper">
+        <div class="post-content">
+          <%- post.post_content %>
+          <p class="post-author">
+            <%= post.post_author.first_name + " " + post.post_author.last_name
+            %>
+          </p>
+        </div>
+
+        <%- include('recommendation/recommendation');%>
+      </div>
+    </main>
+    <!-- FOOTER -->
+    <%- include('../footer/footer'); %>
+  </body>
+</html>

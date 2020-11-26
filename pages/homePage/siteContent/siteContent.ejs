@@ -1,0 +1,49 @@
+<main id="site-content" class="wrapper">
+  <!-- COVER PAGE -->
+  <div id="cover-page" class="container grid-8-2">
+    <!-- BIGGEST ARTICLE -->
+    <div>
+      <!-- TOP NEWS -->
+      <%- include('topNews/topNews'); %>
+      <hr />
+  
+      <!-- LIFE STYLES NEWS -->
+      <%- include('lifeStyleNews/lifeStyleNews'); %>
+    </div>
+  
+    <aside id="sidebar">
+      <%- include('breakFastNews/breakFastNews'); %>
+    
+      <form action="" class="subscribe-form">
+        <label for="email-input"
+          >Get the Breakfast News delivered to your mail box daily!</label
+        >
+        <input type="email" placeholder="Enter your email" name="email-input" />
+        <button type="submit">Sign Up</button>
+      </form>
+    
+      <%- include('trending/trending'); %>
+    </aside>
+  </div>
+  <hr />
+
+  <!-- WORLD - EDUCATION - SPORT NEWS -->
+  <div id="w-e-s-news" class="container">
+    <!-- WORLD NEWS -->
+    <%- include('worldNews/worldNews'); %>
+  
+    <!-- EDUCATION NEWS -->
+    <%- include('eduNews/eduNews'); %>
+  
+    <!-- SPORT NEWS -->
+    <%- include('sportNews/sportNews'); %>
+  </div>  
+  <hr />
+
+  <!-- FEATURES NEWS -->
+  <%- include('featuresNews/featuresNews'); %>
+  <hr />
+
+  <!-- POLITICS -->
+  <%- include('politicsNews/politicsNews'); %>
+</main>

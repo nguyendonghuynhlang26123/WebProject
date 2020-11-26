@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../head/head', {link: "/style/css/noti.css"}); %>
+  </head>
+  <body>
+    <iframe
+      src="https://giphy.com/embed/H54feNXf6i4eAQubud"
+      width="480"
+      height="405"
+    ></iframe>
+    <div class="notify">
+      <h1><%= `Error code: ${err.code}` %></h1>
+      <h2><%=err.message%></h2>
+      <p>Please check out these links below</p>
+      <div>
+        <a href="#">Go to our homepage</a>
+        <a href="#">Contact support</a>
+      </div>
+    </div>
+  </body>
+</html>

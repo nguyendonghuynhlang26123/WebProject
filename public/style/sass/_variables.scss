@@ -1,0 +1,41 @@
+$topbar-font: "Roboto", serif;
+$date-font: "PT Serif", Serif;
+
+$page-title-font: "Bitter";
+$category-font: "Roboto";
+$btn-font: "Roboto";
+$article-title-font: "Merriweather";
+$article-link-font: "PT Serif";
+$article-description-font: "PT Serif";
+$post-font: "PT Serif";
+
+$bg-color: #f2f2f2;
+$topbar-color: #444444;
+$title-color: #434343;
+$description-color: #222222;
+$button-color: #0c79ff;
+$category-color: #dfdfdf;
+$purple-color: #6563ff;
+
+$hr-border-color: #cccccc;
+$footer-color: #333333;
+
+$desktop: "(min-width: 1024px)";
+$tablet: "(min-width: 768px) and (max-width: 1023px)";
+$smartphone: "(max-width: 767px)";
+
+@mixin overlay-bg($color1, $color2, $img) {
+  background: $color1; /* fallback colour. Make sure this is just one solid colour. */
+  background: url($img);
+  background: -webkit-linear-gradient($color1, $color2), url($img);
+  background: linear-gradient($color1, $color2), url($img);
+  background-size: cover;
+}
+
+.danger {
+  color: rgb(155, 0, 0);
+}
+
+.safe {
+  color: green;
+}
