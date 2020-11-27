@@ -11,6 +11,7 @@ const bodyParser = require("body-parser");
 const errorHandler = require("./server/modules/errorHandler/errorHandler");
 
 // mongoose connect
+<<<<<<< HEAD
 const mongoose = require("mongoose");
 const mongoDB =
   "mongodb+srv://admin:admin2020@cluster0.clc8a.azure.mongodb.net/pen-daily?retryWrites=true&w=majority";
@@ -22,6 +23,9 @@ mongoose.connect(mongoDB, {
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
+=======
+const db = require('./db');
+>>>>>>> cea940c0f2d06dcea80e31c40cbea0445e68d1ed
 
 // app use
 app.use(
@@ -51,8 +55,13 @@ app.get("/login", (req, res) => {
   res.redirect("auth/login");
 });
 
+<<<<<<< HEAD
 app.get("/advertise", (req, res) => {
   res.render("contact_pages/advertise", { link: "/style/css/advertise.css" });
+=======
+app.get("/compose", async (req, res) => {
+  res.render("compose/compose");
+>>>>>>> cea940c0f2d06dcea80e31c40cbea0445e68d1ed
 });
 
 app.get("*", function (req, res, next) {
@@ -63,5 +72,9 @@ app.get("*", function (req, res, next) {
 
 app.use(errorHandler);
 app.listen(port, () => {
+<<<<<<< HEAD
   console.log(`Example app listening at http://localhost:${port}`);
+=======
+  console.log(`The pen daily is listening at http://localhost:${port}`);
+>>>>>>> cea940c0f2d06dcea80e31c40cbea0445e68d1ed
 });

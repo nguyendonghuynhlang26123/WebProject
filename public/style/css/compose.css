@@ -336,10 +336,13 @@ ul li {
   }
 }
 
+<<<<<<< HEAD
 .header .topbar .flex-row {
   gap: 1rem;
 }
 
+=======
+>>>>>>> cea940c0f2d06dcea80e31c40cbea0445e68d1ed
 .header .topbar #searchform {
   font-family: "Roboto", serif;
   font-weight: 500;
@@ -396,6 +399,7 @@ ul li {
   }
 }
 
+<<<<<<< HEAD
 .header .topbar #btn-login {
   padding: 0.3rem 1rem;
   border: none;
@@ -406,6 +410,8 @@ ul li {
   opacity: 0.7;
 }
 
+=======
+>>>>>>> cea940c0f2d06dcea80e31c40cbea0445e68d1ed
 .minimized-header {
   display: -webkit-box;
   display: -ms-flexbox;

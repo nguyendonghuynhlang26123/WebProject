@@ -41,10 +41,13 @@
       }
     }
 
+<<<<<<< HEAD
     .flex-row {
       gap: 1rem;
     }
 
+=======
+>>>>>>> cea940c0f2d06dcea80e31c40cbea0445e68d1ed
     #searchform {
       font-family: ($topbar-font);
       font-weight: 500;
@@ -92,6 +95,7 @@
     }
   }
 
+<<<<<<< HEAD
   .topbar #btn-login {
     padding: 0.3rem 1rem;
     border: none;
@@ -101,6 +105,17 @@
   .topbar #btn-login:hover {
     opacity: 0.7;
   }
+=======
+  // .topbar #btn-login {
+  //   padding: 0.3rem 1rem;
+  //   border: none;
+  //   background-color: #d8d8d8;
+  // }
+
+  // .topbar #btn-login:hover {
+  //   opacity: 0.7;
+  // }
+>>>>>>> cea940c0f2d06dcea80e31c40cbea0445e68d1ed
 }
 
 .minimized-header {

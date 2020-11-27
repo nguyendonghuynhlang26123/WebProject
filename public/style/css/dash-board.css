@@ -564,6 +564,7 @@ ul li {
   color: #333333;
 }
 
+<<<<<<< HEAD
 .info form button {
   padding: 0.4rem 1.2rem;
   margin-left: 3rem;
@@ -582,6 +583,8 @@ ul li {
   opacity: 0.8;
 }
 
+=======
+>>>>>>> cea940c0f2d06dcea80e31c40cbea0445e68d1ed
 .info form .input-info {
   padding: 0.6rem;
   display: block;
