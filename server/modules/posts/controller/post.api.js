@@ -11,7 +11,6 @@ router.get("/:postId", async function (req, res, next) {
     const post = await postService.getPostById(req.params.postId);
     if (req.session.userId && req.session.userId == post.post_author._id) {
       if (req.query.mode == "preview")
-<<<<<<< HEAD
         res.render("post/post", {
           link: "/style/css/post.css",
           post: post,
@@ -25,13 +24,6 @@ router.get("/:postId", async function (req, res, next) {
       post: post,
       btn_label: "Subscribe",
     });
-=======
-        res.render("post/post", { link: "/style/css/post.css", post: post });
-      else res.redirect(`./${post._id}/edit`);
-      return;
-    }
-    res.render("post/post", { link: "/style/css/post.css", post: post });
->>>>>>> cea940c0f2d06dcea80e31c40cbea0445e68d1ed
   } catch (err) {
     next(err);
   }

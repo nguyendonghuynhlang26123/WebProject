@@ -156,7 +156,3 @@ menuItems.forEach((item) => {
     }
   });
 });
-<<<<<<< HEAD
-
-=======
->>>>>>> cea940c0f2d06dcea80e31c40cbea0445e68d1ed
