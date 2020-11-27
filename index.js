@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const session = require("express-session");
-const port = 3000;
+const port = process.env.PORT || 3000;
 const post = require("./server/modules/posts/controller/post.api");
 const category = require("./server/modules/categories/controller/category.api");
 const user = require("./server/modules/users/controller/user.api");
@@ -51,8 +51,8 @@ app.get("/login", (req, res) => {
   res.redirect("auth/login");
 });
 
-app.get("/compose", async (req, res) => {
-  res.render("compose/compose");
+app.get("/advertise", (req, res) => {
+  res.render("contact_pages/advertise", { link: "/style/css/advertise.css" });
 });
 
 app.get("*", function (req, res, next) {

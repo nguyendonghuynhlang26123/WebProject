@@ -11,11 +11,19 @@ router.get("/:postId", async function (req, res, next) {
     const post = await postService.getPostById(req.params.postId);
     if (req.session.userId && req.session.userId == post.post_author._id) {
       if (req.query.mode == "preview")
-        res.render("post/post", { link: "/style/css/post.css", post: post });
+        res.render("post/post", {
+          link: "/style/css/post.css",
+          post: post,
+          btn_label: "Edit this post",
+        });
       else res.redirect(`./${post._id}/edit`);
       return;
     }
-    res.render("post/post", { link: "/style/css/post.css", post: post });
+    res.render("post/post", {
+      link: "/style/css/post.css",
+      post: post,
+      btn_label: "Subscribe",
+    });
   } catch (err) {
     next(err);
   }

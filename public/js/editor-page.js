@@ -170,7 +170,7 @@ const save = (event, status, redirect = null) => {
   if (status) data = { ...data, post_status: status };
 
   if (redirect == PREVIEW) {
-    saveEditorAndRedirect(id, data, "/post/" + id);
+    saveEditorAndRedirect(id, data, "/post/" + id + "?mode=preview");
   } else if (redirect == HOMEPAGE) {
     saveEditorAndRedirect(id, data, "/user/writer");
   } else {

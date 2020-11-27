@@ -336,6 +336,10 @@ ul li {
   }
 }
 
+.header .topbar .flex-row {
+  gap: 1rem;
+}
+
 .header .topbar #searchform {
   font-family: "Roboto", serif;
   font-weight: 500;
@@ -390,6 +394,16 @@ ul li {
   .header .nav {
     display: none;
   }
+}
+
+.header .topbar #btn-login {
+  padding: 0.3rem 1rem;
+  border: none;
+  background-color: #d8d8d8;
+}
+
+.header .topbar #btn-login:hover {
+  opacity: 0.7;
 }
 
 .minimized-header {

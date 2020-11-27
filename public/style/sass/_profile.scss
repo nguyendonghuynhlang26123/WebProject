@@ -130,6 +130,22 @@
       color: $footer-color;
     }
 
+    button {
+      padding: 0.4rem 1.2rem;
+      margin-left: 3rem;
+      background: ($button-color);
+      color: white;
+      font-family: ($btn-font);
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      box-shadow: 1px 2px 3px gray;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
     .input-info {
       padding: 0.6rem;
       display: block;

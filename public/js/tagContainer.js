@@ -2,6 +2,9 @@ const tagContainer = document.querySelector(".tag-container");
 const input = document.querySelector(".tag-container input");
 
 let tags = [];
+document.querySelectorAll(".tag[tag] span").forEach((e) => {
+  tags.push(e.textContent);
+});
 
 function createTag(label) {
   const div = document.createElement("div");

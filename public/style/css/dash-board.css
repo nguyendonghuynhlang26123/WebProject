@@ -564,6 +564,24 @@ ul li {
   color: #333333;
 }
 
+.info form button {
+  padding: 0.4rem 1.2rem;
+  margin-left: 3rem;
+  background: #0c79ff;
+  color: white;
+  font-family: "Roboto";
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  -webkit-box-shadow: 1px 2px 3px gray;
+          box-shadow: 1px 2px 3px gray;
+  cursor: pointer;
+}
+
+.info form button:hover {
+  opacity: 0.8;
+}
+
 .info form .input-info {
   padding: 0.6rem;
   display: block;

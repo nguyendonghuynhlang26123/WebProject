@@ -2,11 +2,19 @@
   <label for="category">Category</label>
   <select category name="category">
     <% parameters.forEach(element => { %>
-    <option value="<%= element._id %>"><%=element.category_name %></option>
+    <option value="<%= element._id %>" 
+      <% if (post.post_category._id.toString() == element._id.toString()) { %> 
+        <%= "selected" %>  
+        <% } %> >
+      <%=element.category_name %>
+    </option>
     <% }) %>
   </select>
   <label for="tags">Tags</label>
   <div class="tag-container">
+    <% post.post_tags.forEach(element => { %>
+      <div class="tag" tag><span><%= element  %> </span><i class="icons" data-item="Tes">×</i></div>
+    <% }) %>
     <input />
   </div>
   <div class="row">
