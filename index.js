@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const session = require("express-session");
+const dotenv = require("dotenv");
 const port = process.env.PORT || 3000;
 const post = require("./server/modules/posts/controller/post.api");
 const category = require("./server/modules/categories/controller/category.api");
@@ -9,7 +10,7 @@ const upload = require("./server/modules/uploadImage/controller/uploadImage.api"
 const auth = require("./server/modules/auth/controller/auth.api");
 const bodyParser = require("body-parser");
 const errorHandler = require("./server/modules/errorHandler/errorHandler");
-
+dotenv.config();
 // mongoose connect
 const db = require("./db");
 

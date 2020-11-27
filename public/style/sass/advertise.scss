@@ -261,6 +261,7 @@ form {
 }
 
 .home-btn {
+  z-index: 3;
   position: fixed;
   top: 2rem;
   right: 2rem;
@@ -284,16 +285,18 @@ form {
 }
 
 @media #{$smartphone} {
-  form {
-    .poster {
-      .title-logo {
-        span {
-          font-size: 1.5rem;
-        }
-        svg {
-          display: none;
-        }
-      }
-    }
+  .container {
+    display: none;
+  }
+  #particles-js {
+    display: none !important;
+  }
+  #modal {
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: translate(0);
+    overflow: auto;
   }
 }
