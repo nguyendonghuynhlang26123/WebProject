@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito:400,600,700");
 .danger {
   color: #9b0000;
 }
@@ -265,15 +264,316 @@ ul li {
   width: 3rem;
 }
 
+nav {
+  z-index: 1;
+  display: block;
+  position: fixed;
+  width: 480px;
+  height: 480px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transform: translate3d(20px, -20px, 0);
+          transform: translate3d(20px, -20px, 0);
+  -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 0.9);
+  transition: -webkit-transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 0.9);
+  transition: transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 0.9);
+  transition: transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 0.9), -webkit-transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 0.9);
+}
+
+nav.open {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+nav.top-right {
+  top: -152px;
+  right: -152px;
+}
+
+.disc {
+  position: absolute;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  font: 18px "Bitter", sans-serif;
+  line-height: 32px;
+  padding-top: 8px;
+  border-radius: 240px;
+  -webkit-transform: scale3d(0.5, 0.5, 0.5) rotate3d(0, 0, 1, 190deg);
+          transform: scale3d(0.5, 0.5, 0.5) rotate3d(0, 0, 1, 190deg);
+  pointer-events: none;
+  opacity: 0;
+  cursor: pointer;
+  -webkit-transition: opacity 0.5s, -webkit-transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 0.9);
+  transition: opacity 0.5s, -webkit-transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 0.9);
+  transition: transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 0.9), opacity 0.5s;
+  transition: transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 0.9), opacity 0.5s, -webkit-transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 0.9);
+}
+
+.disc div {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.open .disc {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.l1 {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: tomato;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+}
+
+.open .l1 {
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  -webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
+          transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
+  opacity: 1;
+}
+
+.open .l1:hover {
+  background: shade(tomato, 90%);
+  color: white;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+}
+
+.open .l1:active {
+  background: shade(tomato, 50%);
+  color: tomato;
+}
+
+.open .l1.toggle {
+  -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
+          transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
+}
+
+.l2 {
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  background: #ff763b;
+  -webkit-transition-delay: 0.08333s;
+          transition-delay: 0.08333s;
+}
+
+.open .l2 {
+  -webkit-transition-delay: 0.08333s;
+          transition-delay: 0.08333s;
+  -webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
+          transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
+  opacity: 1;
+}
+
+.open .l2:hover {
+  background: shade(#ff763b, 90%);
+  color: white;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+}
+
+.open .l2:active {
+  background: shade(#ff763b, 50%);
+  color: #ff763b;
+}
+
+.open .l2.toggle {
+  -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
+          transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
+}
+
+.l3 {
+  top: 80px;
+  left: 80px;
+  right: 80px;
+  bottom: 80px;
+  background: #ff8a2f;
+  -webkit-transition-delay: 0.16667s;
+          transition-delay: 0.16667s;
+}
+
+.open .l3 {
+  -webkit-transition-delay: 0.16667s;
+          transition-delay: 0.16667s;
+  -webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
+          transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
+  opacity: 1;
+}
+
+.open .l3:hover {
+  background: shade(#ff8a2f, 90%);
+  color: white;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+}
+
+.open .l3:active {
+  background: shade(#ff8a2f, 50%);
+  color: #ff8a2f;
+}
+
+.open .l3.toggle {
+  -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
+          transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
+}
+
+.l4 {
+  top: 120px;
+  left: 120px;
+  right: 120px;
+  bottom: 120px;
+  background: #ff9d24;
+  -webkit-transition-delay: 0.25s;
+          transition-delay: 0.25s;
+}
+
+.open .l4 {
+  -webkit-transition-delay: 0.25s;
+          transition-delay: 0.25s;
+  -webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
+          transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
+  opacity: 1;
+}
+
+.open .l4:hover {
+  background: shade(#ff9d24, 90%);
+  color: white;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+}
+
+.open .l4:active {
+  background: shade(#ff9d24, 50%);
+  color: #ff9d24;
+}
+
+.open .l4.toggle {
+  -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
+          transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
+}
+
+.l5 {
+  top: 160px;
+  left: 160px;
+  right: 160px;
+  bottom: 160px;
+  background: #ffb018;
+  -webkit-transition-delay: 0.33333s;
+          transition-delay: 0.33333s;
+}
+
+.open .l5 {
+  -webkit-transition-delay: 0.33333s;
+          transition-delay: 0.33333s;
+  -webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
+          transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
+  opacity: 1;
+}
+
+.open .l5:hover {
+  background: shade(#ffb018, 90%);
+  color: white;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+}
+
+.open .l5:active {
+  background: shade(#ffb018, 50%);
+  color: #ffb018;
+}
+
+.open .l5.toggle {
+  -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
+          transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
+}
+
+.l6 {
+  top: 200px;
+  left: 200px;
+  right: 200px;
+  bottom: 200px;
+  background: #ffc40c;
+  -webkit-transition-delay: 0.41667s;
+          transition-delay: 0.41667s;
+}
+
+.open .l6 {
+  -webkit-transition-delay: 0.41667s;
+          transition-delay: 0.41667s;
+  -webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
+          transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
+  opacity: 1;
+}
+
+.open .l6:hover {
+  background: shade(#ffc40c, 90%);
+  color: white;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+}
+
+.open .l6:active {
+  background: shade(#ffc40c, 50%);
+  color: #ffc40c;
+}
+
+.open .l6.toggle {
+  -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
+          transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
+}
+
+.toggle {
+  line-height: 80px;
+  padding: 0;
+  width: 80px;
+  background: gold;
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+  pointer-events: auto;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+}
+
+.open .toggle {
+  -webkit-transform: rotate3d(0, 0, 1, 0deg);
+          transform: rotate3d(0, 0, 1, 0deg);
+}
+
+.toggle:hover {
+  background: shade(gold, 90%);
+  text-decoration: underline;
+}
+
+.toggle:active {
+  background: shade(gold, 50%);
+  color: rgba(255, 215, 0, 0.5);
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
 html {
-  background: -webkit-gradient(linear, left top, right top, from(rgba(242, 242, 242, 0.45)), to(rgba(255, 255, 255, 0.45))), url("/images/adv-bg.png") bottom right no-repeat fixed;
-  background: linear-gradient(to right, rgba(242, 242, 242, 0.45), rgba(255, 255, 255, 0.45)), url("/images/adv-bg.png") bottom right no-repeat fixed;
+  background: -webkit-gradient(linear, right top, left top, from(beige), to(white)), url("/images/adv-bg.png") bottom right no-repeat fixed;
+  background: linear-gradient(to left, beige, white), url("/images/adv-bg.png") bottom right no-repeat fixed;
   background-size: contain;
 }
 
 body {
   height: 100%;
   overflow: hidden;
+  position: relative;
 }
 
 .input-block {
@@ -295,7 +595,7 @@ body {
 .input-block .input-label {
   font-size: 0.8rem;
   text-transform: uppercase;
-  font-family: "Nunito", sans-serif;
+  font-family: sans-serif;
   font-weight: 600;
   letter-spacing: 3px;
   opacity: 0.9;
@@ -366,7 +666,7 @@ button:hover {
 
 /** Container---------------------------*/
 .container {
-  z-index: 2;
+  z-index: 3;
   position: fixed;
   margin: 0 auto;
   top: 50%;
@@ -445,7 +745,14 @@ form .content {
 form .content h1 {
   text-align: center;
   font-family: "Merriweather";
+}
+
+form .content p {
+  font-size: 1rem;
   margin-bottom: 1.5rem;
+  text-align: center;
+  color: #333333;
+  font-family: "PT Serif";
 }
 
 .pseudo-bg {
@@ -456,7 +763,7 @@ form .content h1 {
   left: 0;
   background: black;
   opacity: 0.15;
-  z-index: 1;
+  z-index: 2;
 }
 
 #modal {
@@ -546,14 +853,14 @@ form .content h1 {
   50% {
     height: 10rem;
     background: #333333;
-    -webkit-transform: scaleX(1) scaleY(0.3) translate(-50%, -50%);
-            transform: scaleX(1) scaleY(0.3) translate(-50%, -50%);
+    -webkit-transform: scaleX(1) scaleY(0.3) translate(-50%);
+            transform: scaleX(1) scaleY(0.3) translate(-50%);
   }
   100% {
     height: 1px;
     background: #333333;
-    -webkit-transform: scale(0) translate(-50%, -50%);
-            transform: scale(0) translate(-50%, -50%);
+    -webkit-transform: scale(0) translate(-50%);
+            transform: scale(0) translate(-50%);
   }
 }
 
@@ -561,14 +868,14 @@ form .content h1 {
   50% {
     height: 10rem;
     background: #333333;
-    -webkit-transform: scaleX(1) scaleY(0.3) translate(-50%, -50%);
-            transform: scaleX(1) scaleY(0.3) translate(-50%, -50%);
+    -webkit-transform: scaleX(1) scaleY(0.3) translate(-50%);
+            transform: scaleX(1) scaleY(0.3) translate(-50%);
   }
   100% {
     height: 1px;
     background: #333333;
-    -webkit-transform: scale(0) translate(-50%, -50%);
-            transform: scale(0) translate(-50%, -50%);
+    -webkit-transform: scale(0) translate(-50%);
+            transform: scale(0) translate(-50%);
   }
 }
 
@@ -616,96 +923,10 @@ form .content h1 {
   }
 }
 
-@-webkit-keyframes bounce {
-  0% {
-    -webkit-transform: scale(1, 1) translateY(0);
-            transform: scale(1, 1) translateY(0);
-  }
-  10% {
-    -webkit-transform: scale(1.1, 0.9) translateY(0);
-            transform: scale(1.1, 0.9) translateY(0);
-  }
-  30% {
-    -webkit-transform: scale(0.9, 1.1) translateY(-10px);
-            transform: scale(0.9, 1.1) translateY(-10px);
-  }
-  50% {
-    -webkit-transform: scale(1.05, 0.95) translateY(0);
-            transform: scale(1.05, 0.95) translateY(0);
-  }
-  57% {
-    -webkit-transform: scale(1, 1) translateY(-7px);
-            transform: scale(1, 1) translateY(-7px);
-  }
-  64% {
-    -webkit-transform: scale(1, 1) translateY(0);
-            transform: scale(1, 1) translateY(0);
-  }
-  100% {
-    -webkit-transform: scale(1, 1) translateY(0);
-            transform: scale(1, 1) translateY(0);
-  }
-}
-
-@keyframes bounce {
-  0% {
-    -webkit-transform: scale(1, 1) translateY(0);
-            transform: scale(1, 1) translateY(0);
-  }
-  10% {
-    -webkit-transform: scale(1.1, 0.9) translateY(0);
-            transform: scale(1.1, 0.9) translateY(0);
-  }
-  30% {
-    -webkit-transform: scale(0.9, 1.1) translateY(-10px);
-            transform: scale(0.9, 1.1) translateY(-10px);
-  }
-  50% {
-    -webkit-transform: scale(1.05, 0.95) translateY(0);
-            transform: scale(1.05, 0.95) translateY(0);
-  }
-  57% {
-    -webkit-transform: scale(1, 1) translateY(-7px);
-            transform: scale(1, 1) translateY(-7px);
-  }
-  64% {
-    -webkit-transform: scale(1, 1) translateY(0);
-            transform: scale(1, 1) translateY(0);
-  }
-  100% {
-    -webkit-transform: scale(1, 1) translateY(0);
-            transform: scale(1, 1) translateY(0);
-  }
-}
-
-.home-btn {
-  z-index: 3;
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  border-radius: 50%;
-  border: 2px solid #333333;
-  background: white;
-  padding: 0.5rem;
-  -webkit-animation: bounce 4s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
-          animation: bounce 4s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
-}
-
-.home-btn svg {
-  fill: black;
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
-.home-btn:hover {
-  background: #333333;
-}
-
-.home-btn:hover svg {
-  fill: white;
-}
-
 @media (max-width: 767px) {
+  body {
+    overflow-y: auto;
+  }
   .container {
     display: none;
   }
@@ -713,6 +934,7 @@ form .content h1 {
     display: none !important;
   }
   #modal {
+    margin-top: 4rem;
     display: block;
     position: relative;
     top: 0;

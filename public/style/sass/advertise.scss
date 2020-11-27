@@ -1,13 +1,8 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito:400,600,700");
 @import "global";
 @import "circle_nav";
 
 html {
-  background: linear-gradient(
-      to right,
-      rgba(242, 242, 242, 0.45),
-      rgba(255, 255, 255, 0.45)
-    ),
+  background: linear-gradient(to left, beige, white),
     url("/images/adv-bg.png") bottom right no-repeat fixed;
   background-size: contain;
 }
@@ -15,6 +10,7 @@ html {
 body {
   height: 100%;
   overflow: hidden;
+  position: relative;
 }
 
 .input-block {
@@ -29,7 +25,7 @@ body {
   .input-label {
     font-size: 0.8rem;
     text-transform: uppercase;
-    font-family: "Nunito", sans-serif;
+    font-family: sans-serif;
     font-weight: 600;
     letter-spacing: 3px;
     opacity: 0.9;
@@ -78,7 +74,7 @@ button {
 
 /** Container---------------------------*/
 .container {
-  z-index: 2;
+  z-index: 3;
   position: fixed;
   margin: 0 auto;
   top: 50%;
@@ -139,7 +135,13 @@ form {
     h1 {
       text-align: center;
       font-family: $article-title-font;
+    }
+    p {
+      font-size: 1rem;
       margin-bottom: 1.5rem;
+      text-align: center;
+      color: #333333;
+      font-family: $article-description-font;
     }
   }
 }
@@ -152,7 +154,7 @@ form {
   left: 0;
   background: black;
   opacity: 0.15;
-  z-index: 1;
+  z-index: 2;
 }
 
 #modal {
@@ -210,12 +212,13 @@ form {
   50% {
     height: 10rem;
     background: $footer-color;
-    transform: scaleX(1) scaleY(0.3) translate(-50%, -50%);
+    transform: scaleX(1) scaleY(0.3) translate(-50%);
   }
+
   100% {
     height: 1px;
     background: $footer-color;
-    transform: scale(0) translate(-50%, -50%);
+    transform: scale(0) translate(-50%);
   }
 }
 
@@ -236,55 +239,11 @@ form {
     transform: scale(0);
   }
 }
-@keyframes bounce {
-  0% {
-    transform: scale(1, 1) translateY(0);
-  }
-  10% {
-    transform: scale(1.1, 0.9) translateY(0);
-  }
-  30% {
-    transform: scale(0.9, 1.1) translateY(-10px);
-  }
-  50% {
-    transform: scale(1.05, 0.95) translateY(0);
-  }
-  57% {
-    transform: scale(1, 1) translateY(-7px);
-  }
-  64% {
-    transform: scale(1, 1) translateY(0);
-  }
-  100% {
-    transform: scale(1, 1) translateY(0);
-  }
-}
-
-.home-btn {
-  z-index: 3;
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  border-radius: 50%;
-  border: 2px solid $footer-color;
-  background: white;
-  padding: 0.5rem;
-  animation: bounce 4s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
-  svg {
-    fill: black;
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-
-  &:hover {
-    background: $footer-color;
-    svg {
-      fill: white;
-    }
-  }
-}
 
 @media #{$smartphone} {
+  body {
+    overflow-y: auto;
+  }
   .container {
     display: none;
   }
@@ -292,6 +251,7 @@ form {
     display: none !important;
   }
   #modal {
+    margin-top: 4rem;
     display: block;
     position: relative;
     top: 0;

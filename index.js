@@ -42,8 +42,19 @@ app.get("/login", (req, res) => {
   res.redirect("auth/login");
 });
 
-app.get("/advertise", (req, res) => {
-  res.render("contact_pages/advertise", { link: "/style/css/advertise.css" });
+app.get("/contact", (req, res) => {
+  let data = {
+    contactUs: ["Contact us", "Ask us anything!"],
+    advertise: [
+      "Advertising",
+      "Our mission is to help brands make an impact in the world",
+    ],
+    tip: ["Tipping us", "You are contributing to make the world better "],
+  };
+  res.render("contact_pages/contact", {
+    link: "/style/css/advertise.css",
+    contact: { title: "Contact us", desc: "Ask us anything!" },
+  });
 });
 
 app.get("*", function (req, res, next) {
