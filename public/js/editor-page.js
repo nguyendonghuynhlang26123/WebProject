@@ -132,6 +132,8 @@ const getThumbnails = (htmlText) => {
   element.innerHTML = htmlText;
   let imgElement = element.querySelector("img");
   let captionElement = element.querySelector("figcaption");
+  console.log(element);
+  alert(JSON.stringify(element));
   let result = [];
   if (imgElement !== null) result.push(imgElement.getAttribute("src"));
   else result.push(null);

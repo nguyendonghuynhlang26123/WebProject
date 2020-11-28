@@ -384,6 +384,11 @@ ul li {
   font-size: 0.8rem;
 }
 
+.header .nav .nav-item:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 @media (min-width: 1024px) {
   .header .nav {
     width: 65%;
@@ -677,21 +682,21 @@ footer .subscribe-form button {
   left: 0;
   width: 0;
   height: 0;
-  -webkit-transition: opacity ease-in 600ms;
-  transition: opacity ease-in 600ms;
+  -webkit-transition: opacity ease-in 300ms;
+  transition: opacity ease-in 300ms;
   background-color: black;
   opacity: 0;
 }
 
 #sidenav.inactive {
-  -webkit-animation: slideOut 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-          animation: slideOut 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  -webkit-animation: slideOut 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+          animation: slideOut 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
 #sidenav.active {
   z-index: 3;
-  -webkit-animation: slideIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-          animation: slideIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  -webkit-animation: slideIn 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+          animation: slideIn 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
 #sidenav.active + #sidenav_bg {
@@ -734,10 +739,10 @@ footer .subscribe-form button {
     width: 0;
   }
   50% {
-    width: 5rem;
+    width: 5vw;
   }
   75% {
-    width: 15rem;
+    width: 10vw;
   }
   100% {
     min-width: 20vw;
@@ -750,10 +755,10 @@ footer .subscribe-form button {
     width: 0;
   }
   50% {
-    width: 5rem;
+    width: 5vw;
   }
   75% {
-    width: 15rem;
+    width: 10vw;
   }
   100% {
     min-width: 20vw;
@@ -768,7 +773,7 @@ footer .subscribe-form button {
     z-index: 3;
   }
   50% {
-    width: 5rem;
+    width: 10vw;
   }
   100% {
     width: 0;
@@ -783,7 +788,7 @@ footer .subscribe-form button {
     z-index: 3;
   }
   50% {
-    width: 5rem;
+    width: 10vw;
   }
   100% {
     width: 0;
