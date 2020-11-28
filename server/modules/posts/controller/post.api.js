@@ -49,6 +49,22 @@ router.get("/", async function (req, res) {
   res.send(posts);
 });
 
+router.get("/tag/:tagName", async function (req, res, next) {
+  try {
+    console.log(req.params.tagName);
+    const posts = await postService.getAllPost(
+      {
+        post_tags: req.params.tagName,
+      },
+      req.query.select,
+      Number(req.query.n_post)
+    );
+    res.send(posts);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.post("/", authService.restrict, async function (req, res) {
   const post = await postService.createPost(req.session.userId);
   userService.addPostId(req.session.userId, post._id);
