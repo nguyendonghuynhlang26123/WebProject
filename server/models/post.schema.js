@@ -12,7 +12,7 @@ const PostSchema = new Schema({
   post_content: { type: String, default: "" },
   post_thumbnail: {
     type: String,
-    default: "http://localhost:3000/images/alt.png",
+    default: "/images/alt.png",
   },
   post_thumbnail_description: {
     type: String,
@@ -20,7 +20,7 @@ const PostSchema = new Schema({
   },
   post_author: { type: Schema.Types.ObjectId, ref: "users", required: true },
   post_date: { type: Number, default: Date.now() },
-  post_tags: { type: [String] },
+  post_tags: [{ type: String, trim: true }],
   post_status: {
     type: String,
     enum: ["Published", "Draft", "Trash"],
