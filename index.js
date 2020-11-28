@@ -42,6 +42,7 @@ app.get("/login", (req, res) => {
   res.redirect("auth/login");
 });
 
+//MEO MEO
 app.get("/contact", (req, res) => {
   let data = {
     contactUs: ["Contact us", "Ask us anything!", "How can I join your team?"],
@@ -62,6 +63,11 @@ app.get("/contact", (req, res) => {
     link: "/style/css/advertise.css",
     contact: { title: data[type][0], desc: data[type][1], hint: data[type][2] },
   });
+});
+
+//MEO MEO
+app.get("/categoryPage", (req, res) => {
+  res.render("categoryPages/category_page");
 });
 
 app.get("*", function (req, res, next) {

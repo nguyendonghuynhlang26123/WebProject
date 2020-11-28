@@ -384,6 +384,11 @@ ul li {
   font-size: 0.8rem;
 }
 
+.header .nav .nav-item:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 @media (min-width: 1024px) {
   .header .nav {
     width: 65%;

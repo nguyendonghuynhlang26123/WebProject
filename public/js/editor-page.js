@@ -135,7 +135,7 @@ const getThumbnails = (htmlText) => {
   let result = [];
   if (imgElement !== null) result.push(imgElement.getAttribute("src"));
   else result.push(null);
-  if (captionElement !== null) result.push(imgElement.textContent);
+  if (captionElement !== null) result.push(captionElement.textContent);
   else result.push("");
   return result;
 };

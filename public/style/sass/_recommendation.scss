@@ -1,0 +1,59 @@
+aside {
+  img {
+    width: 100%;
+  }
+
+  border-left: 1px solid ($hr-border-color);
+  .recommendation {
+    padding: 1rem;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+
+    /** SIDE POSTS---------------------------*/
+    .recommended-post {
+      display: grid;
+      padding: 1rem 0.5rem;
+      grid-template-columns: 3fr 7fr;
+      column-gap: 1rem;
+      border: 1px dashed ($hr-border-color);
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .recommended-post-title {
+        .date {
+          text-align: left;
+        }
+        a {
+          font-weight: bold;
+        }
+      }
+
+      @media #{$tablet} {
+        min-height: 8rem;
+        align-items: center;
+        display: block !important;
+        .date {
+          font-size: 0.6rem;
+        }
+        a {
+          font-size: 0.7rem;
+          line-height: 0.7;
+        }
+      }
+
+      @media #{$smartphone} {
+        min-height: 8rem;
+        align-items: center;
+        .date {
+          font-size: 0.6rem;
+        }
+        a {
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+}

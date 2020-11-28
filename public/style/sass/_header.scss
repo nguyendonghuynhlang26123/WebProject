@@ -81,6 +81,11 @@
     .nav-item {
       font-family: ($category-font);
       font-size: 0.8rem;
+
+      &:hover {
+        font-weight: bold;
+        text-decoration: underline;
+      }
     }
 
     @media #{$desktop} {
