@@ -11,7 +11,9 @@
       <input type="email" name="email" />
     </div>
     <div class="input-block">
-      <label for="title" class="input-label">Title</label>
+      <label for="title" class="input-label">
+        <%= title=="Correcting a post" ? "Post URL" : "Title" %>
+      </label>
       <input name="title" type="text" />
     </div>
     <div class="input-block">
@@ -20,7 +22,7 @@
         name="content"
         cols="30"
         rows="10"
-        placeholder="i.e: I want to join the pen daily company!"
+        placeholder="i.e: <%= hint %>"
       ></textarea>
     </div>
     <button type="submit">Send</button>

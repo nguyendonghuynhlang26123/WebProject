@@ -564,6 +564,12 @@ nav.top-right {
           transition-duration: 0s;
 }
 
+@media (max-width: 767px) {
+  nav {
+    z-index: 3;
+  }
+}
+
 html {
   background: -webkit-gradient(linear, right top, left top, from(beige), to(white)), url("/images/adv-bg.png") bottom right no-repeat fixed;
   background: linear-gradient(to left, beige, white), url("/images/adv-bg.png") bottom right no-repeat fixed;
@@ -610,7 +616,7 @@ body {
   border: 0;
   padding: 4px 0 0;
   font-size: 1rem;
-  font-family: "Nunito", sans-serif;
+  font-family: sans-serif;
   border-radius: 12px;
 }
 

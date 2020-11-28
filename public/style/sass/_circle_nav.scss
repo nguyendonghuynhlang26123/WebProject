@@ -126,4 +126,7 @@ nav {
 
 @media #{$smartphone} {
   $size: 35px;
+  nav {
+    z-index: 3;
+  }
 }

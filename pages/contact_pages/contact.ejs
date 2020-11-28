@@ -81,7 +81,8 @@ c207 -97 373 -134 602 -134 238 0 404 38 620 144 389 191 654 544 742 985 24
       </div>
     </div>
     <div class="container" id="modal">
-      <%- include('form', {title: contact.title, description: contact.desc}) %>
+      <%- include('form', {title: contact.title, description: contact.desc,
+      hint: contact.hint}) %>
     </div>
 
     <div class="pseudo-bg"></div>
