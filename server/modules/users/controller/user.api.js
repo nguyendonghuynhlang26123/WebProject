@@ -9,7 +9,6 @@ router.get("/writer", authService.restrict, async (req, res, next) => {
     //console.log(user.list_post, user.list_post.length);
     res.render("writerPage/dashboard", { user: user });
   } catch (err) {
-    console.log("This is BE BUG");
     next(err);
   }
 });

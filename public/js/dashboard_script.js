@@ -79,8 +79,29 @@ editButton.addEventListener("click", (event) => {
   document.getElementsByClassName("profile")[0].classList.toggle("small");
 });
 
-//Context menu
+const submitButton = document.getElementById("submit-profile-btn");
+submitButton.addEventListener("click", (ev) => {
+  ev.preventDefault();
+  let form = ev.target.closest("form");
+  let data = {
+    email: form.querySelector('[type="email"]').value,
+    first_name: form.querySelector('[name="fname"]').value,
+    last_name: form.querySelector('[name="lname"]').value,
+  };
 
+  sendRequest("PUT", "/user", {
+    ...data,
+  })
+    .then((data) => {
+      window.location.reload();
+    })
+    .catch((err) => {
+      alert("Sorry! Something stupid happen");
+      console.error("Update user profile ", err);
+    });
+});
+
+//Context menu
 let selectedCardId = null;
 
 const cards = document.querySelectorAll(".card");
