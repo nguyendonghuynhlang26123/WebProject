@@ -412,12 +412,14 @@ ul li {
 }
 
 .minimized-header {
+  z-index: 3;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-color: #f2f2f2;
   padding: 0.5rem;
   border-bottom: 1.2px dashed #cccccc;
 }

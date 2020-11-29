@@ -367,7 +367,15 @@ ul.post-list {
     #world-news {
       .world-news-row {
         display: block;
+        > div {
+          padding-right: 0;
+          border-right: none;
+        }
       }
+    }
+
+    #edu-news {
+      border-right: none;
     }
 
     #sport-news {
@@ -383,5 +391,18 @@ ul.post-list {
     .panel {
       display: block;
     }
+  }
+}
+
+/** GLIDER---------------------------*/
+.glider-prev,
+.glider-next {
+  top: 50% !important;
+  transform: translateY(-50%) scaleY(2) !important;
+}
+
+.dots {
+  @media #{$desktop} {
+    display: none !important;
   }
 }

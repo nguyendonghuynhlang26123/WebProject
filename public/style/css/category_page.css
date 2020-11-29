@@ -581,12 +581,14 @@ footer .subscribe-form button {
 }
 
 .minimized-header {
+  z-index: 3;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-color: #f2f2f2;
   padding: 0.5rem;
   border-bottom: 1.2px dashed #cccccc;
 }
@@ -728,6 +730,10 @@ footer .subscribe-form button {
   font-weight: bold;
   font-size: 14px;
   cursor: pointer;
+}
+
+#sidenav ul li a {
+  width: 100%;
 }
 
 #sidenav ul li:hover {

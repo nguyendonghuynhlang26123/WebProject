@@ -109,8 +109,10 @@
 }
 
 .minimized-header {
+  z-index: 3;
   display: flex;
   align-items: center;
+  background-color: $bg-color;
   padding: 0.5rem;
   border-bottom: 1.2px dashed ($hr-border-color);
 

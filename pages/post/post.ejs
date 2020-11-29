@@ -5,7 +5,12 @@
   </head>
   <body>
     <!-- HEADER -->
-    <%- include('minimizedHeader/minimizedHeader', {btn_label: btn_label}); %>
+    <div id="functional-nav">
+      <%- include('minimizedHeader/minimizedHeader', {btn_label: btn_label}); %>
+    </div>
+
+    <!-- SIDE NAV -->
+    <%- include("../modal-popup/sidenav.ejs") %>
 
     <!-- MAIN -->
     <main class="post-container">
@@ -61,5 +66,8 @@
     </main>
     <!-- FOOTER -->
     <%- include('../footer/footer'); %>
+
+    <!-- SCRIPT -->
+    <script src="/js/sidenav.js"></script>
   </body>
 </html>
