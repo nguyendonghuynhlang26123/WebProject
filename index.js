@@ -73,6 +73,7 @@ app.get("/categoryPage", (req, res) => {
 app.get("*", function (req, res, next) {
   let err = new Error("Page not found");
   err.statusCode = 404;
+
   next(err);
 });
 

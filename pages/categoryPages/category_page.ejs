@@ -7,7 +7,8 @@
     <!-- ---------- HEADER------------------------ -->
     <%- include('../post/minimizedHeader/minimizedHeader',
     {btn_label:"Subscribe"}); %>
-
+    <!--  -->
+    <%- include('../modal-popup/sidenav'); %>
     <!-- ----------- Article -------------------- -->
     <div class="container">
       <%- include('highlights') %> <%- include('listpost') %>
@@ -16,5 +17,6 @@
     <%- include('../footer/footer'); %>
 
     <!-- SCripts -->
+    <script src="js/sidenav.js"></script>
   </body>
 </html>
