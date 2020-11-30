@@ -31,3 +31,6 @@ window.addEventListener("load", () => {
     ],
   });
 });
+
+/** SEARCH BUTTON ---------------------------*/
+document.querySelector(".search");

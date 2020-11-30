@@ -446,6 +446,44 @@ footer .subscribe-form button {
   color: green !important;
 }
 
+.search-input {
+  display: none !important;
+}
+
+.search-input.active {
+  display: inline !important;
+}
+
+.input {
+  background: none;
+  border-color: #000;
+  border-radius: 15px;
+  border-width: 0 0 1px;
+  -webkit-transition: all 0.8s ease-in-out;
+  transition: all 0.8s ease-in-out;
+  width: 30px;
+}
+
+.input:focus {
+  background: radial-gradient(ellipse at top left, transparent 65%, hotpink 140%);
+  border-radius: 0 15px 15px 0;
+  width: 250px;
+}
+
+.input:focus ~ button.btn-search {
+  background: hotpink;
+  color: #fff;
+  left: 222px;
+  -webkit-transform: rotate(720deg);
+          transform: rotate(720deg);
+}
+
+.input:focus ~ button.btn-reset {
+  left: 256px;
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
 .header .topbar {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -586,6 +624,12 @@ footer .subscribe-form button {
   opacity: 0.7;
 }
 
+.header .btn-search {
+  border: none;
+  background: transparent;
+  color: #333333;
+}
+
 .minimized-header {
   z-index: 3;
   display: -webkit-box;
@@ -670,6 +714,7 @@ footer .subscribe-form button {
   }
 }
 
+/** SEARCH Button---------------------------*/
 #sidenav {
   position: fixed;
   top: 0;
@@ -937,9 +982,12 @@ aside .recommendation .recommended-post .recommended-post-title a {
   padding: 1rem 0;
 }
 
-.highlight-container .left .card img {
+.highlight-container .left .card .image img {
   margin: 0 1rem;
   float: right;
+  max-height: 320px;
+  -o-object-fit: center;
+     object-fit: center;
 }
 
 .highlight-container .left .card:nth-child(1) {

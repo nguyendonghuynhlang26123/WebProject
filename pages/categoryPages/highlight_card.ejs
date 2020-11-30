@@ -1,5 +1,5 @@
 <% if (post) { %>
-<div class="card">
+<a href="<%= "/post/" + post._id%>" class="div card">
   <div class="image"><img src="<%= post.post_thumbnail %>" alt="" /></div>
   <h2 class="card_title"><%= post.post_title %></h2>
   <div class="card_detail">
@@ -9,5 +9,5 @@
       post.post_author.first_name + " " + post.post_author.last_name %></span
     >
   </div>
-</div>
+</a>
 <% } %>
