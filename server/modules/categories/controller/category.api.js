@@ -11,6 +11,7 @@ router.get("/:categorySlug", async function (req, res, next) {
     const posts = await postService.getAllPost(
       {
         post_category: category._id,
+        post_status: "Publish",
       },
       req.query.select,
       Number(req.query.n_post)
