@@ -19,7 +19,7 @@ async function getPostById(postId) {
 async function getAllPost(filter, select, limit) {
   const posts = await Post.find(
     filter,
-    { post_content: 0, post_thumbnail_description: 0, post_status: 0 },
+    { post_content: 0, post_thumbnail_description: 0, post_status: 0, post_category: 0, post_tags: 0 },
     {
       limit: limit,
       populate: { path: "post_author", select: "first_name last_name" },
