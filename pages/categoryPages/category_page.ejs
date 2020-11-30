@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('../head/head', {link: "/style/css/category_page.css" }); %>
-  </head>
-  <body>
-    <!-- ---------- HEADER------------------------ -->
-    <%- include('../post/minimizedHeader/minimizedHeader',
-    {btn_label:"Subscribe"}); %>
-    <!--  -->
-    <%- include('../modal-popup/sidenav'); %>
-    <!-- ----------- Article -------------------- -->
-    <div class="container">
-      <%- include('highlights') %> <%- include('listpost') %>
-    </div>
-    <!-- ------------- FOOTER ------------------- -->
-    <%- include('../footer/footer'); %>
 
-    <!-- SCripts -->
-    <script src="js/sidenav.js"></script>
-  </body>
+<head>
+  <%- include('../head/head', {link: "/style/css/category_page.css" }); %>
+</head>
+
+<body>
+  <!-- ---------- HEADER------------------------ -->
+  <%- include('../post/minimizedHeader/minimizedHeader',
+    {btn_label:"Subscribe"}); %>
+  <!--  -->
+  <%- include('../modal-popup/sidenav'); %>
+  <!-- ----------- Article -------------------- -->
+  <div class="container">
+    <%- include('highlights') %>
+    <%- include('listpost') %>
+  </div>
+  <!-- ------------- FOOTER ------------------- -->
+  <%- include('../footer/footer'); %>
+
+  <!-- SCripts -->
+  <script src="js/sidenav.js"></script>
+</body>
+
 </html>

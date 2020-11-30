@@ -15,7 +15,10 @@ router.get("/:categorySlug", async function (req, res, next) {
       req.query.select,
       Number(req.query.n_post)
     );
-    res.send(posts);
+    res.render("categoryPages/category_page", {
+      category: category,
+      posts: posts,
+    });
   } catch (err) {
     next(err);
   }
