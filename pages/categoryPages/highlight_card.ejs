@@ -1,13 +1,11 @@
 <% if (post) { %>
-<a href="<%= "/post/" + post._id%>" class="div card">
-  <div class="image"><img src="<%= post.post_thumbnail %>" alt="" /></div>
-  <h2 class="card_title"><%= post.post_title %></h2>
-  <div class="card_detail">
-    <p><%= post.post_description %></p>
-    <span class="date"
-      ><%= new Date(Date.now() - post.post_date).toLocaleString() %> - By <%=
-      post.post_author.first_name + " " + post.post_author.last_name %></span
-    >
-  </div>
+<a href="<%="/post/" + post._id %>" class="div card">
+    <div class="image"><img src="<%= post.post_thumbnail %>" alt="" /></div>
+    <h2 class="card_title"><%= post.post_title %></h2>
+    <div class="card_detail">
+        <p><%= post.post_description %></p>
+        <span class="date"><%= new Date(post.post_date).toLocaleString() %> - By <%=
+      post.post_author.first_name + " " + post.post_author.last_name %></span>
+    </div>
 </a>
 <% } %>
