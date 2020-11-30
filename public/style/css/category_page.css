@@ -922,6 +922,10 @@ aside .recommendation .recommended-post .recommended-post-title a {
   width: 100%;
 }
 
+.highlight-container h2 {
+  margin-bottom: 0.3rem;
+}
+
 .highlight-container .left {
   border-right: 1px solid #cccccc;
   padding-right: 1rem;
@@ -956,21 +960,37 @@ aside .recommendation .recommended-post .recommended-post-title a {
 
 .highlight-container .right .card {
   position: relative;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "a a" "c d";
+  -ms-grid-columns: 70% 30%;
+      grid-template-columns: 70% 30%;
   overflow: auto;
   padding: 1rem 0;
 }
 
 .highlight-container .right .card h2 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: a;
   clear: both;
   font-size: 1.2rem;
 }
 
+.highlight-container .right .card .card_detail {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: c;
+}
+
 .highlight-container .right .card .image {
-  float: right;
-  margin: 0 1rem;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: d;
+  margin: 0.8rem;
   overflow: hidden;
-  width: 30%;
-  height: auto;
+  max-height: 8rem;
 }
 
 .highlight-container .right .card .image img {

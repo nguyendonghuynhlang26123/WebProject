@@ -40,6 +40,9 @@
   img {
     width: 100%;
   }
+  h2 {
+    margin-bottom: 0.3rem;
+  }
 
   .left {
     border-right: 1px solid $hr-border-color;
@@ -74,18 +77,26 @@
 
     .card {
       position: relative;
+      display: grid;
+      grid-template-areas:
+        "a a"
+        "c d";
+      grid-template-columns: 70% 30%;
       overflow: auto;
       padding: 1rem 0;
       h2 {
+        grid-area: a;
         clear: both;
         font-size: 1.2rem;
       }
+      .card_detail {
+        grid-area: c;
+      }
       .image {
-        float: right;
-        margin: 0 1rem;
+        grid-area: d;
+        margin: 0.8rem;
         overflow: hidden;
-        width: 30%;
-        height: auto;
+        max-height: 8rem;
         img {
           width: 150%;
         }

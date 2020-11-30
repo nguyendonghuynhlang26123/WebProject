@@ -111,13 +111,13 @@
 @media #{$desktop} {
   .image-style-side {
     float: right;
-    margin-left: var(--ck-image-style-spacing);
+    margin-left: var(--ck-image-style-spacing) !important;
     max-width: 50%;
   }
   /* ckeditor5-image/theme/imagestyle.css */
   .image-style-align-left {
     float: left;
-    margin-right: var(--ck-image-style-spacing);
+    margin-right: var(--ck-image-style-spacing) !important;
   }
   /* ckeditor5-image/theme/imagestyle.css */
   .image-style-align-center {
