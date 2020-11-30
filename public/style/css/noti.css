@@ -3,7 +3,7 @@
 }
 
 .safe {
-  color: green;
+  color: green !important;
 }
 
 @font-face {

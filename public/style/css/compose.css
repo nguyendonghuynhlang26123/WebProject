@@ -3,7 +3,7 @@
 }
 
 .safe {
-  color: green;
+  color: green !important;
 }
 
 @font-face {
@@ -113,10 +113,15 @@ body {
           justify-content: space-between;
 }
 
-a {
+a,
+.a {
   text-decoration: none;
   color: #222222;
   font-family: "PT Serif";
+}
+
+a.div {
+  display: block;
 }
 
 hr {
@@ -269,7 +274,7 @@ ul li {
 }
 
 .safe {
-  color: green;
+  color: green !important;
 }
 
 .header .topbar {
@@ -405,6 +410,7 @@ ul li {
   padding: 0.3rem 1rem;
   border: none;
   background-color: #d8d8d8;
+  font-family: "Roboto";
 }
 
 .header .topbar #btn-login:hover {
@@ -787,6 +793,12 @@ ul li {
   font-size: 24px;
 }
 
+@media (max-width: 767px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
 p {
   margin-bottom: 1rem;
   line-height: 1.5rem;
@@ -843,5 +855,27 @@ main.wrapper .editor {
 
 .modal-content .proceed {
   background-color: green;
+}
+
+#menu [publish] {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .minimized-header {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .minimized-header > div:first-child {
+    width: auto;
+  }
+  #menu [publish] {
+    display: block;
+  }
+  .wrapper {
+    margin-left: 1.3rem;
+  }
 }
 /*# sourceMappingURL=compose.css.map */

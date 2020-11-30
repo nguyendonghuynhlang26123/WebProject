@@ -4,6 +4,9 @@
 @import "sidenav";
 
 /** GLOBAL---------------------------*/
+a.div {
+  display: block;
+}
 .container {
   width: 100%;
   margin: 1.5rem 0;
@@ -38,11 +41,11 @@ ul.post-list {
 
 .img-card {
   position: relative;
-  > img {
+  img {
     width: 100%;
   }
 
-  > .img-title {
+  .img-title {
     font-weight: bold;
     font-family: ($article-title-font);
     @media (max-width: 1200px) {
@@ -52,7 +55,7 @@ ul.post-list {
 }
 
 .img-card.box {
-  > .img-title {
+  .img-title {
     background: ($bg-color);
     padding: 0.2rem 1rem;
     width: 80%;
@@ -177,7 +180,7 @@ ul.post-list {
       line-height: 1.5;
     }
 
-    a.redirect-link {
+    .redirect-link {
       text-align: end;
       position: absolute;
       bottom: 0;
@@ -224,6 +227,8 @@ ul.post-list {
       }
       .img-title {
         font-size: 0.8rem;
+        p {
+        }
       }
     }
   }
@@ -236,18 +241,24 @@ ul.post-list {
 }
 
 #world-news {
-  display: grid;
-  grid-template-rows: repeat(auto-fit, minmax(10rem, 1fr));
-
-  .world-news-row {
+  .content {
     display: grid;
-    grid-template-columns: 0.8fr 1fr;
-    column-gap: 1rem;
-    > div {
-      padding-right: 1rem;
-      border-right: 1px solid ($hr-border-color);
+    grid-template-rows: repeat(auto-fit, minmax(10rem, 1fr));
+
+    .world-news-row {
       display: grid;
-      grid-template-rows: repeat(auto-fit, minmax(3rem, 1fr));
+      grid-template-columns: 0.8fr 1fr;
+      column-gap: 1rem;
+      > div {
+        padding-right: 1rem;
+        border-right: 1px solid ($hr-border-color);
+        display: grid;
+        grid-template-rows: repeat(auto-fit, minmax(3rem, 1fr));
+
+        .category-holder {
+          margin: 1rem 0;
+        }
+      }
     }
   }
 }
@@ -380,7 +391,7 @@ ul.post-list {
 
     #sport-news {
       padding: 0;
-      > .post-list {
+      .post-list {
         display: block;
         padding: 0 1rem;
       }

@@ -3,7 +3,7 @@
 }
 
 .safe {
-  color: green;
+  color: green !important;
 }
 
 @font-face {
@@ -113,10 +113,15 @@ body {
           justify-content: space-between;
 }
 
-a {
+a,
+.a {
   text-decoration: none;
   color: #222222;
   font-family: "PT Serif";
+}
+
+a.div {
+  display: block;
 }
 
 hr {

@@ -3,7 +3,7 @@
 }
 
 .safe {
-  color: green;
+  color: green !important;
 }
 
 @font-face {
@@ -113,10 +113,15 @@ body {
           justify-content: space-between;
 }
 
-a {
+a,
+.a {
   text-decoration: none;
   color: #222222;
   font-family: "PT Serif";
+}
+
+a.div {
+  display: block;
 }
 
 hr {
@@ -269,7 +274,7 @@ ul li {
 }
 
 .safe {
-  color: green;
+  color: green !important;
 }
 
 footer {
@@ -438,7 +443,7 @@ footer .subscribe-form button {
 }
 
 .safe {
-  color: green;
+  color: green !important;
 }
 
 .header .topbar {
@@ -574,6 +579,7 @@ footer .subscribe-form button {
   padding: 0.3rem 1rem;
   border: none;
   background-color: #d8d8d8;
+  font-family: "Roboto";
 }
 
 .header .topbar #btn-login:hover {

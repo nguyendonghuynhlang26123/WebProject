@@ -34,11 +34,17 @@ body {
   justify-content: space-between;
 }
 
-a {
+a,
+.a {
   text-decoration: none;
   color: #222222;
   font-family: ($article-link-font);
 }
+
+a.div {
+  display: block;
+}
+
 hr {
   border: none;
   margin: 0 1rem;
