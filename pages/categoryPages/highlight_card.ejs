@@ -1,6 +1,6 @@
 <% if (post) { %>
 <a href="<%="/post/" + post._id %>" class="div card">
-    <div class="image"><img src="<%= post.post_thumbnail %>" alt="" /></div>
+    <div class="image"><img src="<%= post.post_thumbnail %>" alt="" loading="lazy" /></div>
     <h2 class="card_title"><%= post.post_title %></h2>
     <div class="card_detail">
         <p><%= post.post_description %></p>

@@ -53,9 +53,9 @@
       overflow: auto;
       padding: 1rem 0;
       .image {
+        float: right;
+        margin: 0 1rem;
         img {
-          margin: 0 1rem;
-          float: right;
           max-height: 320px;
           object-fit: center;
         }
@@ -63,13 +63,13 @@
 
       &:nth-child(1) {
         border-bottom: 1px solid $hr-border-color;
-        img {
+        .image {
           width: 60%;
         }
       }
 
       &:nth-child(2) {
-        img {
+        .image {
           width: 40%;
         }
       }
@@ -181,28 +181,74 @@
       }
 
       & > div {
-        display: flex;
-        align-items: center;
-        flex-direction: row-reverse;
-      }
-      h2 {
-        font-size: 1.2rem;
-      }
+        display: grid;
+        grid-template-columns: 70% 30%;
+        width: 100%;
 
-      p {
-        font-size: 1rem;
-      }
-      .image {
-        float: right;
-        overflow: hidden;
-        width: 20rem;
-        height: 8rem;
-        object-fit: center;
-        margin-left: 10px;
-        img {
-          height: 100%;
+        h2 {
+          font-size: 1.2rem;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+        .image {
+          float: right;
+          overflow: hidden;
+          height: 8rem;
+          width: 100%;
+          object-fit: center;
+          margin-left: 10px;
+          img {
+            width: 100%;
+          }
+        }
+
+        .post-details {
         }
       }
     }
+  }
+}
+
+@media #{$tablet} {
+  .highlight-container {
+    .right .card {
+      display: block;
+    }
+  }
+
+  #listpost .list_wrapper .post {
+    display: block;
+  }
+}
+
+@media #{$smartphone} {
+  .highlight-container {
+    display: block;
+    .image {
+      margin: 0 !important;
+      float: none !important;
+      width: 100% !important;
+    }
+    .left {
+      border: none;
+      padding-right: 0;
+    }
+  }
+
+  #listpost .list_wrapper {
+    &,
+    .post,
+    .post > div,
+    .post > div .post {
+      display: block;
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+
+  #listpost .list_wrapper .post > div .image {
+    float: none;
   }
 }

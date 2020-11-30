@@ -5,9 +5,6 @@
   </span>
 
   <div>
-    <div class="image">
-      <img src="<%= post.post_thumbnail %>" alt="" />
-    </div>
     <div class="post_detail">
       <h2 class="post_title">
         <%= post.post_title %>
@@ -18,6 +15,9 @@
       <span class="date">By <%=
         post.post_author.first_name + " " + post.post_author.last_name %>
       </span>
+    </div>
+    <div class="image">
+      <img src="<%= post.post_thumbnail %>" alt="" loading="lazy" />
     </div>
   </div>
 </a>

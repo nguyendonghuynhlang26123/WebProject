@@ -1,37 +1,30 @@
 .search-input {
-  display: none !important;
-
-  &.active {
-    display: inline !important;
-  }
-}
-
-.input {
   background: none;
   border-color: #000;
-  border-radius: 15px;
   border-width: 0 0 1px;
   transition: all 0.8s ease-in-out;
-  width: 30px;
+  width: 0px;
+
+  ~ label {
+    width: auto;
+    transition: 0.3s width ease;
+    overflow: hidden;
+  }
+
   &:focus {
-    background: radial-gradient(
-      ellipse at top left,
-      transparent 65%,
-      hotpink 140%
-    );
+    outline: none;
     border-radius: 0 15px 15px 0;
     width: 250px;
     ~ button {
       &.btn-search {
-        background: hotpink;
         color: #fff;
         left: 222px;
         transform: rotate(720deg);
       }
-      &.btn-reset {
-        left: 256px;
-        transform: rotate(360deg);
-      }
+    }
+
+    ~ label {
+      width: 0;
     }
   }
 }

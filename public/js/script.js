@@ -33,4 +33,4 @@ window.addEventListener("load", () => {
 });
 
 /** SEARCH BUTTON ---------------------------*/
-document.querySelector(".search");
+SearchButton("btn-search", "search-input");

@@ -1,5 +1,6 @@
 @import "variables";
 @import "search_box";
+
 .header {
   .topbar {
     justify-content: space-between;
@@ -113,6 +114,9 @@
     border: none;
     background: transparent;
     color: ($footer-color);
+
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -129,7 +133,7 @@
   }
 
   > div:first-child {
-    width: 6rem;
+    min-width: 6rem;
     padding: 0 0.5rem;
     display: flex;
     justify-content: space-around;
@@ -145,6 +149,10 @@
   }
 
   #page-title {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
     a {
       font-family: $page-title-font;
       font-size: 1.2rem;

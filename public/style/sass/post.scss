@@ -104,6 +104,9 @@
       .post-author {
         text-align: right;
         font-weight: bold;
+        img {
+          max-width: 100% !important;
+        }
       }
     }
   }
@@ -127,7 +130,7 @@
   /* ckeditor5-image/theme/imagestyle.css */
   .image-style-align-right {
     float: right;
-    margin-left: var(--ck-image-style-spacing);
+    margin-left: var(--ck-image-style-spacing) !important;
   }
   /* ckeditor5-image/theme/image.css */
   .image {

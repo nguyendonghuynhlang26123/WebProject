@@ -278,41 +278,36 @@ ul li {
 }
 
 .search-input {
-  display: none !important;
-}
-
-.search-input.active {
-  display: inline !important;
-}
-
-.input {
   background: none;
   border-color: #000;
-  border-radius: 15px;
   border-width: 0 0 1px;
   -webkit-transition: all 0.8s ease-in-out;
   transition: all 0.8s ease-in-out;
-  width: 30px;
+  width: 0px;
 }
 
-.input:focus {
-  background: radial-gradient(ellipse at top left, transparent 65%, hotpink 140%);
+.search-input ~ label {
+  width: auto;
+  -webkit-transition: 0.3s width ease;
+  transition: 0.3s width ease;
+  overflow: hidden;
+}
+
+.search-input:focus {
+  outline: none;
   border-radius: 0 15px 15px 0;
   width: 250px;
 }
 
-.input:focus ~ button.btn-search {
-  background: hotpink;
+.search-input:focus ~ button.btn-search {
   color: #fff;
   left: 222px;
   -webkit-transform: rotate(720deg);
           transform: rotate(720deg);
 }
 
-.input:focus ~ button.btn-reset {
-  left: 256px;
-  -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
+.search-input:focus ~ label {
+  width: 0;
 }
 
 .header .topbar {
@@ -459,6 +454,12 @@ ul li {
   border: none;
   background: transparent;
   color: #333333;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .minimized-header {
@@ -484,7 +485,7 @@ ul li {
 }
 
 .minimized-header > div:first-child {
-  width: 6rem;
+  min-width: 6rem;
   padding: 0 0.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -506,6 +507,14 @@ ul li {
   color: #333333;
   border: none;
   background: transparent;
+}
+
+.minimized-header #page-title {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 .minimized-header #page-title a {
@@ -752,7 +761,7 @@ aside .recommendation .recommended-post .recommended-post-title .date {
   text-align: left;
 }
 
-aside .recommendation .recommended-post .recommended-post-title a {
+aside .recommendation .recommended-post .recommended-post-title .a {
   font-weight: bold;
 }
 
@@ -767,9 +776,8 @@ aside .recommendation .recommended-post .recommended-post-title a {
   aside .recommendation .recommended-post .date {
     font-size: 0.6rem;
   }
-  aside .recommendation .recommended-post a {
+  aside .recommendation .recommended-post .a {
     font-size: 0.7rem;
-    line-height: 0.7;
   }
 }
 
@@ -783,7 +791,7 @@ aside .recommendation .recommended-post .recommended-post-title a {
   aside .recommendation .recommended-post .date {
     font-size: 0.6rem;
   }
-  aside .recommendation .recommended-post a {
+  aside .recommendation .recommended-post .a {
     font-size: 0.7rem;
   }
 }
@@ -794,6 +802,7 @@ aside .recommendation .recommended-post .recommended-post-title a {
   left: 0;
   width: 0;
   height: 100vh;
+  max-width: 160px;
   -webkit-transition: width ease 600ms;
   transition: width ease 600ms;
   background: white;
@@ -849,6 +858,7 @@ aside .recommendation .recommended-post .recommended-post-title a {
 }
 
 #sidenav ul li {
+  white-space: nowrap;
   padding: 7px;
   font-family: "Merriweather";
   font-weight: bold;
@@ -871,11 +881,8 @@ aside .recommendation .recommended-post .recommended-post-title a {
   50% {
     width: 5vw;
   }
-  75% {
-    width: 10vw;
-  }
   100% {
-    min-width: 20vw;
+    min-width: minmax(10vw, 160px);
     width: auto;
   }
 }
@@ -887,11 +894,8 @@ aside .recommendation .recommended-post .recommended-post-title a {
   50% {
     width: 5vw;
   }
-  75% {
-    width: 10vw;
-  }
   100% {
-    min-width: 20vw;
+    min-width: minmax(10vw, 160px);
     width: auto;
   }
 }
@@ -1046,6 +1050,10 @@ aside .recommendation .recommended-post .recommended-post-title a {
   font-weight: bold;
 }
 
+.post-container .grid-wrapper .post-content .post-author img {
+  max-width: 100% !important;
+}
+
 @media (min-width: 1024px) {
   .image-style-side {
     float: right;
@@ -1065,7 +1073,7 @@ aside .recommendation .recommended-post .recommended-post-title a {
   /* ckeditor5-image/theme/imagestyle.css */
   .image-style-align-right {
     float: right;
-    margin-left: var(--ck-image-style-spacing);
+    margin-left: var(--ck-image-style-spacing) !important;
   }
   /* ckeditor5-image/theme/image.css */
   .image {
