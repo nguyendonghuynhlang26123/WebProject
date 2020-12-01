@@ -1045,6 +1045,10 @@ aside .recommendation .recommended-post .recommended-post-title .a {
   word-break: break-all;
 }
 
+.post-container .grid-wrapper .post-content p a {
+  font-style: italic;
+}
+
 .post-container .grid-wrapper .post-content .post-author {
   text-align: right;
   font-weight: bold;

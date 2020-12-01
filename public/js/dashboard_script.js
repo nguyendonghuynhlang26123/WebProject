@@ -111,10 +111,11 @@ cards.forEach((c) => {
   });
 });
 
-const threeDots = document.querySelectorAll(".left_clickable svg");
-threeDots.forEach((dot) => {
+const threeDots = document.querySelectorAll('.left_clickable svg');
+threeDots.forEach((dot) => { 
   dot.addEventListener("click", (ev) => {
-    console.log(ev.target.closest(".card").getAttribute("data-value"));
+    selectedCardId = ev.target.closest(".card").getAttribute("id");
+    console.log(selectedCardId);
   });
 });
 
