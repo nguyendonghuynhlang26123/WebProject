@@ -1,5 +1,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const slug = require("mongoose-slug-updater");
+const options = {
+  separator: "-",
+  lang: "en",
+  truncate: 120,
+};
+mongoose.plugin(slug, options);
 
 const PostSchema = new Schema({
   post_title: { type: String, default: "Untitled" },
@@ -25,6 +32,12 @@ const PostSchema = new Schema({
     type: String,
     enum: ["Published", "Draft", "Trash"],
     default: "Draft",
+  },
+  slug: {
+    type: String,
+    slug: "post_title",
+    slugPaddingSize: 3,
+    slugOn: { updateMany: false, findOneAndUpdate: false },
   },
 });
 

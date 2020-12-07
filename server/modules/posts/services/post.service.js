@@ -2,6 +2,7 @@ const Post = require("../../../models/post.schema");
 
 async function createPost(post_author) {
   let data = {
+    post_title: "Untitled",
     post_author: post_author,
   };
   post = await Post.create(data);
@@ -16,10 +17,24 @@ async function getPostById(postId) {
   return post;
 }
 
+async function getPostBySlug(postSlug) {
+  const post = await Post.findOne({ slug: postSlug }).populate(
+    "post_category post_author _id",
+    "first_name last_name category_name category_slug"
+  );
+  return post;
+}
+
 async function getAllPost(filter, select, limit) {
   const posts = await Post.find(
     filter,
-    { post_content: 0, post_thumbnail_description: 0, post_status: 0, post_category: 0, post_tags: 0 },
+    {
+      post_content: 0,
+      post_thumbnail_description: 0,
+      post_status: 0,
+      post_category: 0,
+      post_tags: 0,
+    },
     {
       limit: limit,
       populate: { path: "post_author", select: "first_name last_name" },
@@ -64,4 +79,5 @@ module.exports = {
   deletePost: deletePost,
   updatePostById: updatePostById,
   delCategoryId: delCategoryId,
+  getPostBySlug: getPostBySlug,
 };

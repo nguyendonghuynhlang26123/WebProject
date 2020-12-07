@@ -3,12 +3,12 @@ const categoryService = require("../../categories/services/category.service");
 const authService = require("../../auth/services/auth.service");
 const userService = require("../../users/services/user.service");
 const express = require("express");
-const { get } = require("mongoose");
 const router = express.Router();
 
-router.get("/:postId", async function (req, res, next) {
+router.get("/:postSlug", async function (req, res, next) {
   try {
-    const post = await postService.getPostById(req.params.postId);
+    const post = await postService.getPostBySlug(req.params.postSlug);
+    if (!post) post = await postService.getPostById(req.params.postSlug);
     if (req.session.userId && req.session.userId == post.post_author._id) {
       if (req.query.mode == "preview") {
         res.render("post/post", {
@@ -32,11 +32,12 @@ router.get("/:postId", async function (req, res, next) {
 });
 
 router.get(
-  "/:postId/edit",
+  "/:postSlug/edit",
   authService.restrict,
   async function (req, res, next) {
     try {
-      const post = await postService.getPostById(req.params.postId);
+      const post = await postService.getPostBySlug(req.params.postSlug);
+      if (!post) post = await postService.getPostById(req.params.postSlug);
       if (req.session.userId && req.session.userId == post.post_author._id) {
         const categoryLists = await categoryService.getAllCategory();
         res.render("compose/compose", { cateList: categoryLists, post: post });
