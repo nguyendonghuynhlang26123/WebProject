@@ -78,7 +78,7 @@ router.post("/", authService.restrict, async function (req, res) {
 });
 
 router.put("/:postId", async function (req, res, next) {
-  console.log("PUT REQ RECEIVED", req.body);
+  //console.log("PUT REQ RECEIVED", req.body);
   try {
     const result = await postService.updatePostById(
       req.params.postId,
