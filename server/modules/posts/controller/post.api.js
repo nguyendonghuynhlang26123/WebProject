@@ -7,8 +7,8 @@ const router = express.Router();
 
 router.get("/:postSlug", async function (req, res, next) {
   try {
-    const post = await postService.getPostBySlug(req.params.postSlug);
-    if (!post) post = await postService.getPostById(req.params.postSlug);
+    //const post = await postService.getPostBySlug(req.params.postSlug);
+    const post = await postService.getPostById(req.params.postSlug);
     if (req.session.userId && req.session.userId == post.post_author._id) {
       if (req.query.mode == "preview") {
         res.render("post/post", {
@@ -36,8 +36,8 @@ router.get(
   authService.restrict,
   async function (req, res, next) {
     try {
-      const post = await postService.getPostBySlug(req.params.postSlug);
-      if (!post) post = await postService.getPostById(req.params.postSlug);
+      //const post = await postService.getPostBySlug(req.params.postSlug);
+      const post = await postService.getPostById(req.params.postSlug);
       if (req.session.userId && req.session.userId == post.post_author._id) {
         const categoryLists = await categoryService.getAllCategory();
         res.render("compose/compose", { cateList: categoryLists, post: post });
