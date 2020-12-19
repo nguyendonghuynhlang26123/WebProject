@@ -59,9 +59,11 @@
                   </li>
                   <% categories.forEach(cate => { %>
                   <li>
-                    <label for="<%= cate.category_name %>"
+                    <label
+                      for="<%= cate._id %>"
+                      name="<%= cate.category_name %>"
                       ><input
-                        id="<%= cate.category_name %>"
+                        id="<%= cate._id %>"
                         name="<%= cate.category_name %>"
                         type="checkbox"
                       />

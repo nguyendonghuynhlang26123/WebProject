@@ -38,6 +38,11 @@ class PostListController {
   };
 
   render = (postArr) => {
+    console.log(
+      'log ~ file: post-list.js ~ line 41 ~ PostListController ~ render',
+      postArr
+    );
+
     let element = document.getElementById(this.containerId);
     element.innerHTML = '';
 

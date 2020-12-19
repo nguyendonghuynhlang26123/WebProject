@@ -1,42 +1,42 @@
-const postService = require("../services/post.service");
-const categoryService = require("../../categories/services/category.service");
-const authService = require("../../auth/services/auth.service");
-const userService = require("../../users/services/user.service");
-const express = require("express");
+const postService = require('../services/post.service');
+const categoryService = require('../../categories/services/category.service');
+const authService = require('../../auth/services/auth.service');
+const userService = require('../../users/services/user.service');
+const express = require('express');
 const router = express.Router();
 
-router.get("/slug/:postSlug", async function (req, res, next) {
+router.get('/slug/:postSlug', async function (req, res, next) {
   try {
     const post = await postService.getPostBySlug(req.params.postSlug);
-    res.render("post/post", {
-      link: "/style/css/post.css",
+    res.render('post/post', {
+      link: '/style/css/post.css',
       post: post,
-      btn_label: "Subscribe",
+      btn_label: 'Subscribe',
     });
   } catch (err) {
     next(err);
   }
 });
 
-router.get("/:postId", async function (req, res, next) {
+router.get('/:postId', async function (req, res, next) {
   try {
     const post = await postService.getPostById(req.params.postId);
     if (req.session.userId && req.session.userId == post.post_author._id) {
-      if (req.query.mode == "preview") {
-        res.render("post/post", {
-          link: "/style/css/post.css",
+      if (req.query.mode == 'preview') {
+        res.render('post/post', {
+          link: '/style/css/post.css',
           post: post,
-          btn_label: "Edit this post",
+          btn_label: 'Edit this post',
         });
         return;
       }
       res.redirect(`./${post._id}/edit`);
       return;
     }
-    res.render("post/post", {
-      link: "/style/css/post.css",
+    res.render('post/post', {
+      link: '/style/css/post.css',
       post: post,
-      btn_label: "Subscribe",
+      btn_label: 'Subscribe',
     });
   } catch (err) {
     next(err);
@@ -44,14 +44,14 @@ router.get("/:postId", async function (req, res, next) {
 });
 
 router.get(
-  "/:postId/edit",
+  '/:postId/edit',
   authService.restrict,
   async function (req, res, next) {
     try {
       const post = await postService.getPostById(req.params.postId);
       if (req.session.userId && req.session.userId == post.post_author._id) {
         const categoryLists = await categoryService.getAllCategory();
-        res.render("compose/compose", { cateList: categoryLists, post: post });
+        res.render('compose/compose', { cateList: categoryLists, post: post });
         return;
       }
       res.redirect(`../${post._id}`);
@@ -61,17 +61,24 @@ router.get(
   }
 );
 
-router.get("/", async function (req, res) {
-  const posts = await postService.getAllPost();
+router.get('/', async function (req, res) {
+  const posts = await postService.getAllPost(req.query);
+  console.log(req.query);
   res.send(posts);
 });
 
-router.get("/search/:key", async function (req, res) {
-  const posts = await postService.searchPost(req.params.key, {}, 10);
+router.get('/search/:key', async function (req, res) {
+  console.log('log ~ file: post.api.js ~ line 70 ~ req', req.query);
+  const posts = await postService.searchPost(
+    req.params.key,
+    req.query.category,
+    req.query.order_by,
+    10
+  );
   res.send(posts);
 });
 
-router.get("/tag/:tagName", async function (req, res, next) {
+router.get('/tag/:tagName', async function (req, res, next) {
   try {
     console.log(req.params.tagName);
     const posts = await postService.getAllPost(
@@ -87,14 +94,13 @@ router.get("/tag/:tagName", async function (req, res, next) {
   }
 });
 
-router.post("/", authService.restrict, async function (req, res) {
+router.post('/', authService.restrict, async function (req, res) {
   const post = await postService.createPost(req.session.userId);
   userService.addPostId(req.session.userId, post._id);
-  res.redirect("./" + post._id + "/edit");
+  res.redirect('./' + post._id + '/edit');
 });
 
-router.put("/:postId", async function (req, res, next) {
-  //console.log("PUT REQ RECEIVED", req.body);
+router.put('/:postId', async function (req, res, next) {
   try {
     const result = await postService.updatePostById(
       req.params.postId,
@@ -107,15 +113,15 @@ router.put("/:postId", async function (req, res, next) {
 });
 
 router.delete(
-  "/:postId",
+  '/:postId',
   authService.restrict,
   async function (req, res, next) {
     try {
-      console.log("Delete req received");
+      console.log('Delete req received');
       const post = await postService.getPostById(req.params.postId);
 
       if (!post || post.post_author._id != req.session.userId)
-        return next({ message: "Access Denied" });
+        return next({ message: 'Access Denied' });
 
       let result = await postService.deletePost(req.params.postId);
       result = await userService.delPostId(req.session.userId, post._id);

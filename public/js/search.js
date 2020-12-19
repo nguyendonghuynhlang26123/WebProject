@@ -28,29 +28,40 @@ document.querySelectorAll('input[type="checkbox"]').forEach((box) => {
       document
         .querySelectorAll('input[type="checkbox"]')
         .forEach((cb) => (cb.checked = false));
-      addFilter('any');
+      addFilter('any', 'any');
       ev.target.checked = true;
     });
   else {
     box.addEventListener('change', (ev) => {
       document.getElementById('any').checked = false;
-      addFilter(ev.target.id);
+
+      if (ev.target.checked)
+        addFilter(ev.target.id, ev.target.getAttribute('name'));
+      else removeFilter(ev.target.id);
     });
   }
 });
 
 //Display chosen filter
-const addFilter = (filter) => {
+const addFilter = (id, filter) => {
   if (filter === 'any') currentFilter = [];
-  else currentFilter.push(filter);
+  else currentFilter.push({ id: id, name: filter });
   displayFilterText();
   //TODO: SEND REQUEST
+  searchAndRender(document.querySelector('[data-input-search]').value);
+};
+
+const removeFilter = (id) => {
+  currentFilter = currentFilter.filter((f) => f.id !== id);
+  displayFilterText();
+  //TODO: SEND REQUEST
+  searchAndRender(document.querySelector('[data-input-search]').value);
 };
 
 const displayFilterText = () => {
   console.log(currentFilter);
   if (currentFilter.length > 0) {
-    let txt = currentFilter.join(', ');
+    let txt = currentFilter.map((e) => e.name).join(', ');
     document.getElementById(
       'display-filter'
     ).innerHTML = `<b>Sections</b>: ${txt}`;
@@ -63,16 +74,46 @@ document
   .addEventListener('keyup', (ev) => {
     if (ev.keyCode === 13) {
       ev.preventDefault();
-      //TODO SEND REQUEST
+      searchAndRender(ev.target.value);
       console.log(ev.target.value);
     }
   });
 
 document.querySelector('[data-btn-search]').addEventListener('click', (ev) => {
   ev.preventDefault();
-  //TODO: SEND REQUEST
-  console.log(document.querySelector('[data-input-search]').value);
+  searchAndRender(document.querySelector('[data-input-search]').value);
 });
+
+//FN
+const searchAndRender = (key) => {
+  let categoryURI =
+    currentFilter.length === 0
+      ? ''
+      : `category=${currentFilter.map((e) => e.id).join('&category=')}`;
+  console.log(
+    'log ~ file: search.js ~ line 79 ~ searchAndRender ~ categoryURI',
+    categoryURI
+  );
+
+  fetch(`/post/search/${key}?${categoryURI}&order_by=${1}`)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      controller.render(data);
+      setNumPost(data.length);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
+//Num posts
+const setNumPost = (num) => {
+  document.getElementById(
+    'num_result'
+  ).textContent = `Showing ${num} results for:`;
+};
 
 //List post
 let controller = new PostListController('post-list');
@@ -81,9 +122,8 @@ fetch(`/category/get/international/?limit=10`)
     return response.json();
   })
   .then((data) => {
-    console.log('log ~ file: category-page.js ~ line 30 ~ .then ~ data', data);
-    if (data.length >= 10) controller.render(data.slice(4));
-    else controller.render(data);
+    controller.render(data);
+    setNumPost(data.length);
   })
   .catch((err) => {
     console.error(err);
