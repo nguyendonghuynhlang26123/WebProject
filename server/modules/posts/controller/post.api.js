@@ -78,6 +78,18 @@ router.get('/search/:key', async function (req, res) {
   res.send(posts);
 });
 
+router.get('/searchPost/query', async function (req, res) {
+  console.log(req.query);
+  const result = await postService.searchPostPage(
+    req.query.key,
+    req.query.category,
+    req.query.order_by,
+    req.query.perPage,
+    req.query.page,
+  );
+  res.send(result);
+});
+
 router.get('/tag/:tagName', async function (req, res, next) {
   try {
     console.log(req.params.tagName);
