@@ -14,8 +14,9 @@ router.get('/:categorySlug', async function (req, res, next) {
         post_status: 'Publish',
       },
       req.query.select,
-      Number(req.query.n_post)
+      Number(req.query.limit)
     );
+    console.log(posts.length);
     res.render('categoryPages/categoryPage', {
       category: category,
       posts: posts,
@@ -25,9 +26,23 @@ router.get('/:categorySlug', async function (req, res, next) {
   }
 });
 
-router.get('/', async function (req, res) {
-  const categorys = await categoryService.getAllCategory();
-  res.send(categorys);
+router.get('/get/:categorySlug', async function (req, res) {
+  try {
+    let category = await categoryService.getCategoryBySlug(
+      req.params.categorySlug
+    );
+    const posts = await postService.getAllPost(
+      {
+        post_category: category._id,
+        post_status: 'Publish',
+      },
+      req.query.select,
+      Number(req.query.limit)
+    );
+    res.json(posts);
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.post('/', async function (req, res) {

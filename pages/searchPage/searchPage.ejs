@@ -11,11 +11,11 @@
     <div id="search-form">
       <div class="container">
         <div class="form">
-          <p class="num_result">Showing 636,972 results for:</p>
+          <p id="num_result">Showing 636,972 results for:</p>
           <div class="form-container">
             <div class="input">
-              <input type="text" placeholder="Search" />
-              <button>
+              <input data-input-search type="text" placeholder="Search" />
+              <button data-btn-search>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="24"
@@ -45,10 +45,26 @@
                   <li>
                     <h2>Section</h2>
                   </li>
+                  <li>
+                    <label for="any"
+                      ><input
+                        id="any"
+                        checked
+                        name="any"
+                        type="checkbox"
+                        data-any
+                      />
+                      <span>Any</span>
+                    </label>
+                  </li>
                   <% categories.forEach(cate => { %>
                   <li>
                     <label for="<%= cate.category_name %>"
-                      ><input id="<%= cate.category_name %>" type="checkbox" />
+                      ><input
+                        id="<%= cate.category_name %>"
+                        name="<%= cate.category_name %>"
+                        type="checkbox"
+                      />
                       <span><%= cate.category_name %></span>
                     </label>
                   </li>
@@ -61,15 +77,19 @@
       </div>
     </div>
 
+    <div class="list_wrapper container">
+      <div><p id="display-filter"></p></div>
+      <ul id="post-list"></ul>
+      <div id="pagination-wrapper"></div>
+    </div>
+
     <!-- ------------- FOOTER ------------------- -->
     <%- include('../footer/footer'); %>
 
     <!-- SCripts -->
     <script src="/js/sidenav.js"></script>
     <script src="/js/search_btn.js"></script>
+    <script src="/js/post-list.js"></script>
     <script src="/js/search.js"></script>
-    <script>
-      SearchButton('btn-search', 'search-input');
-    </script>
   </body>
 </html>

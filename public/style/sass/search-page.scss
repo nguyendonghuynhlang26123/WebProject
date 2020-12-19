@@ -2,9 +2,10 @@
 @import 'footer';
 @import 'header';
 @import 'sidenav';
+@import 'listpost';
 
 .container {
-  max-width: 768px;
+  max-width: 1024px;
   margin: 1rem auto;
 }
 
@@ -157,5 +158,17 @@
         display: block;
       }
     }
+  }
+}
+
+.list_wrapper {
+  display: block;
+  #display-filter {
+    font-family: 'PT Serif';
+    font-size: 0.9rem;
+    color: #666666;
+    padding-bottom: 0.4rem;
+    font-style: italic;
+    border-bottom: 1px solid $hr-border-color;
   }
 }

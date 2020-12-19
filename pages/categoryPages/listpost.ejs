@@ -16,23 +16,16 @@
       <a href="" class="search_label">Search</a>
       <div class="search_form">
         <!-- <input type="text" placeholder="Search"> -->
-        <span role="textbox" contenteditable="true"></span>
-        <button class="clear-btn">&times;</button>
+        <span role="textbox" contenteditable="true" data-input-search></span>
+        <button class="clear-btn" data-clear-search>&times;</button>
       </div>
     </li>
   </ul>
 
   <div class="list_wrapper">
-    <% if (posts) { %>
-    <ul>
-      <% const maxPost=posts.length> 10 ? posts.length : 10 %> <% for( let
-      index=(maxPost-10); index < maxPost; index++ ) { %> <%-
-      include('post_card', {post: posts[index] }); %> <% } %>
-    </ul>
-    <% } else { %>
-    <p>Cannot find any post</p>
-    <% } %> <%- include('../post/recommendation/recommendation' ,{label:
-    "Hottest" , displayImg: false}) %>
+    <ul id="post-list"></ul>
+    <%- include('../post/recommendation/recommendation' ,{label: "Hottest" ,
+    displayImg: false}) %>
     <div id="pagination-wrapper"></div>
   </div>
 </div>

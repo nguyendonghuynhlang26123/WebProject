@@ -6,15 +6,15 @@ function createElementFromHTML(htmlString) {
 }
 
 class PostListController {
-  constructor(apiRoute) {
-    this.endPoint = apiRoute;
+  constructor(containerId) {
+    this.containerId = containerId;
   }
 
   createNode = (post) => {
     return createElementFromHTML(`
       <a href=" ${'/post/' + post._id}" class="div post">
       <span class="date">
-        ${new Date(post.post_date).toLocaleDateString()} %>
+        ${new Date(post.post_date).toLocaleDateString()}  
       </span>
 
       <div>
@@ -33,29 +33,16 @@ class PostListController {
           <img src="${post.post_thumbnail}" alt="" loading="lazy" />
         </div>
       </div>
-      a>
+      </a>
     `);
   };
+
+  render = (postArr) => {
+    let element = document.getElementById(this.containerId);
+    element.innerHTML = '';
+
+    postArr.forEach((post) => {
+      element.appendChild(this.createNode(post));
+    });
+  };
 }
-
-/* 
-
-<a href="" class="div post">
-  <span class="date">
-  </span>
-
-  <div>
-    <div class="post_detail">
-      <h2 class="post_title">
-      </h2>
-      <p>
-      </p>
-      <span class="date">
-      </span>
-    </div>
-    <div class="image">
-    </div>
-  </div>
-</a>
-
-*/
