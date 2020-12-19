@@ -1,0 +1,138 @@
+@import 'global';
+@import 'footer';
+@import 'header';
+@import 'sidenav';
+@import 'recommendation';
+@import 'listpost';
+
+:root {
+  font-size: 16px;
+  font-family: $post-font;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#highlight {
+  header {
+    padding: 1.4rem 0;
+    border-bottom: 2px solid black;
+    p {
+      font-size: 1rem;
+      opacity: 0.5;
+    }
+    h1 {
+      font-size: 3rem;
+      line-height: 3rem;
+      margin-top: 10px;
+      font-family: $page-title-font;
+    }
+  }
+}
+
+.highlight-container {
+  padding: 1.5rem 0;
+  display: grid;
+  grid-template-columns: 6fr 3fr;
+  grid-template-areas: 'left right';
+  img {
+    width: 100%;
+  }
+  h2 {
+    margin-bottom: 0.3rem;
+  }
+
+  .left {
+    border-right: 1px solid $hr-border-color;
+    padding-right: 1rem;
+
+    .card {
+      position: relative;
+      overflow: auto;
+      padding: 1rem 0;
+      .image {
+        float: right;
+        margin: 0 1rem;
+        img {
+          max-height: 320px;
+          object-fit: center;
+        }
+      }
+
+      &:nth-child(1) {
+        border-bottom: 1px solid $hr-border-color;
+        .image {
+          width: 60%;
+        }
+      }
+
+      &:nth-child(2) {
+        .image {
+          width: 40%;
+        }
+      }
+    }
+  }
+
+  .right {
+    padding-left: 1rem;
+
+    .card {
+      position: relative;
+      display: grid;
+      grid-template-areas:
+        'a a'
+        'c d';
+      grid-template-columns: 70% 30%;
+      overflow: auto;
+      padding: 1rem 0;
+      h2 {
+        grid-area: a;
+        clear: both;
+        font-size: 1.2rem;
+      }
+      .card_detail {
+        grid-area: c;
+      }
+      .image {
+        grid-area: d;
+        margin: 0.8rem;
+        overflow: hidden;
+        max-height: 8rem;
+        img {
+          width: 150%;
+        }
+      }
+
+      &:first-child {
+        border-bottom: 1px solid $hr-border-color;
+      }
+    }
+  }
+}
+
+@media #{$tablet} {
+  .highlight-container {
+    .right .card {
+      display: block;
+    }
+  }
+}
+
+@media #{$smartphone} {
+  .highlight-container {
+    display: block;
+    .image {
+      margin: 0 !important;
+      float: none !important;
+      width: 100% !important;
+    }
+    .left {
+      border: none;
+      padding-right: 0;
+    }
+  }
+}

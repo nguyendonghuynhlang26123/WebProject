@@ -930,7 +930,7 @@ aside .recommendation .recommended-post .recommended-post-title .a {
   }
 }
 
-#listpost .tab_list {
+.tab_list {
   position: relative;
   padding: 0 1rem;
   display: -webkit-box;
@@ -943,7 +943,7 @@ aside .recommendation .recommended-post .recommended-post-title .a {
   border-top: 2px solid black;
 }
 
-#listpost .tab_list::before {
+.tab_list::before {
   content: '';
   background: #cccccc;
   position: absolute;
@@ -953,7 +953,7 @@ aside .recommendation .recommended-post .recommended-post-title .a {
   left: 0;
 }
 
-#listpost .tab_list li {
+.tab_list li {
   padding: 0.6rem 1.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -966,11 +966,11 @@ aside .recommendation .recommended-post .recommended-post-title .a {
           justify-content: center;
 }
 
-#listpost .tab_list li a {
+.tab_list li a {
   cursor: pointer;
 }
 
-#listpost .tab_list li.active {
+.tab_list li.active {
   background-color: #f2f2f2;
   border: 1px solid #cccccc;
   border-bottom: 2px solid #f2f2f2;
@@ -981,19 +981,19 @@ aside .recommendation .recommended-post .recommended-post-title .a {
           box-shadow: 0px -3px 4px -4px black;
 }
 
-#listpost .tab_list li.active input {
+.tab_list li.active input {
   margin: 0.4rem 1.2rem;
 }
 
-#listpost .tab_list li.active .search_form {
+.tab_list li.active .search_form {
   display: block;
 }
 
-#listpost .tab_list li.active .search_label {
+.tab_list li.active .search_label {
   display: none;
 }
 
-#listpost .tab_list li .search_form {
+.tab_list li .search_form {
   min-width: 50px;
   display: none;
   -webkit-box-pack: justify;
@@ -1001,44 +1001,44 @@ aside .recommendation .recommended-post .recommended-post-title .a {
           justify-content: space-between;
 }
 
-#listpost .tab_list li .search_form > * {
+.tab_list li .search_form > * {
   font-size: 1rem;
   background: transparent;
   border: none;
   margin-left: 1rem;
 }
 
-#listpost .tab_list li .search_form > *:focus {
+.tab_list li .search_form > *:focus {
   outline: none;
 }
 
-#listpost .tab_list li .search_form span {
+.tab_list li .search_form span {
   width: 6rem;
   cursor: text;
 }
 
-#listpost .tab_list li .search_form span[contenteditable]:empty::before {
+.tab_list li .search_form span[contenteditable]:empty::before {
   content: 'Search';
   color: #cdcdcd;
   display: inline-block;
 }
 
-#listpost .tab_list li .search_form span[contenteditable]:empty:focus::before {
+.tab_list li .search_form span[contenteditable]:empty:focus::before {
   content: 'Search';
 }
 
-#listpost .tab_list li .search_form button {
+.tab_list li .search_form button {
   font-size: 1.2rem;
   padding: 0.2rem 0.4rem;
   cursor: pointer;
 }
 
-#listpost .tab_list li .search_form button:hover {
+.tab_list li .search_form button:hover {
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
 }
 
-#listpost .list_wrapper {
+.list_wrapper {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 7fr 3fr;
@@ -1046,23 +1046,23 @@ aside .recommendation .recommended-post .recommended-post-title .a {
   gap: 1rem;
 }
 
-#listpost .list_wrapper ul {
+.list_wrapper ul {
   border-right: 1px solid #cccccc;
 }
 
-#listpost .list_wrapper .recommended-post {
+.list_wrapper .recommended-post {
   display: block;
   overflow: hidden;
 }
 
-#listpost .list_wrapper .recommended-post img {
+.list_wrapper .recommended-post img {
   float: left;
   margin: 1rem;
   width: 8rem;
   height: 8rem;
 }
 
-#listpost .list_wrapper .post {
+.list_wrapper .post {
   padding: 1.2rem 0;
   padding-right: 2rem;
   border-bottom: 1px solid #cccccc;
@@ -1072,7 +1072,7 @@ aside .recommendation .recommended-post .recommended-post-title .a {
       grid-template-columns: 1fr 8fr;
 }
 
-#listpost .list_wrapper .post > span.date {
+.list_wrapper .post > span.date {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1081,7 +1081,7 @@ aside .recommendation .recommended-post .recommended-post-title .a {
           align-items: center;
 }
 
-#listpost .list_wrapper .post > div {
+.list_wrapper .post > div {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 70% 30%;
@@ -1089,15 +1089,15 @@ aside .recommendation .recommended-post .recommended-post-title .a {
   width: 100%;
 }
 
-#listpost .list_wrapper .post > div h2 {
+.list_wrapper .post > div h2 {
   font-size: 1.2rem;
 }
 
-#listpost .list_wrapper .post > div p {
+.list_wrapper .post > div p {
   font-size: 1rem;
 }
 
-#listpost .list_wrapper .post > div .image {
+.list_wrapper .post > div .image {
   float: right;
   overflow: hidden;
   height: 8rem;
@@ -1107,26 +1107,26 @@ aside .recommendation .recommended-post .recommended-post-title .a {
   margin-left: 10px;
 }
 
-#listpost .list_wrapper .post > div .image img {
+.list_wrapper .post > div .image img {
   width: 100%;
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  #listpost .list_wrapper .post {
+  .list_wrapper .post {
     display: block;
   }
 }
 
 @media (max-width: 767px) {
-  #listpost .list_wrapper,
-  #listpost .list_wrapper .post,
-  #listpost .list_wrapper .post > div,
-  #listpost .list_wrapper .post > div .post {
+  .list_wrapper,
+  .list_wrapper .post,
+  .list_wrapper .post > div,
+  .list_wrapper .post > div .post {
     display: block;
     margin-right: 0;
     margin-left: 0;
   }
-  #listpost .list_wrapper .post > div .image {
+  .list_wrapper .post > div .image {
     float: none;
   }
 }
