@@ -9,7 +9,7 @@ const options = {
 mongoose.plugin(slug, options);
 
 const PostSchema = new Schema({
-  post_title: { type: String, default: "Untitled" },
+  post_title: { type: String, default: "Untitled", text: true },
   post_description: { type: String, default: "Description" },
   post_category: {
     type: Schema.Types.ObjectId,

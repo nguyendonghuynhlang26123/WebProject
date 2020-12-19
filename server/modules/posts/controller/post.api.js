@@ -5,10 +5,22 @@ const userService = require("../../users/services/user.service");
 const express = require("express");
 const router = express.Router();
 
-router.get("/:postSlug", async function (req, res, next) {
+router.get("/slug/:postSlug", async function (req, res, next) {
   try {
-    //const post = await postService.getPostBySlug(req.params.postSlug);
-    const post = await postService.getPostById(req.params.postSlug);
+    const post = await postService.getPostBySlug(req.params.postSlug);
+    res.render("post/post", {
+      link: "/style/css/post.css",
+      post: post,
+      btn_label: "Subscribe",
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/:postId", async function (req, res, next) {
+  try {
+    const post = await postService.getPostById(req.params.postId);
     if (req.session.userId && req.session.userId == post.post_author._id) {
       if (req.query.mode == "preview") {
         res.render("post/post", {
@@ -32,12 +44,11 @@ router.get("/:postSlug", async function (req, res, next) {
 });
 
 router.get(
-  "/:postSlug/edit",
+  "/:postId/edit",
   authService.restrict,
   async function (req, res, next) {
     try {
-      //const post = await postService.getPostBySlug(req.params.postSlug);
-      const post = await postService.getPostById(req.params.postSlug);
+      const post = await postService.getPostById(req.params.postId);
       if (req.session.userId && req.session.userId == post.post_author._id) {
         const categoryLists = await categoryService.getAllCategory();
         res.render("compose/compose", { cateList: categoryLists, post: post });
@@ -52,6 +63,11 @@ router.get(
 
 router.get("/", async function (req, res) {
   const posts = await postService.getAllPost();
+  res.send(posts);
+});
+
+router.get("/search/:key", async function (req, res) {
+  const posts = await postService.searchPost(req.params.key, {}, 10);
   res.send(posts);
 });
 

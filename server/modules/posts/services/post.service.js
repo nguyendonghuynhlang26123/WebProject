@@ -72,6 +72,32 @@ async function deletePost(postId) {
   return result;
 }
 
+async function searchPost(key, select, limit) {
+  const posts = await Post.find(
+    { $text: { $search: key } },
+    {
+      post_content: 0,
+      post_thumbnail_description: 0,
+      post_status: 0,
+      post_category: 0,
+      post_tags: 0,
+    },
+    {
+      limit: limit,
+      populate: { path: "post_author", select: "first_name last_name" },
+    }
+  );
+  if (!posts) return null;
+  posts.forEach((post) => {
+    let post_des_list = post.post_description.split(" ");
+    if (post_des_list.length > 25) {
+      post.post_description = post_des_list.slice(0, 25).join(" ") + " ...";
+      return post.post_description;
+    }
+  });
+  return posts;
+}
+
 module.exports = {
   createPost: createPost,
   getPostById: getPostById,
@@ -80,4 +106,5 @@ module.exports = {
   updatePostById: updatePostById,
   delCategoryId: delCategoryId,
   getPostBySlug: getPostBySlug,
+  searchPost: searchPost,
 };
