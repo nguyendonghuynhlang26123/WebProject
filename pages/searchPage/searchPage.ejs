@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../head/head', {link: "/style/css/search-page.css" }); %>
+  </head>
+
+  <body>
+    <!-- ---------- HEADER------------------------ -->
+    <%- include('../post/minimizedHeader/minimizedHeader',
+    {btn_label:"Subscribe"}); %> <%- include('../modal-popup/sidenav'); %>
+    <div id="search-form">
+      <div class="container">
+        <div class="form">
+          <p class="num_result">Showing 636,972 results for:</p>
+          <div class="form-container">
+            <div class="input">
+              <input type="text" placeholder="Search" />
+              <button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                >
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path
+                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="filter">
+              <select name="sort-by" class="select">
+                <option value="newest" selected>Sort by newest</option>
+                <option value="oldest">Sort by oldest</option>
+              </select>
+
+              <div id="sections">
+                <button class="select" data-section-btn>
+                  <label>Sections</label>
+                  <div></div>
+                </button>
+
+                <ul class="dropdown">
+                  <li>
+                    <h2>Section</h2>
+                  </li>
+                  <% categories.forEach(cate => { %>
+                  <li>
+                    <label for="<%= cate.category_name %>"
+                      ><input id="<%= cate.category_name %>" type="checkbox" />
+                      <span><%= cate.category_name %></span>
+                    </label>
+                  </li>
+                  <% }) %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ------------- FOOTER ------------------- -->
+    <%- include('../footer/footer'); %>
+
+    <!-- SCripts -->
+    <script src="/js/sidenav.js"></script>
+    <script src="/js/search_btn.js"></script>
+    <script src="/js/search.js"></script>
+    <script>
+      SearchButton('btn-search', 'search-input');
+    </script>
+  </body>
+</html>

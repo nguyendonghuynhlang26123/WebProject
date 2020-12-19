@@ -1,9 +1,9 @@
-const categoryService = require("../services/category.service");
-const postService = require("../../posts/services/post.service");
-const express = require("express");
+const categoryService = require('../services/category.service');
+const postService = require('../../posts/services/post.service');
+const express = require('express');
 const router = express.Router();
 
-router.get("/:categorySlug", async function (req, res, next) {
+router.get('/:categorySlug', async function (req, res, next) {
   try {
     let category = await categoryService.getCategoryBySlug(
       req.params.categorySlug
@@ -11,12 +11,12 @@ router.get("/:categorySlug", async function (req, res, next) {
     const posts = await postService.getAllPost(
       {
         post_category: category._id,
-        post_status: "Publish",
+        post_status: 'Publish',
       },
       req.query.select,
       Number(req.query.n_post)
     );
-    res.render("categoryPages/category_page", {
+    res.render('categoryPages/categoryPage', {
       category: category,
       posts: posts,
     });
@@ -25,12 +25,12 @@ router.get("/:categorySlug", async function (req, res, next) {
   }
 });
 
-router.get("/", async function (req, res) {
+router.get('/', async function (req, res) {
   const categorys = await categoryService.getAllCategory();
   res.send(categorys);
 });
 
-router.post("/", async function (req, res) {
+router.post('/', async function (req, res) {
   const category = await categoryService.createCategory(
     req.body.category_name,
     req.body.category_slug
@@ -38,7 +38,7 @@ router.post("/", async function (req, res) {
   res.send(category);
 });
 
-router.put("/:categoryId", async function (req, res, next) {
+router.put('/:categoryId', async function (req, res, next) {
   try {
     const result = await categoryService.updateCategoryById(
       req.params.categoryId,
@@ -50,7 +50,7 @@ router.put("/:categoryId", async function (req, res, next) {
   }
 });
 
-router.delete("/:categoryId", async function (req, res) {
+router.delete('/:categoryId', async function (req, res) {
   const result = await categoryService.deleteCategory(req.params.categoryId);
   postService.delCategoryId(req.params.categoryId);
   res.send(result);
