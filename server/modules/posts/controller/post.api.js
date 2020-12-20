@@ -79,6 +79,7 @@ router.get('/search/:key', async function (req, res) {
 });
 
 router.get('/searchPost/query', async function (req, res) {
+  try{
   console.log(req.query);
   const result = await postService.searchPostPage(
     req.query.key,
@@ -88,6 +89,9 @@ router.get('/searchPost/query', async function (req, res) {
     req.query.page,
   );
   res.send(result);
+  } catch (err) {
+    res.sendStatus(400);
+  }
 });
 
 router.get('/tag/:tagName', async function (req, res, next) {
