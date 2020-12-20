@@ -4,6 +4,7 @@ async function createPost(post_author) {
   let data = {
     post_title: "Untitled",
     post_author: post_author,
+    post_views: 0,
   };
   post = await Post.create(data);
   return post;
@@ -11,17 +12,19 @@ async function createPost(post_author) {
 
 async function getPostById(postId) {
   const post = await Post.findOne({ _id: postId }).populate(
-    "post_category post_author",
+    "post_category post_author post_views",
     "first_name last_name category_name category_slug"
   );
+  updatePostById(post._id, { post_views: Number(post.post_views + 1) });
   return post;
 }
 
 async function getPostBySlug(postSlug) {
   const post = await Post.findOne({ slug: postSlug }).populate(
-    "post_category post_author _id",
+    "post_category post_author _id post_views",
     "first_name last_name category_name category_slug"
   );
+  updatePostById(post._id, { post_views: Number(post.post_views + 1) });
   return post;
 }
 

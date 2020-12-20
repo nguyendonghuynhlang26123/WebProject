@@ -33,6 +33,7 @@ const PostSchema = new Schema({
     enum: ["Published", "Draft", "Trash"],
     default: "Draft",
   },
+  post_views: {type: Number, default: 0},
   slug: {
     type: String,
     slug: "post_title",
