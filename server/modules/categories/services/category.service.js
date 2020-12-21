@@ -22,7 +22,11 @@ async function getCategoryBySlug(categorySlug) {
 }
 
 async function getCategoryByName(categoryName) {
-  const category = await Category.findOne({ category_name: categoryName });
+  const category = await Category.findOne(
+    { category_name: categoryName },
+    {},
+    { sort: { created_at: "desc" } }
+  );
   return category;
 }
 

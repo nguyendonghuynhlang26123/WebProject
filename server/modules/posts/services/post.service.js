@@ -12,7 +12,7 @@ async function createPost(post_author) {
 
 async function getPostById(postId) {
   const post = await Post.findOne({ _id: postId }).populate(
-    "post_category post_author post_views",
+    "post_category post_author",
     "first_name last_name category_name category_slug"
   );
   updatePostById(post._id, { post_views: Number(post.post_views + 1) });
@@ -21,14 +21,39 @@ async function getPostById(postId) {
 
 async function getPostBySlug(postSlug) {
   const post = await Post.findOne({ slug: postSlug }).populate(
-    "post_category post_author _id post_views",
+    "post_category post_author",
     "first_name last_name category_name category_slug"
   );
   updatePostById(post._id, { post_views: Number(post.post_views + 1) });
   return post;
 }
 
-async function getAllPost(filter, select, limit) {
+async function getAllPostByViews(filter, limit) {
+  const posts = await Post.find(
+    filter,
+    {
+      post_content: 0,
+      post_thumbnail_description: 0,
+      post_status: 0,
+      post_tags: 0,
+    },
+    {
+      limit: limit,
+      sort: { post_views: "desc" },
+    }
+  );
+  if (!posts) return null;
+  posts.forEach((post) => {
+    let post_des_list = post.post_description.split(" ");
+    if (post_des_list.length > 25) {
+      post.post_description = post_des_list.slice(0, 25).join(" ") + " ...";
+      return post.post_description;
+    }
+  });
+  return posts;
+}
+
+async function getAllPost(filter, select, limit, sortBy) {
   const posts = await Post.find(
     filter,
     {
@@ -40,6 +65,7 @@ async function getAllPost(filter, select, limit) {
     {
       limit: limit,
       populate: { path: "post_author", select: "first_name last_name" },
+      sort: sortBy || { post_date: "desc" },
     }
   );
   if (!posts) return null;
@@ -153,4 +179,5 @@ module.exports = {
   getPostBySlug: getPostBySlug,
   searchPost: searchPost,
   searchPostPage: searchPostPage,
+  getAllPostByViews: getAllPostByViews,
 };

@@ -1,19 +1,16 @@
 <div id="edu-news">
   <div><a href="/category/education/?limit=14" class="category-name">EDUCATION</a></div>
   <div class="news-card right-border">
-    <a href="/post/5fba3178317e511d2021823a">
-      <img src="/images/edu1-sm.jpg" alt="" loading="lazy" />
+    <a href="/post/slug/<%= education[0].slug %>">
+      <img src="<%= education[0].post_thumbnail.split("/").slice(1).join("/360-") %>" alt="images/alt.png" loading="lazy" />
       <div class="card-title">
         <p class="a article-title">
-          Ten Vietnamese teams to compete at 2020 ASEAN Information Security
-          Contest
+          <%= education[0].post_title %>
         </p>
       </div>
       <div class="card-desc">
         <p class="article-desc">
-          Ten Vietnamese teams and six others from ASEAN countries will take
-          part in the final round of the 2020 ASEAN Student Contest on
-          Information Security later this month.
+          <%= education[0].post_description %>
         </p>
       </div>
     </a>
@@ -21,26 +18,12 @@
 
   <h1>Read more</h1>
   <ul class="post-list">
-    <li class="link-item">
-      <a href="/post/5fba3224317e511d20218242">Whirlwind damages Ho Chi Minh City campus, causes school closure for
-        2,000 students</a>
-    </li>
-    <li class="link-item">
-      <a href="/post/5fba3224317e511d2021824b">​Vietnamese universities short of international students amid COVID-19
-        pandemic</a>
-    </li>
-    <li class="link-item">
-      <a href="/post/5fba3225317e511d20218255">​Vietnamese student carrying friend piggyback in decade gets free
-        admission to university</a>
-    </li>
-    <li class="link-item">
-      <a href="/post/5fba3226317e511d20218260">​Ride-hailing app driver in Saigon to start college at 35</a>
-    </li>
-    <li class="link-item">
-      <a href="/post/5fba3226317e511d2021826c">Three Vietnamese among IELTS Prize winners of 2019-20</a>
-    </li>
-    <li class="link-item">
-      <a href="/post/5fba3227317e511d20218279">Officials found using fake degrees issued by university in Hanoi</a>
-    </li>
+    <% for(let i=1; i < education.length; ++i) { %>
+      <li class="link-item">
+        <a href="/post/slug/<%= education[i].slug %>">
+          <%= education[i].post_title %>
+        </a>
+      </li>
+      <% } %>
   </ul>
 </div>

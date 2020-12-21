@@ -3,12 +3,7 @@
   <div class="topbar">
     <div class="section-dropdown flex-row">
       <button id="sidenav_trigger">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="24"
-          viewBox="0 0 24 24"
-          width="24"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
           <path d="M0 0h24v24H0z" fill="none" />
           <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
         </svg>
@@ -17,32 +12,20 @@
     </div>
 
     <p class="date">
-      <%= (new Intl.DateTimeFormat('en-US', { weekday: 'long', year: 'numeric',
-      month: 'long', day: 'numeric' }).format(Date.now()));%>
+      <%= (new Intl.DateTimeFormat('en-US', { weekday: 'long' , year: 'numeric' , month: 'long' , day: 'numeric'
+        }).format(Date.now()));%>
     </p>
 
     <div class="flex-row">
       <form action="#" id="searchform" class="flex-row">
         <button class="btn-search" id="btn-search">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24"
-            viewBox="0 0 24 24"
-            width="24"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
             <path d="M0 0h24v24H0z" fill="none" />
             <path
-              d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-            />
+              d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
           </svg>
         </button>
-        <input
-          class="search-input"
-          id="search-input"
-          type="text"
-          name="search"
-          placeholder="search"
-        />
+        <input class="search-input" id="search-input" type="text" name="search" placeholder="search" />
         <label for="search">SEARCH</label>
       </form>
       <a href="/login" id="btn-login">Log in</a>
@@ -59,33 +42,11 @@
 
   <!-- CATEGORIES LINKS -->
   <ul class="nav flex-row">
-    <li><a href="/category/vietnam/?limit=14" class="nav-item">Vietnam</a></li>
-    <li>
-      <a href="/category/international/?limit=14" class="nav-item"
-        >International</a
-      >
-    </li>
-    <li>
-      <a href="/category/politics/?limit=14" class="nav-item">Politics</a>
-    </li>
-    <li><a href="/category/society/?limit=14" class="nav-item">Society</a></li>
-    <li>
-      <a href="/category/business/?limit=14" class="nav-item">Business</a>
-    </li>
-    <li>
-      <a href="/category/lifestyle/?limit=14" class="nav-item">Lifestyle</a>
-    </li>
-    <li>
-      <a href="/category/features/?limit=14" class="nav-item">Features</a>
-    </li>
-    <li><a href="/category/sport/?limit=14" class="nav-item">Sport</a></li>
-    <li>
-      <a href="/category/city-diary/?limit=14" class="nav-item">City diary</a>
-    </li>
-    <li>
-      <a href="/category/education/?limit=14" class="nav-item">Education</a>
-    </li>
-    <li><a href="/category/media/?limit=14" class="nav-item">Media</a></li>
+    <% list_category.forEach(e=> { %>
+      <li><a href="/category/<%= e.category_slug %>/?limit=14" class="nav-item">
+          <%= e.category_name %>
+        </a></li>
+      <% }); %>
   </ul>
   <hr class="dash" />
 </div>

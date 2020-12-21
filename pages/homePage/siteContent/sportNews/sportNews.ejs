@@ -5,33 +5,15 @@
   </div>
 
   <div class="post-list">
-    <a href="/post/5fba2d1ea73e91804c96cb90" class="img-card right-border">
-      <img src="/images/sport1-sm.jpg" loading="lazy" alt="" />
+    <% sport.forEach(e=> { %>
+    <a href="/post/slug/<%= e.slug %>" class="img-card right-border">
+      <img src="<%= e.post_thumbnail.split("/").slice(1).join("/360-") %>" loading="lazy" alt="images/alt.png" />
       <div class="img-title">
         <p class="a">
-          Johnson says Premier League soccer matches will continue during
-          lockdown
+          <%= e.post_title %>
         </p>
       </div>
     </a>
-
-    <a href="/post/5fba30a8317e511d2021822d" class="img-card left-border">
-      <img src="/images/sport2-sm.jpeg" loading="lazy" alt="" />
-      <div class="img-title">
-        <p class="a">
-          England cancel Germany friendly after positive COVID test
-        </p>
-      </div>
-    </a>
-
-    <a href="/post/5fba30a9317e511d20218233" class="img-card">
-      <img src="/images/sport3-sm.jpeg" loading="lazy" alt="" />
-      <div class="img-title">
-        <p class="a">
-          The more things change the more they stay the same for French Open
-          king Nadal
-        </p>
-      </div>
-    </a>
+    <% }); %>
   </div>
 </div>

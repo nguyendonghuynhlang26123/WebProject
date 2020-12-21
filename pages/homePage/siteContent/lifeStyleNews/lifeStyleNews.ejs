@@ -5,48 +5,18 @@
   </div>
   <div>
     <ul class="img-list">
-      <li class="img-card box animation">
-        <a href="/post/5fba33d7317e511d2021828a">
-          <img
-            src="/images/lifestyle1-sm.jpg"
-            loading="lazy"
-            alt="lifestyle1"
-          />
-          <div class="img-title">
-            <p class="a">
-              BritCham Vietnam’s Fun Run 2020 upholds charitable spirit
-            </p>
-          </div>
-        </a>
-      </li>
-      <li class="img-card box animation">
-        <a href="/post/5fba33d6317e511d20218287">
-          <img
-            src="/images/lifestyle2-sm.jpg"
-            loading="lazy"
-            alt="lifestyle2"
-          />
-          <div class="img-title">
-            <p class="a">
-              Hunting for clouds in Vietnam's remote northern highlands
-            </p>
-          </div>
-        </a>
-      </li>
-      <li class="img-card box animation">
-        <a href="/post/5fba33d8317e511d2021828e">
-          <img
-            src="/images/lifestyle3-sm.jpg"
-            loading="lazy"
-            alt="lifestyle3"
-          />
-          <div class="img-title">
-            <p class="a">
-              Dried persimmons: The sun-kissed autumn treat of Da Lat
-            </p>
-          </div>
-        </a>
-      </li>
+      <% lifestyle.forEach(e=> { %>
+        <li class="img-card box animation">
+          <a href="/post/slug/<%= e.slug %>">
+            <img src="<%= e.post_thumbnail.split("/").slice(1).join("/360-") %>" loading="lazy" alt="images/alt.png" />
+            <div class="img-title">
+              <p class="a">
+                <%= e.post_title %>
+              </p>
+            </div>
+          </a>
+        </li>
+        <% }); %>
     </ul>
   </div>
 </div>

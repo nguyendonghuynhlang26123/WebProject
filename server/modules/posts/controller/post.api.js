@@ -63,7 +63,6 @@ router.get(
 
 router.get('/', async function (req, res) {
   const posts = await postService.getAllPost(req.query);
-  console.log(req.query);
   res.send(posts);
 });
 

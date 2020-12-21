@@ -41,13 +41,26 @@ app.set("views", "./pages");
 app.get("/", async function (req, res) {
   const data = await Promise.all([
     categoryService.getAllCategory("category_name category_slug"),
+    postService.getAllPostByViews(
+      {
+        post_status: "Publish",
+      },
+      1
+    ),
+    postService.getAllPost(
+      {
+        post_status: "Publish",
+      },
+      null,
+      10
+    ),
     postService.getAllPost(
       {
         post_category: await categoryService.getCategoryByName("Lifestyle"),
         post_status: "Publish",
       },
       null,
-      10
+      3
     ),
     postService.getAllPost(
       {
@@ -79,7 +92,7 @@ app.get("/", async function (req, res) {
         post_status: "Publish",
       },
       null,
-      10
+      6
     ),
     postService.getAllPost(
       {
@@ -87,18 +100,20 @@ app.get("/", async function (req, res) {
         post_status: "Publish",
       },
       null,
-      6
+      7
     ),
   ]);
   res.render("homePage/homePage", {
     link: "/style/css/style.css",
     list_category: data[0],
-    lifestyle: data[1],
-    international: data[2],
-    education: data[3],
-    sport: data[4],
-    features: data[5],
-    politics: data[6],
+    hero: data[1][0],
+    topnew: data[2],
+    lifestyle: data[3],
+    international: data[4],
+    education: data[5],
+    sport: data[6],
+    features: data[7],
+    politics: data[8],
   });
 });
 

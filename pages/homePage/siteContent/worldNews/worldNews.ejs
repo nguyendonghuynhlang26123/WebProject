@@ -6,18 +6,16 @@
           <div class="category-holder">
             <a href="/category/international/?limit=14" class="category-name">International</a>
           </div>
-          <a href="/post/5fba354b317e511d20218293" class="news-card left-border">
-            <img src="/images/world1-sm.png" alt="" />
+          <a href="/post/slug/<%= international[0].slug %>" class="news-card left-border">
+            <img src="<%= international[0].post_thumbnail.split("/").slice(1).join("/360-") %>" alt="/images/alt.png" loading="lazy" />
             <div class="card-title">
               <p class="a article-title">
-                Sri Lankan navy, villagers rescue more than 100 stranded whales
+                <%= international[0].post_title %>
               </p>
             </div>
             <div class="card-desc">
               <p class="article-desc">
-                COLOMBO -- Sri Lanka’s navy said on Tuesday more than 100 whales
-                had been rescued after becoming stranded on a beach on the
-                island’s southwest coast a day earlier...
+                <%= international[0].post_description %>
               </p>
             </div>
           </a>
@@ -25,88 +23,52 @@
       </div>
 
       <div>
-        <a href="/post/5fba354e317e511d202182a8" class="news-card left-border">
+        <% for(let i = 1; i <= 2; ++i) { %>
+        <a href="/post/slug/<%= international[i].slug %>" class="news-card left-border">
           <div class="card-title">
             <p class="a article-title">
-              Death toll climbs to 100 from devastating Aegean quake
+              <%= international[i].post_title %>
             </p>
           </div>
           <div class="card-desc">
             <p class="article-desc">
-              ISTANBUL -- The death toll from Friday’s earthquake in the Aegean
-              Sea has reached 100, with the deaths of 98 people in Turkey’s
-              western city of Izmir, disaster authorities said.
+              <%= international[i].post_description %>
             </p>
           </div>
         </a>
-
-        <a href="/post/5fba354e317e511d202182b1" class="news-card left-border">
-          <div class="card-title">
-            <p class="a article-title">
-              At least two killed in Vienna attack involving multiple
-              assailants, locations
-            </p>
-          </div>
-          <div class="card-desc">
-            <p class="article-desc">
-              VIENNA – Two people have been killed after multiple gunmen opened
-              fire across central Vienna on Monday, and at least one attacker
-              remained on the run after what Chancellor Sebastian Kurz described
-              as a “repulsive terrorist attack”.
-            </p>
-          </div>
-        </a>
+        <% } %>
       </div>
     </div>
 
     <div class="world-news-row">
       <div>
-        <a href="/post/5fba354c317e511d20218299" class="news-card left-border">
-          <div class="card-title">
-            <p class="a article-title">
-              France sees record number of new COVID-19 cases, hospitalisations
-              spike
-            </p>
-          </div>
-          <div class="card-desc">
-            <p class="article-desc">
-              PARIS -- France’s reported a record 52,518 new COVID-19 on Monday
-              and the number of people hospitalised with the disease rose by
-              more than a 1,000 for the fourth time in eight days...
-            </p>
-          </div>
-        </a>
-
-        <a href="/post/5fba354d317e511d202182a0" class="news-card left-border">
-          <div class="card-title">
-            <p class="a article-title">
-              WHO chief says he is identified as contact of COVID-19 positive
-              person
-            </p>
-          </div>
-          <div class="card-desc">
-            <p class="article-desc">
-              World Health Organization Director-General Tedros Adhanom
-              Ghebreyesus said on Sunday that he had been identified as a
-              contact of someone who tested positive for COVID-19,...
-            </p>
-          </div>
-        </a>
+        <% for(let i = 3; i <= 4; ++i) { %>
+          <a href="/post/slug/<%= international[i].slug %>" class="news-card left-border">
+            <div class="card-title">
+              <p class="a article-title">
+                <%= international[i].post_title %>
+              </p>
+            </div>
+            <div class="card-desc">
+              <p class="article-desc">
+                <%= international[i].post_description %>
+              </p>
+            </div>
+          </a>
+          <% } %>
       </div>
 
       <div>
-        <a href="/post/5fba354f317e511d202182bb" class="news-card left-border">
-          <img src="/images/world2-sm.jpg" alt="" />
+        <a href="/post/slug/<%= international[5].slug %>" class="news-card left-border">
+          <img src="<%= international[5].post_thumbnail.split("/").slice(1).join("/360-") %>" alt="images/alt.png" loading="lazy" />
           <div class="card-title">
             <p class="a article-title">
-              Ravaged by first wave, Italy ill-prepared as second COVID assault hits
+              <%= international[5].post_title %>
             </p>
           </div>
           <div class="card-desc">
             <p class="article-desc">
-              ROME – One month ago, the World Health Organization posted a video
-              praising Italians’ “strong and effective response” to the
-              coronavirus pandemic.
+              <%= international[5].post_description %>
             </p>
           </div>
         </a>

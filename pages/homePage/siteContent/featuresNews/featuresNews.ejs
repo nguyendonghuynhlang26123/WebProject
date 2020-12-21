@@ -5,49 +5,18 @@
   </div>
   <div class="glider-contain">
     <ul class="img-list glider1">
+      <% features.forEach(e=> { %>
       <li class="img-card box animation">
-        <a href="/post/5fba2998317e511d202180ed">
-          <img src="/images/feature1-sm.jpg" alt="feature1" loading="lazy" />
+        <a href="/post/slug/<%= e.slug %>">
+          <img src="<%= e.post_thumbnail.split("/").slice(1).join("/780-") %>" alt="images/alt.png" loading="lazy" />
           <div class="img-title">
             <p class="a">
-              In Vietnam, women find arduous tech-based delivery job rewarding
+              <%= e.post_title %>
             </p>
           </div>
         </a>
       </li>
-
-      <li class="img-card box animation">
-        <a href="/post/5fba2c20317e511d20218155">
-          <img src="/images/feature2-sm.jpg" loading="lazy" alt="feature2" />
-          <div class="img-title">
-            <p class="a">
-              Three sexagenarian men and a quest to roam Vietnam by bicycle
-            </p>
-          </div>
-        </a>
-      </li>
-
-      <li class="img-card box animation">
-        <a href="/post/5fba2c22317e511d202181be">
-          <img src="/images/feature3-sm.jpg" loading="lazy" alt="feature3" />
-          <div class="img-title">
-            <p class="a">
-              Young Frenchwoman tries her best for Vietnamese patients
-            </p>
-          </div>
-        </a>
-      </li>
-
-      <li class="img-card box animation">
-        <a href="/post/5fc3e8612df67c2c6847d931">
-          <img src="/images/feature4-sm.jpg" loading="lazy" alt="lifestyle1" />
-          <div class="img-title">
-            <p class="a">
-              Vietnamese man puts heart into forest gardening to benefit locals
-            </p>
-          </div>
-        </a>
-      </li>
+      <% }); %>
     </ul>
 
     <button aria-label="Previous" class="glider-prev">«</button>
