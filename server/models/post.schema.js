@@ -30,7 +30,7 @@ const PostSchema = new Schema({
   post_tags: [{ type: String, trim: true }],
   post_status: {
     type: String,
-    enum: ["Published", "Draft", "Trash"],
+    enum: ["Publish", "Draft", "Trash"],
     default: "Draft",
   },
   post_views: { type: Number, default: 0 },

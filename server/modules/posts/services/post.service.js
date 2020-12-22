@@ -82,6 +82,12 @@ async function getAllPost(filter, select, limit, sortBy) {
 async function updatePostById(postId, dataUpdate) {
   const post = await Post.findOne({ _id: postId });
   if (!post) return;
+  if (
+    dataUpdate.post_status == "Publish" &&
+    post.post_status == "Draft"
+  ) {
+    Object.assign(dataUpdate, { post_date: Date.now() });
+  }
   const result = await Post.updateOne({ _id: post._id }, dataUpdate);
   return result;
 }
@@ -169,6 +175,32 @@ async function searchPostPage(key, category, order_by, perPage, page) {
   };
 }
 
+async function getAllNewPost() {
+  const date = Date.now() - 86400000;
+  console.log(date);
+  const posts = await Post.find(
+    { post_date: { $gt: date }, post_status: "Publish" },
+    {
+      post_content: 0,
+      post_thumbnail_description: 0,
+      post_status: 0,
+      post_tags: 0,
+    },
+    {
+      sort: { post_date: "desc" },
+    }
+  );
+  if (!posts) return null;
+  posts.forEach((post) => {
+    let post_des_list = post.post_description.split(" ");
+    if (post_des_list.length > 25) {
+      post.post_description = post_des_list.slice(0, 25).join(" ") + " ...";
+      return post.post_description;
+    }
+  });
+  return posts;
+}
+
 module.exports = {
   createPost: createPost,
   getPostById: getPostById,
@@ -180,4 +212,5 @@ module.exports = {
   searchPost: searchPost,
   searchPostPage: searchPostPage,
   getAllPostByViews: getAllPostByViews,
+  getAllNewPost: getAllNewPost,
 };

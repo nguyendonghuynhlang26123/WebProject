@@ -13,6 +13,7 @@ const errorHandler = require("./server/modules/errorHandler/errorHandler");
 dotenv.config();
 // mongoose connect
 const db = require("./db");
+const schedule = require("./server/modules/sendMail/sendMail.service");
 const search = require("./server/modules/search/controller/search.api");
 const postService = require("./server/modules/posts/services/post.service");
 const categoryService = require("./server/modules/categories/services/category.service");
