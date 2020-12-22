@@ -7,7 +7,7 @@
   <div class="post-list">
     <% sport.forEach(e=> { %>
     <a href="/post/slug/<%= e.slug %>" class="img-card right-border">
-      <img src="<%= e.post_thumbnail.split("/").slice(1).join("/360-") %>" loading="lazy" alt="images/alt.png" />
+      <img src="<%= e.post_thumbnail.split("/").slice(1).join("/360-") %>" loading="lazy" alt="/images/alt.png" />
       <div class="img-title">
         <p class="a">
           <%= e.post_title %>

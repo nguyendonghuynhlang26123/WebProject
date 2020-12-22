@@ -8,7 +8,7 @@
       <% features.forEach(e=> { %>
       <li class="img-card box animation">
         <a href="/post/slug/<%= e.slug %>">
-          <img src="<%= e.post_thumbnail.split("/").slice(1).join("/780-") %>" alt="images/alt.png" loading="lazy" />
+          <img src="<%= e.post_thumbnail.split("/").slice(1).join("/780-") %>" alt="/images/alt.png" loading="lazy" />
           <div class="img-title">
             <p class="a">
               <%= e.post_title %>

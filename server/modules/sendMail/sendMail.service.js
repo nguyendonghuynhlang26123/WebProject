@@ -1,20 +1,22 @@
-var nodemailer = require("nodemailer");
-var schedule = require("node-schedule");
+const nodemailer = require("nodemailer");
+const schedule = require("node-schedule");
+const postService = require("../posts/services/post.service");
 
-var transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "youremail@gmail.com",
-    pass: "yourpassword",
+    user: "thependailynews@gmail.com",
+    pass: "thependaily",
   },
 });
 
-schedule.scheduleJob("0 0 6 * * *", function () {
-  var mailOptions = {
-    from: "youremail@gmail.com",
-    to: "myfriend@yahoo.com",
-    subject: "Sending Email using Node.js",
-    text: "That was easy!",
+schedule.scheduleJob("0 0 6 * * *", async function () {
+  const content = await postService.getAllNewPost();
+  const mailOptions = {
+    from: "thependailynews@gmail.com",
+    to: "nguyenthaitan9@gmail.com, nguyendonghuynhlang@gmail.com",
+    subject: "New news posted in the day",
+    html: content,
   };
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
