@@ -62,7 +62,7 @@ router.get(
 );
 
 router.get('/', async function (req, res) {
-  const posts = await postService.getAllNewPost(req.query);
+  const posts = await postService.getAllPost(req.query);
   res.send(posts);
 });
 
