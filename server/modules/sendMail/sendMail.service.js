@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const schedule = new CronJob(
-  "0 0 8 * * *",
+  "0 0 6 * * *",
   async function () {
     const content = await postService.getAllNewPost();
     const mailOptions = {
