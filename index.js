@@ -18,6 +18,7 @@ const search = require("./server/modules/search/controller/search.api");
 const postService = require("./server/modules/posts/services/post.service");
 const categoryService = require("./server/modules/categories/services/category.service");
 
+schedule.start();
 // app use
 app.use(
   session({
