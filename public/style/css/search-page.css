@@ -881,6 +881,12 @@ footer .subscribe-form button {
   left: 0;
 }
 
+.tab_list button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 .tab_list li {
   padding: 0.6rem 1.5rem;
   display: -webkit-box;
@@ -984,9 +990,6 @@ footer .subscribe-form button {
 }
 
 .list_wrapper .recommended-post img {
-  float: left;
-  margin: 1rem;
-  width: 8rem;
   height: 8rem;
 }
 
@@ -1062,6 +1065,11 @@ footer .subscribe-form button {
 .container {
   max-width: 1024px;
   margin: 1rem auto;
+}
+
+.minimized-header {
+  position: -webkit-sticky;
+  position: sticky;
 }
 
 #search-form {
@@ -1258,4 +1266,18 @@ footer .subscribe-form button {
   padding-bottom: 0.4rem;
   font-style: italic;
   border-bottom: 1px solid #cccccc;
+}
+
+.pagination-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.pagination-container ul {
+  margin: 1rem auto !important;
+  border: none;
 }

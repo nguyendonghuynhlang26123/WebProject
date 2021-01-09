@@ -2,15 +2,12 @@
   <div class="attention-post">
     <a href="/post/slug/<%= hero.slug %>">
       <div class="big-image img-card">
-        <img src="<%= hero.post_thumbnail.split("/").slice(1).join("/780-") %>" alt="/images/alt.png" loading="lazy" />
+        <img src="<%= hero.post_thumbnail.split("/").slice(1).join("/780-") %>"
+        alt="/images/alt.png" loading="lazy" />
         <div class="img-title">
-          <div class="post-title">
-            <%= hero.title %>
-          </div>
+          <div class="post-title"><%= hero.post_title %></div>
         </div>
-        <p class="post-desc">
-          <%= hero.post_description %>
-        </p>
+        <p class="post-desc"><%= hero.post_description %></p>
       </div>
     </a>
   </div>
@@ -20,9 +17,7 @@
     <ul class="post-list">
       <% topnew.forEach(e=> { %>
       <li class="link-item">
-        <a href="/post/slug/<%= e.slug %>">
-          <%= e.post_title %>
-        </a>
+        <a href="/post/slug/<%= e.slug %>"> <%= e.post_title %> </a>
       </li>
       <% }); %>
     </ul>

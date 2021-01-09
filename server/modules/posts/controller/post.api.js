@@ -78,16 +78,16 @@ router.get('/search/:key', async function (req, res) {
 });
 
 router.get('/searchPost/query', async function (req, res) {
-  try{
-  console.log(req.query);
-  const result = await postService.searchPostPage(
-    req.query.key,
-    req.query.category,
-    req.query.order_by,
-    req.query.perPage,
-    req.query.page,
-  );
-  res.send(result);
+  try {
+    console.log(req.query);
+    const result = await postService.searchPostPage(
+      req.query.key,
+      req.query.category,
+      req.query.order_by,
+      req.query.perPage,
+      req.query.page
+    );
+    res.send(result);
   } catch (err) {
     res.sendStatus(400);
   }

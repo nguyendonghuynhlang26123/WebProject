@@ -38,13 +38,16 @@ class PostListController {
   };
 
   render = (postArr) => {
-    console.log(
-      'log ~ file: post-list.js ~ line 41 ~ PostListController ~ render',
-      postArr
-    );
-
     let element = document.getElementById(this.containerId);
     element.innerHTML = '';
+
+    postArr.forEach((post) => {
+      element.appendChild(this.createNode(post));
+    });
+  };
+
+  append = (postArr) => {
+    let element = document.getElementById(this.containerId);
 
     postArr.forEach((post) => {
       element.appendChild(this.createNode(post));

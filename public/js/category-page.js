@@ -1,6 +1,9 @@
 SearchButton('btn-search', 'search-input');
 
 let currentActive = 0;
+let curPage;
+let curMaxPages;
+POSTS_PER_PAGE = 4;
 
 const setActive = (index) => {
   document.querySelectorAll('.tab_list .tab').forEach((element, i) => {
@@ -19,21 +22,55 @@ document.querySelectorAll('.tab_list .tab').forEach((element, i) => {
   });
 });
 
+const searchAndRender = (key, page = 1) => {
+  let q = getQuery(key, page);
+
+  fetch(`/post/searchPost/query?${q}`)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      curMaxPages = data.total_page;
+      curPage = 1;
+
+      controller.render(data.posts);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
+//Load next page
+const loadNextPage = (key) => {
+  let q = getQuery(key, curPage + 1);
+  if (curPage >= curMaxPages) return;
+
+  fetch(`/post/searchPost/query?${q}`)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      curPage++;
+      controller.append(data.posts);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
+let getQuery = (key, page) => {
+  let query = [];
+  query.push(`key=${key}`);
+  query.push(`category=${category_id}`);
+
+  query.push(`perPage=${POSTS_PER_PAGE}&page=${page}`);
+  return query.join('&');
+};
+
 //POST
 let controller = new PostListController('post-list');
-let slug = window.location.pathname.split('/')[2];
-fetch(`/category/get/${slug}/?limit=10`)
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    console.log('log ~ file: category-page.js ~ line 30 ~ .then ~ data', data);
-    if (data.length >= 10) controller.render(data.slice(4));
-    else controller.render(data);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+let category_id = document.querySelector('body').id;
+searchAndRender('');
 
 //BTNS events
 document
@@ -48,6 +85,24 @@ document
     if (ev.keyCode === 13) {
       ev.preventDefault();
       //TODO SEND REQUEST
-      console.log(ev.target.textContent);
+      searchAndRender(ev.target.textContent);
     }
   });
+
+//Observer viewport & render:
+document.addEventListener('DOMContentLoaded', () => {
+  //set up the IntersectionObserver to load more images if the footer is visible.
+  let options = {
+    root: null,
+    rootMargins: '0px',
+    threshold: 0.5,
+  };
+  const observer = new IntersectionObserver(handleIntersect, options);
+  observer.observe(document.querySelector('#list-end'));
+});
+
+function handleIntersect(entries) {
+  if (entries[0].isIntersecting) {
+    loadNextPage(document.querySelector('[data-input-search]').textContent);
+  }
+}

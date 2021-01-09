@@ -953,6 +953,12 @@ aside .recommendation .recommended-post .recommended-post-title .a {
   left: 0;
 }
 
+.tab_list button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 .tab_list li {
   padding: 0.6rem 1.5rem;
   display: -webkit-box;
@@ -1056,9 +1062,6 @@ aside .recommendation .recommended-post .recommended-post-title .a {
 }
 
 .list_wrapper .recommended-post img {
-  float: left;
-  margin: 1rem;
-  width: 8rem;
   height: 8rem;
 }
 

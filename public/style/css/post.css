@@ -987,13 +987,12 @@ aside .recommendation .recommended-post .recommended-post-title .a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .post-container .post-info ul.post-tags .post-tag {
@@ -1042,7 +1041,7 @@ aside .recommendation .recommended-post .recommended-post-title .a {
   margin-bottom: 1rem;
   line-height: 1.5rem;
   font-size: 1.1rem;
-  word-break: break-all;
+  word-break: keep-all;
 }
 
 .post-container .grid-wrapper .post-content p a {

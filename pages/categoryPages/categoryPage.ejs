@@ -4,7 +4,7 @@
     <%- include('../head/head', {link: "/style/css/category-page.css" }); %>
   </head>
 
-  <body>
+  <body id="<%=category._id%>">
     <!-- ---------- HEADER------------------------ -->
     <%- include('../post/minimizedHeader/minimizedHeader',
     {btn_label:"Subscribe"}); %>
@@ -20,7 +20,6 @@
     <!-- SCripts -->
     <script src="/js/sidenav.js"></script>
     <script src="/js/search_btn.js"></script>
-    <script src="/js/pagination.js"></script>
     <script src="/js/post-list.js"></script>
     <script src="/js/category-page.js"></script>
   </body>

@@ -4,14 +4,19 @@
       <div>
         <div>
           <div class="category-holder">
-            <a href="/category/international/?limit=14" class="category-name">International</a>
+            <a href="/category/international/?limit=14" class="category-name"
+              >International</a
+            >
           </div>
-          <a href="/post/slug/<%= international[0].slug %>" class="news-card left-border">
-            <img src="<%= international[0].post_thumbnail.split("/").slice(1).join("/360-") %>" alt="/images/alt.png" loading="lazy" />
+          <a
+            href="/post/slug/<%= international[0].slug %>"
+            class="news-card right-border"
+          >
+            <img src="<%=
+            international[0].post_thumbnail.split("/").slice(1).join("/360-")
+            %>" alt="/images/alt.png" loading="lazy" />
             <div class="card-title">
-              <p class="a article-title">
-                <%= international[0].post_title %>
-              </p>
+              <p class="a article-title"><%= international[0].post_title %></p>
             </div>
             <div class="card-desc">
               <p class="article-desc">
@@ -24,16 +29,15 @@
 
       <div>
         <% for(let i = 1; i <= 2; ++i) { %>
-        <a href="/post/slug/<%= international[i].slug %>" class="news-card left-border">
+        <a
+          href="/post/slug/<%= international[i].slug %>"
+          class="news-card left-border"
+        >
           <div class="card-title">
-            <p class="a article-title">
-              <%= international[i].post_title %>
-            </p>
+            <p class="a article-title"><%= international[i].post_title %></p>
           </div>
           <div class="card-desc">
-            <p class="article-desc">
-              <%= international[i].post_description %>
-            </p>
+            <p class="article-desc"><%= international[i].post_description %></p>
           </div>
         </a>
         <% } %>
@@ -43,33 +47,33 @@
     <div class="world-news-row">
       <div>
         <% for(let i = 3; i <= 4; ++i) { %>
-          <a href="/post/slug/<%= international[i].slug %>" class="news-card left-border">
-            <div class="card-title">
-              <p class="a article-title">
-                <%= international[i].post_title %>
-              </p>
-            </div>
-            <div class="card-desc">
-              <p class="article-desc">
-                <%= international[i].post_description %>
-              </p>
-            </div>
-          </a>
-          <% } %>
+        <a
+          href="/post/slug/<%= international[i].slug %>"
+          class="news-card right-border"
+        >
+          <div class="card-title">
+            <p class="a article-title"><%= international[i].post_title %></p>
+          </div>
+          <div class="card-desc">
+            <p class="article-desc"><%= international[i].post_description %></p>
+          </div>
+        </a>
+        <% } %>
       </div>
 
       <div>
-        <a href="/post/slug/<%= international[5].slug %>" class="news-card left-border">
-          <img src="<%= international[5].post_thumbnail.split("/").slice(1).join("/360-") %>" alt="/images/alt.png" loading="lazy" />
+        <a
+          href="/post/slug/<%= international[5].slug %>"
+          class="news-card left-border"
+        >
+          <img src="<%=
+          international[5].post_thumbnail.split("/").slice(1).join("/360-") %>"
+          alt="/images/alt.png" loading="lazy" />
           <div class="card-title">
-            <p class="a article-title">
-              <%= international[5].post_title %>
-            </p>
+            <p class="a article-title"><%= international[5].post_title %></p>
           </div>
           <div class="card-desc">
-            <p class="article-desc">
-              <%= international[5].post_description %>
-            </p>
+            <p class="article-desc"><%= international[5].post_description %></p>
           </div>
         </a>
       </div>

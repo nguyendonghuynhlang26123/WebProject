@@ -1,8 +1,8 @@
-@import "global";
-@import "header";
-@import "footer";
-@import "recommendation";
-@import "sidenav";
+@import 'global';
+@import 'header';
+@import 'footer';
+@import 'recommendation';
+@import 'sidenav';
 
 :root {
   --ck-image-style-spacing: 1.5em;
@@ -49,8 +49,8 @@
 
     ul.post-tags {
       display: flex;
-      justify-content: space-between;
       flex-direction: row;
+      flex-wrap: wrap;
 
       .post-tag {
         padding: 0.2rem 0.6rem;
@@ -98,7 +98,7 @@
         margin-bottom: 1rem;
         line-height: 1.5rem;
         font-size: 1.1rem;
-        word-break: break-all;
+        word-break: keep-all;
         a {
           font-style: italic;
         }

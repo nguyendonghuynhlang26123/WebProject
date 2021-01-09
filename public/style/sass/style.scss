@@ -1,7 +1,7 @@
-@import "global";
-@import "header";
-@import "footer";
-@import "sidenav";
+@import 'global';
+@import 'header';
+@import 'footer';
+@import 'sidenav';
 
 /** GLOBAL---------------------------*/
 a.div {
@@ -43,6 +43,7 @@ ul.post-list {
   position: relative;
   img {
     width: 100%;
+    max-height: 25rem;
   }
 
   .img-title {
@@ -91,6 +92,8 @@ ul.post-list {
 .news-card {
   img {
     width: 100%;
+    max-width: 360px;
+    max-height: 200px;
   }
   .card-title {
     margin: 0.8rem 0;
@@ -247,7 +250,7 @@ ul.post-list {
 
     .world-news-row {
       display: grid;
-      grid-template-columns: 0.8fr 1fr;
+      grid-template-columns: 1fr 1fr;
       column-gap: 1rem;
       > div {
         padding-right: 1rem;
@@ -257,6 +260,10 @@ ul.post-list {
 
         .category-holder {
           margin: 1rem 0;
+        }
+
+        > a:first-child {
+          align-self: flex-end;
         }
       }
     }
@@ -332,7 +339,7 @@ ul.post-list {
         grid-template-columns: 1fr 1fr 1fr;
         column-gap: 1rem;
       }
-      [class*="border"]::after {
+      [class*='border']::after {
         display: none;
       }
     }
