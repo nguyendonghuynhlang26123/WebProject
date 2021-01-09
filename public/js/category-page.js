@@ -106,3 +106,8 @@ function handleIntersect(entries) {
     loadNextPage(document.querySelector('[data-input-search]').textContent);
   }
 }
+
+//Recommendation list
+const recommendation = new RecommendationController(
+  '[data-recommendation-container]'
+);

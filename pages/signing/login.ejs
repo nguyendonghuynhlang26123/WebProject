@@ -7,7 +7,7 @@
   <body>
     <!-- ---------- HEADER------------------------ -->
     <div class="header">
-      <h1 id="page-title">The Pen Daily</h1>
+      <a id="page-title" href="/">The Pen Daily</a>
     </div>
 
     <!-- ----------- Article -------------------- -->
@@ -44,7 +44,7 @@
 
   <% if(message) {%>
   <script>
-    alert("<%= message %>");
+    alert('<%= message %>');
   </script>
   <% } %>
 </html>

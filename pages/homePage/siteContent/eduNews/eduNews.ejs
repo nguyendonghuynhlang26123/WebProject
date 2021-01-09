@@ -1,17 +1,15 @@
 <div id="edu-news">
-  <div><a href="/category/education/?limit=14" class="category-name">EDUCATION</a></div>
+  <div><a href="/category/education" class="category-name">EDUCATION</a></div>
   <div class="news-card right-border">
     <a href="/post/slug/<%= education[0].slug %>">
-      <img src="<%= education[0].post_thumbnail.split("/").slice(1).join("/360-") %>" alt="/images/alt.png" loading="lazy" />
+      <img src="<%=
+      education[0].post_thumbnail.split("/").slice(1).join("/360-") %>"
+      alt="/images/alt.png" loading="lazy" />
       <div class="card-title">
-        <p class="a article-title">
-          <%= education[0].post_title %>
-        </p>
+        <p class="a article-title"><%= education[0].post_title %></p>
       </div>
       <div class="card-desc">
-        <p class="article-desc">
-          <%= education[0].post_description %>
-        </p>
+        <p class="article-desc"><%= education[0].post_description %></p>
       </div>
     </a>
   </div>
@@ -19,11 +17,11 @@
   <h1>Read more</h1>
   <ul class="post-list">
     <% for(let i=1; i < education.length; ++i) { %>
-      <li class="link-item">
-        <a href="/post/slug/<%= education[i].slug %>">
-          <%= education[i].post_title %>
-        </a>
-      </li>
-      <% } %>
+    <li class="link-item">
+      <a href="/post/slug/<%= education[i].slug %>">
+        <%= education[i].post_title %>
+      </a>
+    </li>
+    <% } %>
   </ul>
 </div>

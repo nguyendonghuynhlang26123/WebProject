@@ -1,22 +1,21 @@
 <div id="lifestyle-news">
   <div class="flex-row">
-    <a href="/category/lifestyle/?limit=14" class="category-name">LIFESTYLES</a>
-    <a href="/category/lifestyle/?limit=14" class="redirect-link">View all</a>
+    <a href="/category/lifestyle" class="category-name">LIFESTYLES</a>
+    <a href="/category/lifestyle" class="redirect-link">View all</a>
   </div>
   <div>
     <ul class="img-list">
       <% lifestyle.forEach(e=> { %>
-        <li class="img-card box animation">
-          <a href="/post/slug/<%= e.slug %>">
-            <img src="<%= e.post_thumbnail.split("/").slice(1).join("/360-") %>" loading="lazy" alt="/images/alt.png" />
-            <div class="img-title">
-              <p class="a">
-                <%= e.post_title %>
-              </p>
-            </div>
-          </a>
-        </li>
-        <% }); %>
+      <li class="img-card box animation">
+        <a href="/post/slug/<%= e.slug %>">
+          <img src="<%= e.post_thumbnail.split("/").slice(1).join("/360-") %>"
+          loading="lazy" alt="/images/alt.png" />
+          <div class="img-title">
+            <p class="a"><%= e.post_title %></p>
+          </div>
+        </a>
+      </li>
+      <% }); %>
     </ul>
   </div>
 </div>
