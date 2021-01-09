@@ -8,6 +8,7 @@ const category = require("./server/modules/categories/controller/category.api");
 const user = require("./server/modules/users/controller/user.api");
 const upload = require("./server/modules/uploadImage/controller/uploadImage.api");
 const auth = require("./server/modules/auth/controller/auth.api");
+const subcriber = require("./server/modules/subcribers/controller/subcriber.api");
 const bodyParser = require("body-parser");
 const errorHandler = require("./server/modules/errorHandler/errorHandler");
 dotenv.config();
@@ -17,6 +18,7 @@ const schedule = require("./server/modules/sendMail/sendMail.service");
 const search = require("./server/modules/search/controller/search.api");
 const postService = require("./server/modules/posts/services/post.service");
 const categoryService = require("./server/modules/categories/services/category.service");
+
 
 schedule.start();
 // app use
@@ -35,6 +37,7 @@ app.use("/post", post);
 app.use("/category", category);
 app.use("/upload", upload);
 app.use("/user", user);
+app.use("/subcriber", subcriber);
 app.use("/search", search);
 
 app.set("view engine", "ejs");
