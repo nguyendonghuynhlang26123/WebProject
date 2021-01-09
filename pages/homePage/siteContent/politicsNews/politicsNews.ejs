@@ -3,57 +3,55 @@
     <div class="panel">
       <div class="left-panel">
         <% for(let i=0; i <=2; ++i) { %>
-          <a href="/post/slug/<%= politics[i].slug %>" class="news-card right-border">
-            <div class="card-title">
-              <p class="a article-title">
-                <%= politics[i].post_title %>
-              </p>
-            </div>
-            <div class="card-desc">
-              <p class="article-desc">
-                <%= politics[i].post_description %>
-              </p>
-            </div>
-          </a>
-          <% } %>
+        <a
+          href="/post/slug/<%= politics[i].slug %>"
+          class="news-card right-border"
+        >
+          <div class="card-title">
+            <p class="a article-title"><%= politics[i].post_title %></p>
+          </div>
+          <div class="card-desc">
+            <p class="article-desc"><%= politics[i].post_description %></p>
+          </div>
+        </a>
+        <% } %>
       </div>
 
       <div class="center-panel">
         <div class="title">
-          <a href="/category/politics/?limit=14" class="category-name">Politics</a>
+          <a href="/category/politics" class="category-name">Politics</a>
         </div>
 
-        <a href="/post/slug/<%= politics[3].slug %>" class="news-card center-border">
-          <img src="<%= politics[3].post_thumbnail.split("/").slice(1).join("/780-") %>" alt="/images/alt.png"
-          loading="lazy" />
+        <a
+          href="/post/slug/<%= politics[3].slug %>"
+          class="news-card center-border"
+        >
+          <img src="<%=
+          politics[3].post_thumbnail.split("/").slice(1).join("/780-") %>"
+          alt="/images/alt.png" loading="lazy" />
           <div class="card-title">
-            <p class="a article-title">
-              <%= politics[3].post_title %>
-            </p>
+            <p class="a article-title"><%= politics[3].post_title %></p>
           </div>
           <div class="card-desc">
-            <p class="article-desc">
-              <%= politics[3].post_description %>
-            </p>
+            <p class="article-desc"><%= politics[3].post_description %></p>
           </div>
         </a>
       </div>
 
       <div class="right-panel">
         <% for(let i=4; i < politics.length; ++i) { %>
-          <a href="/post/slug/<%= politics[i].slug %>" class="news-card right-border">
-            <div class="card-title">
-              <p class="a article-title">
-                <%= politics[i].post_title %>
-              </p>
-            </div>
-            <div class="card-desc">
-              <p class="article-desc">
-                <%= politics[i].post_description %>
-              </p>
-            </div>
-          </a>
-          <% } %>
+        <a
+          href="/post/slug/<%= politics[i].slug %>"
+          class="news-card right-border"
+        >
+          <div class="card-title">
+            <p class="a article-title"><%= politics[i].post_title %></p>
+          </div>
+          <div class="card-desc">
+            <p class="article-desc"><%= politics[i].post_description %></p>
+          </div>
+        </a>
+        <% } %>
       </div>
     </div>
   </div>

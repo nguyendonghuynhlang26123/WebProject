@@ -106,7 +106,7 @@ async function deletePost(postId) {
 async function searchPost(key, category, order_by, limit) {
   let queryFind = { $text: { $search: key } };
   if (category) queryFind['post_category'] = { $in: category };
-  console.log(key, category, order_by, limit);
+
   if (!key && category == []) {
     queryFind = {};
   }
@@ -164,7 +164,7 @@ async function searchPostPage(key, category, order_by, perPage, page) {
       return post.post_description;
     }
   });
-  console.log(data[0]);
+
   return {
     posts: data[0],
     results: data[1],

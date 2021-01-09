@@ -62,7 +62,12 @@ router.get(
 );
 
 router.get('/', async function (req, res) {
-  const posts = await postService.getAllPost(req.query);
+  let posts;
+  if (req.query.order_by === 'view') {
+    delete req.query.order_by;
+    delete req.query.limit;
+    posts = await postService.getAllPostByViews(req.query, req.query.limit);
+  } else posts = await postService.getAllPost(req.query);
   res.send(posts);
 });
 

@@ -911,6 +911,7 @@ ul.post-list .link-item {
 .img-card .img-title {
   font-weight: bold;
   font-family: "Merriweather";
+  font-size: 0.9rem;
 }
 
 @media (max-width: 1200px) {
@@ -956,8 +957,6 @@ ul.post-list .link-item {
 /** NEWS CARD */
 .news-card img {
   width: 100%;
-  max-width: 360px;
-  max-height: 200px;
 }
 
 .news-card .card-title {

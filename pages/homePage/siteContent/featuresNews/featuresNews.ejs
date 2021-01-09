@@ -1,18 +1,17 @@
 <div id="features-news" class="container">
   <div class="flex-row">
-    <a href="/category/features/?limit=14" class="category-name">Features</a>
-    <a href="/category/features/?limit=14" class="redirect-link">See all</a>
+    <a href="/category/features" class="category-name">Features</a>
+    <a href="/category/features" class="redirect-link">See all</a>
   </div>
   <div class="glider-contain">
     <ul class="img-list glider1">
       <% features.forEach(e=> { %>
       <li class="img-card box animation">
         <a href="/post/slug/<%= e.slug %>">
-          <img src="<%= e.post_thumbnail.split("/").slice(1).join("/780-") %>" alt="/images/alt.png" loading="lazy" />
+          <img src="<%= e.post_thumbnail.split("/").slice(1).join("/780-") %>"
+          alt="/images/alt.png" loading="lazy" />
           <div class="img-title">
-            <p class="a">
-              <%= e.post_title %>
-            </p>
+            <p class="a"><%= e.post_title %></p>
           </div>
         </a>
       </li>
