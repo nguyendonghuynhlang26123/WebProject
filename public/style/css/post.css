@@ -181,7 +181,7 @@ ul li {
   display: block;
   width: 60%;
   background: #cccccc;
-  content: "";
+  content: '';
   margin: 1rem auto;
 }
 
@@ -191,7 +191,7 @@ ul li {
   display: block;
   width: 60%;
   background: #cccccc;
-  content: "";
+  content: '';
   margin-left: auto;
 }
 
@@ -201,7 +201,7 @@ ul li {
   display: block;
   width: 60%;
   background: #cccccc;
-  content: "";
+  content: '';
   margin-right: auto;
 }
 
@@ -210,7 +210,7 @@ ul li {
   color: #0c79ff;
   font-family: "Merriweather";
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   gap: 0;
 }
 
@@ -224,11 +224,11 @@ ul li {
   transition: all ease-in-out 0.4s;
 }
 
-.subscribe-form input[type="email"]:focus {
+.subscribe-form input[type='email']:focus {
   outline: none;
 }
 
-.subscribe-form input[type="email"]:invalid {
+.subscribe-form input[type='email']:invalid {
   border-bottom-color: red;
 }
 
@@ -763,6 +763,7 @@ aside .recommendation .recommended-post .recommended-post-title .date {
 
 aside .recommendation .recommended-post .recommended-post-title .a {
   font-weight: bold;
+  font-size: 0.9rem;
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {

@@ -1,9 +1,8 @@
 function sendRequest(method, url, data) {
-  console.log("SEND " + method + " REQ TO " + url);
   return new Promise(function (resolve, reject) {
     var xhr = new XMLHttpRequest();
     xhr.open(method, url, true);
-    xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
+    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhr.onload = function () {
       if (this.status >= 200 && this.status < 300) {
         resolve(xhr.response);
@@ -20,7 +19,7 @@ function sendRequest(method, url, data) {
         statusText: xhr.statusText,
       });
     };
-    if ((method == "PUT" || method == "POST") && data) {
+    if ((method == 'PUT' || method == 'POST') && data) {
       xhr.send(JSON.stringify(data));
     } else {
       xhr.send();

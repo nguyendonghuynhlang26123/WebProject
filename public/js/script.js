@@ -1,13 +1,13 @@
-window.addEventListener("load", () => {
-  new Glider(document.querySelector(".glider1"), {
+window.addEventListener('load', () => {
+  new Glider(document.querySelector('.glider1'), {
     // Mobile-first defaults
     slidesToShow: 1,
     slidesToScroll: 1,
     scrollLock: true,
-    dots: ".dots",
+    dots: '.dots',
     arrows: {
-      prev: ".glider-prev",
-      next: ".glider-next",
+      prev: '.glider-prev',
+      next: '.glider-next',
     },
     responsive: [
       {
@@ -15,7 +15,7 @@ window.addEventListener("load", () => {
         settings: {
           // Set to `auto` and provide item width to adjust to viewport
           slidesToShow: 3,
-          slidesToScroll: "auto",
+          slidesToScroll: 'auto',
         },
       },
       {
@@ -23,7 +23,7 @@ window.addEventListener("load", () => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: "auto",
+          slidesToScroll: 'auto',
           itemWidth: 400,
           duration: 0.25,
         },
@@ -33,4 +33,13 @@ window.addEventListener("load", () => {
 });
 
 /** SEARCH BUTTON ---------------------------*/
-SearchButton("btn-search", "search-input");
+SearchButton('btn-search', 'search-input');
+
+//Subscribe modal
+
+document
+  .querySelector('[data-nav-subscribe]')
+  .addEventListener('click', (ev) => {
+    let check = document.getElementById('modal-toggle').checked;
+    document.getElementById('modal-toggle').checked = !check;
+  });
