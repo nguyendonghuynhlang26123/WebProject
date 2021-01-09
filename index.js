@@ -9,6 +9,7 @@ const user = require("./server/modules/users/controller/user.api");
 const upload = require("./server/modules/uploadImage/controller/uploadImage.api");
 const auth = require("./server/modules/auth/controller/auth.api");
 const subcriber = require("./server/modules/subcribers/controller/subcriber.api");
+const contact = require("./server/modules/contacts/controller/contact.api");
 const bodyParser = require("body-parser");
 const errorHandler = require("./server/modules/errorHandler/errorHandler");
 dotenv.config();
@@ -38,6 +39,7 @@ app.use("/category", category);
 app.use("/upload", upload);
 app.use("/user", user);
 app.use("/subcriber", subcriber);
+app.use("/contact", contact);
 app.use("/search", search);
 
 app.set("view engine", "ejs");
