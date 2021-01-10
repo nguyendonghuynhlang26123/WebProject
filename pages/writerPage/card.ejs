@@ -7,7 +7,11 @@
   <span class="tag"><%= post.post_category.category_name %> </span>
   <div class="card-img">
     <div>
-      <img src="<%= post.post_thumbnail %>" alt="Post thumbnail" />
+      <img
+        src="<%= post.post_thumbnail %>"
+        alt="Post thumbnail"
+        loading="lazy"
+      />
     </div>
     <button>
       <svg
