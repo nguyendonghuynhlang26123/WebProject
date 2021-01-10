@@ -88,13 +88,21 @@ main {
 
 .content {
   h1 {
-    font-size: 2rem;
-    margin: 1rem 2rem;
+    font-size: 1.5rem;
+    margin: 1rem 0;
   }
-}
 
-#table {
-  th {
-    text-align: start;
+  .tables {
+    th {
+      text-align: start;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    input[type='search'] {
+      background: white;
+    }
   }
 }

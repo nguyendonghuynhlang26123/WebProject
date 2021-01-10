@@ -14,7 +14,7 @@ router.get('/writer', authService.restrict, async (req, res, next) => {
 });
 
 router.get('/', async function (req, res) {
-  const users = await userService.getAllUser();
+  const users = await userService.getAllUser(req.query);
   res.send({ data: users });
 });
 

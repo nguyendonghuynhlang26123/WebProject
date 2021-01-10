@@ -44,8 +44,12 @@ async function getUserById(userId) {
   return user;
 }
 
-async function getAllUser(limit) {
-  const users = await User.find({}, { password: 0 }, { limit: limit });
+async function getAllUser({ role, limit }) {
+  const users = await User.find(
+    { 'user_role': role },
+    { password: 0 },
+    { limit: limit }
+  );
   return users;
 }
 

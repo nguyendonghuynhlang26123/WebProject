@@ -1,4 +1,4 @@
-@import "global";
+@import 'global';
 .nav {
   height: 100vh;
   display: flex;
@@ -26,7 +26,8 @@
       transition: all 600ms ease;
       position: relative;
 
-      .nav__icon {
+      .nav__icon,
+      .nav__icon path {
         max-width: 3rem;
         min-width: 2rem;
       }
@@ -69,6 +70,9 @@
     .active {
       .nav__icon {
         fill: $purple-color;
+      }
+      span {
+        color: $purple-color;
       }
     }
 

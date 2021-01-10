@@ -314,7 +314,8 @@ ul li {
   position: relative;
 }
 
-.nav .nav__list .nav__item .nav__icon {
+.nav .nav__list .nav__item .nav__icon,
+.nav .nav__list .nav__item .nav__icon path {
   max-width: 3rem;
   min-width: 2rem;
 }
@@ -361,6 +362,10 @@ ul li {
 
 .nav .nav__list .active .nav__icon {
   fill: #6563ff;
+}
+
+.nav .nav__list .active span {
+  color: #6563ff;
 }
 
 .nav .nav__list:hover .nav__text {
@@ -834,10 +839,18 @@ main {
 }
 
 .content h1 {
-  font-size: 2rem;
-  margin: 1rem 2rem;
+  font-size: 1.5rem;
+  margin: 1rem 0;
 }
 
-#table th {
+.content .tables th {
   text-align: start;
+}
+
+.content .tables th:hover {
+  text-decoration: underline;
+}
+
+.content .tables input[type='search'] {
+  background: white;
 }
