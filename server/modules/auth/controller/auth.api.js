@@ -3,7 +3,8 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/login", (req, res) => {
-  if (req.session.auth) res.redirect("../user/writer");
+  if (req.session.auth && req.session.role == "writer")
+    res.redirect("../user/writer");
   res.render("signing/login", {
     link: "/style/css/signing.css",
     message: req.session.error,
@@ -19,7 +20,12 @@ router.post("/login", (req, res) => {
         req.session.regenerate(() => {
           req.session.auth = true;
           req.session.userId = user._id;
-          res.redirect("../user/writer");
+          req.session.role = user.user_role;
+          if (user.user_role == "writer") {
+            res.redirect("../user/writer");
+            return;
+          }
+          // redirect admin page
         });
       } else {
         req.session.error = `${err}. Authentication failed, please check your username and password.`;

@@ -10,7 +10,16 @@ async function authenticate(username, password, fn) {
 }
 
 function restrict(req, res, next) {
-  if (req.session.auth) {
+  if (req.session.auth && req.session.role == "writer") {
+    next();
+  } else {
+    req.session.error = "Access denied! Please login.";
+    res.redirect("/auth/login");
+  }
+}
+
+function restrictAdmin(req, res, next) {
+  if (req.session.auth && req.session.role == "admin") {
     next();
   } else {
     req.session.error = "Access denied! Please login.";
@@ -21,4 +30,5 @@ function restrict(req, res, next) {
 module.exports = {
   authenticate: authenticate,
   restrict: restrict,
+  restrictAdmin: restrictAdmin,
 };

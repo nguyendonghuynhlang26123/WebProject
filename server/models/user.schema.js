@@ -18,6 +18,7 @@ const UserSchema = new Schema({
       post_id: { type: Schema.Types.ObjectId, ref: "posts" },
     },
   ],
+  user_role: { type: String, default: "writer", enum: ["writer", "admin"] },
   created_at: { type: Number, default: Date.now() },
 });
 
