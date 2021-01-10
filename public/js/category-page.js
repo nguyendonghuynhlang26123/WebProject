@@ -120,3 +120,12 @@ fetch(`/post/popular?limit=3`)
   .catch((err) => {
     console.error(err);
   });
+
+//Subscribe btn
+document
+  .querySelector('.minimized-header .btn-subscribe')
+  .addEventListener('click', (ev) => {
+    let check = document.getElementById('modal-toggle').checked;
+    document.getElementById('modal-toggle').checked = !check;
+    ev.preventDefault();
+  });

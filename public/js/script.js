@@ -36,10 +36,32 @@ window.addEventListener('load', () => {
 SearchButton('btn-search', 'search-input');
 
 //Subscribe modal
-
 document
   .querySelector('[data-nav-subscribe]')
   .addEventListener('click', (ev) => {
     let check = document.getElementById('modal-toggle').checked;
     document.getElementById('modal-toggle').checked = !check;
+  });
+
+//Subscribe btns
+document
+  .querySelector('[data-side-email] ~ button')
+  .addEventListener('click', (ev) => {
+    ev.preventDefault();
+    document.querySelector(
+      '#subscribe_modal .input'
+    ).value = document.querySelector('[data-side-email]').value;
+
+    document.querySelector('[data-nav-subscribe]').click();
+  });
+
+document
+  .querySelector('[data-footer-email] ~ button')
+  .addEventListener('click', (ev) => {
+    ev.preventDefault();
+    document.querySelector(
+      '#subscribe_modal .input'
+    ).value = document.querySelector('[data-footer-email]').value;
+
+    document.querySelector('[data-nav-subscribe]').click();
   });

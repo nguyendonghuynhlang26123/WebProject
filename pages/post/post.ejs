@@ -13,7 +13,8 @@
     <div id="functional-nav">
       <%- include('minimizedHeader/minimizedHeader', {btn_label: btn_label}); %>
     </div>
-
+    <%- include('../modal-popup/modal', {title: "",
+    formHtml:'../modal-popup/subscribe_form', parameters: {}});%>
     <!-- SIDE NAV -->
     <%- include("../modal-popup/sidenav.ejs") %>
 
@@ -76,6 +77,8 @@
     <script src="/js/sidenav.js"></script>
     <script src="/js/search_btn.js"></script>
     <script src="/js/recommendation.js"></script>
+    <script src="/js/sendRequest.js"></script>
+    <script src="/js/subscribe_form.js"></script>
     <script>
       SearchButton('btn-search', 'search-input');
       const categoryId = document.querySelector('[data-category_id]').id;
@@ -92,6 +95,15 @@
         })
         .catch((err) => {
           console.error(err);
+        });
+
+      //Subscribe btn
+      document
+        .querySelector('.minimized-header .btn-subscribe')
+        .addEventListener('click', (ev) => {
+          let check = document.getElementById('modal-toggle').checked;
+          document.getElementById('modal-toggle').checked = !check;
+          ev.preventDefault();
         });
     </script>
   </body>
