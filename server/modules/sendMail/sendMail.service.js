@@ -8,8 +8,8 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-async function sendMail(mailOptions) {
-  transporter.sendMail(mailOptions, function (error, info) {
+async function sendMail(mailOption) {
+  transporter.sendMail(mailOption, function (error, info) {
     if (error) {
       console.log(error);
     } else {

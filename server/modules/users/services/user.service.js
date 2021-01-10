@@ -1,5 +1,6 @@
 const User = require("../../../models/user.schema");
 const postService = require("../../posts/services/post.service");
+const sendMailService = require("../../sendMail/sendMail.service");
 const bcrypt = require("bcrypt");
 
 async function hashPassword(password) {
@@ -45,9 +46,35 @@ async function getUserById(userId) {
   return user;
 }
 
+async function resetPassword(username, email) {
+  if (!email || !username) throw new Error("Cannot Reset Password!");
+  const user = await User.findOne({ username: username });
+  if (!user) throw new Error("Not Found User!");
+  if (email != user.email) throw new Error("Email Did Not Match!");
+  let newPassword = `${Date.now()}${Math.round(Math.random() * 1e9)}`;
+  user.password = await hashPassword(newPassword);
+  const mailOption = {
+    from: "thependailynews@gmail.com",
+    to: user.email,
+    subject: `Reset password for user: ${user.username}`,
+    html: `Dear Writer,
+    <br><br>
+    We received a request to reset password of your account, please use below login details:
+    <br><br>
+    <b>Username: </b> ${user.username}
+    <br>
+    <b>Password: </b> ${newPassword}
+    <br><br>
+    The Pen Daily.`,
+  };
+  sendMailService.sendMail(mailOption);
+  const result = await User.updateOne({ _id: user._id }, user);
+  return result;
+}
+
 async function getAllUser({ role, limit }) {
   const users = await User.find(
-    { 'user_role': role },
+    { user_role: role },
     { password: 0 },
     { limit: limit }
   );
@@ -114,4 +141,5 @@ module.exports = {
   changePassword: changePassword,
   addPostId: addPostId,
   delPostId: delPostId,
+  resetPassword: resetPassword,
 };
