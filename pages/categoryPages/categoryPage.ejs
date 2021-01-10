@@ -14,6 +14,9 @@
     <div class="container">
       <%- include('highlights') %> <%- include('listpost') %>
     </div>
+    <!--  -->
+    <%- include('../modal-popup/modal', {title: "",
+    formHtml:'../modal-popup/subscribe_form', parameters: {}});%>
     <!-- ------------- FOOTER ------------------- -->
     <%- include('../footer/footer'); %>
 
@@ -22,6 +25,8 @@
     <script src="/js/search_btn.js"></script>
     <script src="/js/recommendation.js"></script>
     <script src="/js/post-list.js"></script>
+    <script src="/js/sendRequest.js"></script>
+    <script src="/js/subscribe_form.js"></script>
     <script src="/js/category-page.js"></script>
   </body>
 </html>

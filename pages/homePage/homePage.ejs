@@ -6,7 +6,12 @@
   </head>
   <body>
     <!-- ---------- HEADER------------------------ -->
-    <%- include('header/header', {list_category: list_category }); %> <%- include('../modal-popup/sidenav'); %>
+    <%- include('header/header', {list_category: list_category }); %> <%-
+    include('../modal-popup/sidenav'); %>
+    <!--  -->
+    <%- include('../modal-popup/modal', {title: "",
+    formHtml:'../modal-popup/subscribe_form', parameters: {}});%>
+
     <!-- ----------- Article -------------------- -->
     <%- include('siteContent/siteContent'); %>
 
@@ -17,6 +22,8 @@
     <script src="js/glider.min.js"></script>
     <script src="js/search_btn.js"></script>
     <script src="js/sidenav.js"></script>
+    <script src="js/sendRequest.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/subscribe_form.js"></script>
   </body>
 </html>

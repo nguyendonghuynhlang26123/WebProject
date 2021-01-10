@@ -14,25 +14,14 @@ const errorHandler = require('./server/modules/errorHandler/errorHandler');
 const schedule = require('./server/modules/sendMail/sendMail.service');
 const search = require('./server/modules/search/controller/search.api');
 const contact = require('./server/modules/contact/controller/contact.api');
+const subscriber = require('./server/modules/subcribers/controller/subcriber.api');
 
 const port = process.env.PORT || 3000;
-<<<<<<< HEAD
-=======
-const post = require("./server/modules/posts/controller/post.api");
-const category = require("./server/modules/categories/controller/category.api");
-const user = require("./server/modules/users/controller/user.api");
-const upload = require("./server/modules/uploadImage/controller/uploadImage.api");
-const auth = require("./server/modules/auth/controller/auth.api");
-const subcriber = require("./server/modules/subcribers/controller/subcriber.api");
-const contact = require("./server/modules/contacts/controller/contact.api");
-const bodyParser = require("body-parser");
 const errorHandler = require("./server/modules/errorHandler/errorHandler");
->>>>>>> 6b6eae750cad2055bc6461a916e473500d73b9c0
 dotenv.config();
 
 // mongoose connect
 const db = require('./db');
-
 
 schedule.start();
 // app use
@@ -46,7 +35,6 @@ app.use(
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-<<<<<<< HEAD
 app.use('/', home);
 app.use('/auth', auth);
 app.use('/post', post);
@@ -55,24 +43,10 @@ app.use('/upload', upload);
 app.use('/user', user);
 app.use('/contact', contact);
 app.use('/search', search);
+app.use('/subscribe', subscriber);
 
 app.set('view engine', 'ejs');
 app.set('views', './pages');
-
-app.get('/login', (req, res) => {
-  res.redirect('auth/login');
-=======
-app.use("/auth", auth);
-app.use("/post", post);
-app.use("/category", category);
-app.use("/upload", upload);
-app.use("/user", user);
-app.use("/subcriber", subcriber);
-app.use("/contact", contact);
-app.use("/search", search);
-
-app.set("view engine", "ejs");
-app.set("views", "./pages");
 
 app.get("/", async function (req, res) {
   const data = await Promise.all([
@@ -183,7 +157,6 @@ app.get("/contact", (req, res) => {
 //MEO MEO
 app.get("/categoryPage", (req, res) => {
   res.render("categoryPages/category_page");
->>>>>>> 6b6eae750cad2055bc6461a916e473500d73b9c0
 });
 
 app.get('*', function (req, res, next) {

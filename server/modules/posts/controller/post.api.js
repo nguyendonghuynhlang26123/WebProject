@@ -8,6 +8,7 @@ const router = express.Router();
 router.get('/slug/:postSlug', async function (req, res, next) {
   try {
     const post = await postService.getPostBySlug(req.params.postSlug);
+
     res.render('post/post', {
       link: '/style/css/post.css',
       post: post,
@@ -16,6 +17,13 @@ router.get('/slug/:postSlug', async function (req, res, next) {
   } catch (err) {
     next(err);
   }
+});
+
+router.get('/popular', async function (req, res) {
+  let query = {};
+  if (req.query.category) query['post_category'] = req.query.category;
+  let posts = await postService.getAllPostByViews(query, req.query.limit);
+  res.send(posts);
 });
 
 router.get('/:postId', async function (req, res, next) {
@@ -62,17 +70,11 @@ router.get(
 );
 
 router.get('/', async function (req, res) {
-  let posts;
-  if (req.query.order_by === 'view') {
-    delete req.query.order_by;
-    delete req.query.limit;
-    posts = await postService.getAllPostByViews(req.query, req.query.limit);
-  } else posts = await postService.getAllPost(req.query);
+  let posts = await postService.getAllPost(req.query);
   res.send(posts);
 });
 
 router.get('/search/:key', async function (req, res) {
-  console.log('log ~ file: post.api.js ~ line 70 ~ req', req.query);
   const posts = await postService.searchPost(
     req.params.key,
     req.query.category,

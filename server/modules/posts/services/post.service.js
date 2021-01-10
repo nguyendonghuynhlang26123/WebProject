@@ -38,7 +38,7 @@ async function getAllPostByViews(filter, limit) {
       post_tags: 0,
     },
     {
-      limit: limit,
+      limit: Number(limit),
       sort: { post_views: 'desc' },
     }
   );

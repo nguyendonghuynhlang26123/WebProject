@@ -111,3 +111,21 @@ function handleIntersect(entries) {
 const recommendation = new RecommendationController(
   '[data-recommendation-container]'
 );
+
+fetch(`/post/popular?limit=3`)
+  .then((data) => data.json())
+  .then((data) => {
+    recommendation.render(data);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+//Subscribe btn
+document
+  .querySelector('.minimized-header .btn-subscribe')
+  .addEventListener('click', (ev) => {
+    let check = document.getElementById('modal-toggle').checked;
+    document.getElementById('modal-toggle').checked = !check;
+    ev.preventDefault();
+  });
