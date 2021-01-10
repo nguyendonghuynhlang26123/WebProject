@@ -42,15 +42,19 @@ router.post('/', async function (req, res, next) {
 });
 
 //TODO: Put Restrict
-router.put('/:userId', async function (req, res, next) {
-  try {
-    let body = { ...req.body.data[req.params.userId] };
-    const result = await userService.updateUserById(req.params.userId, body);
-    res.send({ data: [body] });
-  } catch (err) {
-    res.send({ err: 'Updating user failed! Please try again' });
+router.put(
+  '/:userId',
+  authService.restrictAdmin,
+  async function (req, res, next) {
+    try {
+      let body = { ...req.body.data[req.params.userId] };
+      const result = await userService.updateUserById(req.params.userId, body);
+      res.send({ data: [body] });
+    } catch (err) {
+      res.send({ err: 'Updating user failed! Please try again' });
+    }
   }
-});
+);
 
 router.put('/', authService.restrict, async function (req, res, next) {
   try {
@@ -80,7 +84,7 @@ router.put(
   }
 );
 
-router.delete('/:userId', async function (req, res) {
+router.delete('/:userId', authService.restrictAdmin, async function (req, res) {
   const result = await userService.deleteUser(req.params.userId);
   res.send(result);
 });

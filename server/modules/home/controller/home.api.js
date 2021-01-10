@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 const postService = require('../../posts/services/post.service');
 const categoryService = require('../../categories/services/category.service');
+const viewService = require('../../views/services/view.service');
 
 router.get('/', async function (req, res) {
+  viewService.updateView();
   const data = await Promise.all([
     categoryService.getAllCategory('category_name category_slug'),
     postService.getAllPostByViews(
