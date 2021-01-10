@@ -53,7 +53,7 @@ async function getAllPostByViews(filter, limit) {
   return posts;
 }
 
-async function getAllPost(filter, select, limit, sortBy) {
+async function getAllPost({ filter, select, limit, sortBy }) {
   const posts = await Post.find(
     filter,
     {
@@ -63,7 +63,7 @@ async function getAllPost(filter, select, limit, sortBy) {
       post_tags: 0,
     },
     {
-      limit: limit,
+      limit: Number(limit),
       populate: { path: 'post_author', select: 'first_name last_name' },
       sort: sortBy || { post_date: 'desc' },
     }

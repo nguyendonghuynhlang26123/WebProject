@@ -51,6 +51,10 @@ app.get('/login', (req, res) => {
   res.redirect('auth/login');
 });
 
+app.get('/admin/dashboard', (req, res) => {
+  res.render('./adminPages/dashboard');
+});
+
 app.get('*', function (req, res, next) {
   let err = new Error('Page not found');
   err.statusCode = 404;
