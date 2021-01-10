@@ -314,7 +314,8 @@ ul li {
   position: relative;
 }
 
-.nav .nav__list .nav__item .nav__icon {
+.nav .nav__list .nav__item .nav__icon,
+.nav .nav__list .nav__item .nav__icon path {
   max-width: 3rem;
   min-width: 2rem;
 }
@@ -361,6 +362,10 @@ ul li {
 
 .nav .nav__list .active .nav__icon {
   fill: #6563ff;
+}
+
+.nav .nav__list .active span {
+  color: #6563ff;
 }
 
 .nav .nav__list:hover .nav__text {
