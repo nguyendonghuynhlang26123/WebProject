@@ -4,6 +4,7 @@
     <%- include('../head/head', {link: "/style/css/admin.css" }); %>
   </head>
   <body>
+    <%- include('./admin-nav');%>
     <main>
       <header class="header">
         <div class="header__wrapper">
@@ -85,53 +86,7 @@
       </header>
 
       <hr />
-      <div class="content">
-        <div class="card-container">
-          <div class="card">
-            <i class="fas fa-chart-bar"></i>
-            <div>
-              <h3>Views</h3>
-              <span>4</span>
-            </div>
-          </div>
-
-          <div class="card">
-            <i class="fas fa-user"></i>
-            <div>
-              <h3>Writers</h3>
-              <span>4</span>
-            </div>
-          </div>
-
-          <div class="card">
-            <i class="fas fa-newspaper"></i>
-            <div>
-              <h3>Posts</h3>
-              <span>4</span>
-            </div>
-          </div>
-
-          <div class="card">
-            <i class="fas fa-envelope"></i>
-            <div>
-              <h3>Subscribed</h3>
-              <span>4</span>
-            </div>
-          </div>
-
-          <div class="card">
-            <i class="fas fa-comments"></i>
-            <div>
-              <h3>Contacted</h3>
-              <span>4</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="tables">
-          <table id="table"></table>
-        </div>
-      </div>
+      <div class="content"><%- include('user-tab') %></div>
     </main>
 
     <span id="toast"></span>
@@ -158,6 +113,8 @@
     />
     <script type="text/javascript" src="/js/datatables.min.js"></script>
 
-    <script src="/js/admin_dashboard.js"></script>
+    <% if (tab==="users") { %>
+    <script src="/js/admin_user.js"></script>
+    <% } %>
   </body>
 </html>

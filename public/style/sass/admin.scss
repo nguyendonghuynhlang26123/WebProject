@@ -12,7 +12,8 @@ button {
 
 main {
   min-height: 100vh;
-  margin: 0 6rem;
+  margin-left: 7rem;
+  margin-right: 6rem;
   position: relative;
 }
 
@@ -85,38 +86,15 @@ main {
   }
 }
 
-.card-container {
-  z-index: 0;
-  margin: 2rem 1rem;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  column-gap: 2rem;
-  row-gap: 2rem;
-  position: relative;
+.content {
+  h1 {
+    font-size: 2rem;
+    margin: 1rem 2rem;
+  }
+}
 
-  .card {
-    position: relative;
-    background: white;
-    border-radius: 24px;
-    padding: 1.4rem 0.4rem;
-    max-height: 30rem;
-    box-shadow: 1px 1px 10px -5px #000000;
-    color: $footer-color;
-    text-align: center;
-    cursor: pointer;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-
-    i {
-      font-size: 3.4rem;
-    }
-
-    &:hover {
-      color: white;
-      background-color: $footer-color;
-    }
+#table {
+  th {
+    text-align: start;
   }
 }
