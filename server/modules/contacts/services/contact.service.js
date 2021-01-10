@@ -29,6 +29,7 @@ async function updateStatusContact(contactId, status) {
   const contact = await Contact.findOne({ _id: contactId });
   if (!contact) return;
   contact.status = status;
+  contact.updated_at = Date.now();
   const result = await Contact.updateOne({ _id: contact._id }, contact);
   return result;
 }
