@@ -3,8 +3,14 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/login", (req, res) => {
-  if (req.session.auth && req.session.role == "writer")
+  if (req.session.auth && req.session.role == "writer") {
     res.redirect("../user/writer");
+    return;
+  }
+  if (req.session.auth && req.session.role == "admin") {
+    // redirect admin page
+    return;
+  }
   res.render("signing/login", {
     link: "/style/css/signing.css",
     message: req.session.error,
