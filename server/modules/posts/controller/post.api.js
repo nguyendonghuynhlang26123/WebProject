@@ -71,14 +71,16 @@ router.get(
 );
 
 router.get('/', async function (req, res) {
-  req.query.filter['post_status'] = 'Publish';
+  let query = { ...req.query };
+  if (!query.filter) query.filter = {};
+  query.filter['post_status'] = 'Publish';
   let posts = await postService.getAllPost(
-    req.query.filter,
-    req.query.populate,
-    req.query.limit,
-    req.query.sortBy
+    query.filter,
+    query.populate,
+    query.limit,
+    query.sortBy
   );
-  res.send(posts);
+  res.send({ data: posts });
 });
 
 router.get('/search/:key', async function (req, res) {

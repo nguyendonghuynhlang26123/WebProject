@@ -61,7 +61,7 @@ router.put(
     try {
       let body = { ...req.body.data[req.params.userId] };
       const result = await userService.updateUserById(req.params.userId, body);
-      res.send({ data: [body] });
+      res.send({ data: [await userService.getUserById(req.params.userId)] });
     } catch (err) {
       res.send({ err: 'Updating user failed! Please try again' });
     }
@@ -100,7 +100,7 @@ router.put('/forget/reset-password', async function (req, res, next) {
   try {
     if (!req.body.username || !req.body.email) {
       req.session.error = 'Please fill out all information.';
-      res.redirect('user/reset-password');
+      res.redirect('auth/reset');
     }
     const result = await userService.resetPassword(
       req.body.username,

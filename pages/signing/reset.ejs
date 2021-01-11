@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../head/head', {link: link }); %>
+  </head>
+
+  <body>
+    <!-- ---------- HEADER------------------------ -->
+    <div class="header">
+      <a href="/" id="page-title">The Pen Daily</a>
+    </div>
+
+    <!-- ----------- Article -------------------- -->
+    <div id="reset-password" class="login-container">
+      <form data-form>
+        <svg
+          viewBox="0 0 510 510"
+          xmlns="http://www.w3.org/2000/svg"
+          style="width: 3rem; height: 3rem"
+        >
+          <path
+            d="m137.27 157.65c0-60.05 48.85-108.9 108.9-108.9 60.04 0 108.89 48.85 108.89 108.9v51.37h48.75v-51.37c0-86.93-70.72-157.65-157.64-157.65-86.93 0-157.65 70.72-157.65 157.65v51.37h48.75z"
+          />
+          <path
+            d="m455.12 239.02h-400.24c-11.05 0-20 8.95-20 20v230.98c0 11.05 8.95 20 20 20h400.24c11.05 0 20-8.95 20-20v-230.98c0-11.05-8.95-20-20-20zm-185.12 217.73c0 8.28-6.72 15-15 15s-15-6.72-15-15v-1.33c0-8.29 6.72-15 15-15s15 6.71 15 15zm2.05-72.09c-1.23.4-2.05 1.47-2.05 2.65v13.28c0 8.29-6.72 15-15 15s-15-6.71-15-15v-13.28c0-14.12 9.07-26.7 22.73-31.17 10.82-3.54 17.83-13.99 17.05-25.41-.85-12.25-10.73-22.13-22.99-22.98-14.63-1.03-26.63 10.55-26.63 24.78 0 8.27-6.69 15-15 15-8.28 0-15-6.72-15-15 0-31.06 26.18-56.95 58.7-54.71 27.12 1.87 48.98 23.73 50.85 50.85 1.73 25.15-13.75 48.17-37.66 55.99z"
+          />
+        </svg>
+        <p data-response></p>
+        <div class="field">
+          <label for="email">Username</label>
+          <input type="text" name="username" />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" name="email" />
+        </div>
+
+        <div class="signup">
+          <a href="/auth/login" class="redirect-link">Login</a>
+        </div>
+
+        <button class="login">Reset password</button>
+      </form>
+      <form class="success">
+        <svg
+          id="successAnimation"
+          class="animated"
+          xmlns="http://www.w3.org/2000/svg"
+          width="70"
+          height="70"
+          viewBox="0 0 70 70"
+        >
+          <path
+            id="successAnimationResult"
+            fill="#D8D8D8"
+            d="M35,60 C21.1928813,60 10,48.8071187 10,35 C10,21.1928813 21.1928813,10 35,10 C48.8071187,10 60,21.1928813 60,35 C60,48.8071187 48.8071187,60 35,60 Z M23.6332378,33.2260427 L22.3667622,34.7739573 L34.1433655,44.40936 L47.776114,27.6305926 L46.223886,26.3694074 L33.8566345,41.59064 L23.6332378,33.2260427 Z"
+          />
+          <circle
+            id="successAnimationCircle"
+            cx="35"
+            cy="35"
+            r="24"
+            stroke="#979797"
+            stroke-width="2"
+            stroke-linecap="round"
+            fill="transparent"
+          />
+          <polyline
+            id="successAnimationCheck"
+            stroke="#979797"
+            stroke-width="2"
+            points="23 34 34 43 47 27"
+            fill="transparent"
+          />
+        </svg>
+
+        <p class="safe">
+          Your password has been reset! Please check your mail inbox
+        </p>
+      </form>
+    </div>
+    <!-- ------------- FOOTER ------------------- -->
+    <%- include('../footer/footer'); %>
+  </body>
+
+  <script src="/js/sendRequest.js"></script>
+  <script>
+    document.querySelector('[data-form]').addEventListener('submit', (e) => {
+      e.preventDefault();
+      let data = {
+        username: document.querySelector('input[name="username"]').value,
+        email: document.querySelector('input[name="email"]').value,
+      };
+
+      sendRequest('PUT', '/user/forget/reset-password', data)
+        .then((response) => {
+          document.querySelector('#reset-password').classList.add('done');
+        })
+        .catch((err) => {
+          document.querySelector('[data-response]').textContent =
+            'Invalid credentials';
+        });
+    });
+  </script>
+</html>

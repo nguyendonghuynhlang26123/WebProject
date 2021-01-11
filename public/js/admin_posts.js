@@ -5,6 +5,7 @@ let defaultAjax = {
     url: '/post/_id_',
   },
 };
+let selectedId = null;
 
 $(document).ready(function () {
   editor1 = new $.fn.dataTable.Editor({
@@ -16,7 +17,8 @@ $(document).ready(function () {
     data: true,
     populate: { path: 'post_category', select: 'category_name' },
   });
-  $('#table').DataTable({
+
+  let table = $('#table').DataTable({
     ajax: `/post?${s}`,
     columns: [
       { data: 'post_category.category_name', title: 'Category' },
@@ -28,7 +30,7 @@ $(document).ready(function () {
         title: 'Time',
         data: null,
         render: (data, type, row) => {
-          return new Date(data.created_at).toLocaleDateString();
+          return new Date(data.post_date).toLocaleDateString();
         },
       },
       {
@@ -38,13 +40,41 @@ $(document).ready(function () {
           if (!data.post_author) return '';
           let author =
             data.post_author.first_name + ' ' + data.post_author.last_name;
-          console.log(author, row);
           return author;
         },
+      },
+      {
+        title: 'Views',
+        data: 'post_views',
       },
     ],
     select: true,
     dom: 'Bfrtip',
-    buttons: [{ extend: 'remove', editor: editor1 }],
+    'order': [[2, 'desc']],
+    buttons: [
+      {
+        text: 'Preview',
+        className: 'btn-preview',
+        action: (args) => window.open(`/post/${selectedId}`),
+      },
+      { extend: 'remove', editor: editor1 },
+    ],
+  });
+
+  table.button('.btn-preview').enable(false);
+  table.on('select', function (e, dt, type, indexes) {
+    if (type === 'row') {
+      selectedId = table.rows(indexes).data().pluck('_id')[0];
+
+      table.button('.btn-preview').enable(true);
+    }
+  });
+
+  table.on('deselect', function (e, dt, type, indexes) {
+    if (type === 'row') {
+      selectedId = null;
+
+      table.button('.btn-preview').enable(false);
+    }
   });
 });

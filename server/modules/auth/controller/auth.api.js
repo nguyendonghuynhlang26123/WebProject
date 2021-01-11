@@ -41,8 +41,8 @@ router.post('/login', (req, res) => {
   );
 });
 
-router.get('/register', (req, res) => {
-  res.render('signing/register', {
+router.get('/reset', (req, res) => {
+  res.render('signing/reset', {
     link: '/style/css/signing.css',
     message: req.session.error,
   });
@@ -50,7 +50,7 @@ router.get('/register', (req, res) => {
 
 router.get('/logout', (req, res) => {
   req.session.destroy(() => {
-    res.redirect('/auth/login');
+    res.redirect('/auth/login', { message: req.session.error });
   });
 });
 
