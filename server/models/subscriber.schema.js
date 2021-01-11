@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const SubcriberSchema = new Schema({
+const SubscriberSchema = new Schema({
   email: {
     type: String,
     required: true,
@@ -13,4 +13,4 @@ const SubcriberSchema = new Schema({
   updated_at: { type: Number, default: Date.now() },
 });
 
-module.exports = mongoose.model("subcribers", SubcriberSchema);
+module.exports = mongoose.model('subscribers', SubscriberSchema);

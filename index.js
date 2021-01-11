@@ -16,7 +16,7 @@ const errorHandler = require('./server/modules/errorHandler/errorHandler');
 const schedule = require('./server/modules/sendMail/schedule');
 const search = require('./server/modules/search/controller/search.api');
 const contact = require('./server/modules/contact/controller/contact.api');
-const subscriber = require('./server/modules/subcribers/controller/subcriber.api');
+const subscriber = require('./server/modules/subscribers/controller/subscriber.api');
 
 const port = process.env.PORT || 3000;
 dotenv.config();

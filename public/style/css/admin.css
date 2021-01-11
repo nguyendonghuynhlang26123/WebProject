@@ -862,3 +862,10 @@ main {
 .content .tables input[type='search'] {
   background: white;
 }
+
+#contact-tab {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 7fr 3fr;
+      grid-template-columns: 7fr 3fr;
+}

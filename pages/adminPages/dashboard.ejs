@@ -65,7 +65,8 @@
       <hr />
       <div class="content">
         <% if (tab==="accounts") { %> <%- include('accounts-tab') %> <% } %> <%
-        if (tab==="posts") { %> <%- include('posts-tab') %> <% } %>
+        if (tab==="posts") { %> <%- include('posts-tab') %> <% } %> <% if
+        (tab==="contact") { %> <%- include('contact-tab') %> <% } %>
       </div>
     </main>
 
@@ -93,6 +94,8 @@
     <script src="/js/admin_user.js"></script>
     <% } %> <% if (tab==="posts") { %>
     <script src="/js/admin_posts.js"></script>
+    <% } %><% if (tab==="contact") { %>
+    <script src="/js/admin_contacts.js"></script>
     <% } %>
   </body>
 </html>
