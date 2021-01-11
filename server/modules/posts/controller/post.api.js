@@ -42,6 +42,7 @@ router.get('/:postId', async function (req, res, next) {
       res.redirect(`./${post._id}/edit`);
       return;
     }
+    if (post.post_status != "Publish") throw new Error("Not Found Post!");
     res.render('post/post', {
       link: '/style/css/post.css',
       post: post,
