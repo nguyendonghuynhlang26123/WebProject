@@ -843,6 +843,14 @@ main {
   margin: 1rem 0;
 }
 
+.content .tables tr {
+  cursor: pointer;
+}
+
+.content .tables tr:hover {
+  background-color: #cccccc;
+}
+
 .content .tables th {
   text-align: start;
 }

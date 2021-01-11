@@ -13,6 +13,18 @@ router.get('/writer', authService.restrict, async (req, res, next) => {
   }
 });
 
+router.get('/admin', authService.restrictAdmin, async (req, res, next) => {
+  res.redirect('./admin/dashboard');
+});
+
+router.get('/admin/:tab', authService.restrictAdmin, async (req, res, next) => {
+  try {
+    res.render('./adminPages/dashboard', { tab: req.params.tab });
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get('/', async function (req, res) {
   const users = await userService.getAllUser(req.query);
   res.send({ data: users });

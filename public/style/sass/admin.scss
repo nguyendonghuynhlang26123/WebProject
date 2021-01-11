@@ -93,6 +93,12 @@ main {
   }
 
   .tables {
+    tr {
+      cursor: pointer;
+      &:hover {
+        background-color: $hr-border-color;
+      }
+    }
     th {
       text-align: start;
 

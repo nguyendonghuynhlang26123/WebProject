@@ -71,7 +71,9 @@ router.get(
 
 router.get('/', async function (req, res) {
   let posts = await postService.getAllPost(req.query);
-  res.send(posts);
+  console.log(req.query);
+  if (req.query.data) res.send({ data: posts });
+  else res.send(posts);
 });
 
 router.get('/search/:key', async function (req, res) {
@@ -139,9 +141,9 @@ router.delete(
   authService.restrict,
   async function (req, res, next) {
     try {
-      console.log('Delete req received');
       const post = await postService.getPostById(req.params.postId);
 
+      console.log('Delete req received', post);
       if (!post || post.post_author._id != req.session.userId)
         return next({ message: 'Access Denied' });
 
