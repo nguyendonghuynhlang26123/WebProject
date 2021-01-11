@@ -19,7 +19,7 @@ router.get('/admin', authService.restrictAdmin, async (req, res, next) => {
 
 router.get('/admin/:tab', authService.restrictAdmin, async (req, res, next) => {
   try {
-    res.render('./adminPages/dashboard', { tab: req.params.tab });
+    res.render('./adminPages/admin', { tab: req.params.tab });
   } catch (err) {
     next(err);
   }

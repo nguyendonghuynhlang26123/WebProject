@@ -1,8 +1,8 @@
-const viewService = require("../services/view.service");
-const express = require("express");
+const viewService = require('../services/view.service');
+const express = require('express');
 const router = express.Router();
 
-router.get("/", async function (req, res, next) {
+router.get('/', async function (req, res, next) {
   try {
     if (!req.query.month && !req.query.year) {
       const views = await viewService.getAllView();

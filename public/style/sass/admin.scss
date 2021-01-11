@@ -26,62 +26,26 @@ main {
   }
 }
 
-.user-profile {
+.card-container {
+  z-index: 0;
+  margin: 2rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+  row-gap: 2rem;
   position: relative;
 
-  z-index: 2;
-
-  input:checked ~ .dropdown {
-    display: flex;
-  }
-
-  label {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0.3rem 0.4rem;
-    color: $hr-border-color;
-    font-size: 1rem;
+  .card {
     cursor: pointer;
-    width: 6rem;
-
-    &:hover {
-      background: $footer-color;
-      color: white;
-
-      svg path:nth-child(2) {
-        fill: white;
-      }
-    }
-
-    i {
-      margin-left: 0.8rem;
-    }
-  }
-
-  .dropdown {
-    display: none;
-    padding-top: 40px;
-    margin-top: -40px;
-    flex-direction: column;
-    width: 100px;
-    position: fixed;
+    position: relative;
     background: white;
-    z-index: 1;
+    border-radius: 24px;
+    padding: 1rem;
+    max-height: 30rem;
+    box-shadow: 1px 1px 10px -5px #000000;
 
     &:hover {
-      display: flex;
-    }
-    li {
-      display: inline;
-      padding: 0.2rem 0.4rem;
-
-      &:hover {
-        background: $footer-color;
-        a {
-          color: white;
-        }
-      }
+      box-shadow: 4px 4px 15px -5px #000000;
     }
   }
 }

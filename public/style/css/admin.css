@@ -765,77 +765,33 @@ main {
           justify-content: space-between;
 }
 
-.user-profile {
+.card-container {
+  z-index: 0;
+  margin: 2rem 1rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -webkit-column-gap: 2rem;
+          column-gap: 2rem;
+  row-gap: 2rem;
   position: relative;
-  z-index: 2;
 }
 
-.user-profile input:checked ~ .dropdown {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.user-profile label {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0.3rem 0.4rem;
-  color: #cccccc;
-  font-size: 1rem;
+.card-container .card {
   cursor: pointer;
-  width: 6rem;
-}
-
-.user-profile label:hover {
-  background: #333333;
-  color: white;
-}
-
-.user-profile label:hover svg path:nth-child(2) {
-  fill: white;
-}
-
-.user-profile label i {
-  margin-left: 0.8rem;
-}
-
-.user-profile .dropdown {
-  display: none;
-  padding-top: 40px;
-  margin-top: -40px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 100px;
-  position: fixed;
+  position: relative;
   background: white;
-  z-index: 1;
+  border-radius: 24px;
+  padding: 1rem;
+  max-height: 30rem;
+  -webkit-box-shadow: 1px 1px 10px -5px #000000;
+          box-shadow: 1px 1px 10px -5px #000000;
 }
 
-.user-profile .dropdown:hover {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.user-profile .dropdown li {
-  display: inline;
-  padding: 0.2rem 0.4rem;
-}
-
-.user-profile .dropdown li:hover {
-  background: #333333;
-}
-
-.user-profile .dropdown li:hover a {
-  color: white;
+.card-container .card:hover {
+  -webkit-box-shadow: 4px 4px 15px -5px #000000;
+          box-shadow: 4px 4px 15px -5px #000000;
 }
 
 .content h1 {

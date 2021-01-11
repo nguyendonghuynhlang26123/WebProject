@@ -50,7 +50,7 @@ router.get('/reset', (req, res) => {
 
 router.get('/logout', (req, res) => {
   req.session.destroy(() => {
-    res.redirect('/auth/login', { message: req.session.error });
+    res.redirect('/auth/login');
   });
 });
 
