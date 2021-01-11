@@ -51,7 +51,8 @@ async function resetPassword(username, email) {
   const user = await User.findOne({ username: username });
   if (!user) throw new Error("Not Found User!");
   if (email != user.email) throw new Error("Email Did Not Match!");
-  let newPassword = `${Date.now()}${Math.round(Math.random() * 1e9)}`;
+  let newPassword = `${Math.random().toString(36).substr(3, 6)}`;
+  newPassword = `${Math.random().toString(36).substr(3, 6)}`;
   user.password = await hashPassword(newPassword);
   const mailOption = {
     from: "thependailynews@gmail.com",

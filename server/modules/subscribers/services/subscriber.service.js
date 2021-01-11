@@ -13,11 +13,15 @@ async function createSubscriber(email) {
 
 async function getAllSubscriber() {
   const subscribers = await subscriber.find({}, 'email', {});
+  if (subscribers.length == 0) {
+    return null;
+  }
   let data = [];
   subscribers.forEach((subscriber) => {
     data.push(subscriber.email);
   });
-  return data;
+  let result = data.join(", ");
+  return result;
 }
 
 async function getAll(q) {
