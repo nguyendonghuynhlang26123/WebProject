@@ -1,14 +1,17 @@
 const CronJob = require("cron").CronJob;
 const postService = require("../posts/services/post.service");
+const subscriberService = require("../subscribers/services/subscriber.service");
 const sendMailService = require("./sendMail.service");
 
 const schedule = new CronJob(
   "0 0 6 * * *",
   async function () {
+    const to = await subscriberService.getAllSubscriber();
+    if (to == null) return;
     const content = await postService.getAllNewPost();
     const mailOption = {
       from: "thependailynews@gmail.com",
-      to: "nguyenthaitan9@gmail.com, nguyendonghuynhlang@gmail.com",
+      to: to,
       subject: `New news posted in the day - ${new Date(
         Date.now()
       ).toLocaleDateString()}`,

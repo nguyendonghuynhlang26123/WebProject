@@ -206,8 +206,9 @@ async function getAllNewPost() {
       .slice(1)
       .join('/360-')}" 
           alt="https://thependaily.herokuapp.com/images/alt.png" />
-    <p>${posts[index].post_description}</p></a>`;
+    <p>${posts[index].post_description}</p></a><br>`;
   }
+  result += "<br>The Pen Daily.";
   return result;
 }
 
