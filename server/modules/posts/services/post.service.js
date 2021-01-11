@@ -20,7 +20,10 @@ async function getPostById(postId) {
 }
 
 async function getPostBySlug(postSlug) {
-  const post = await Post.findOne({ slug: postSlug }).populate(
+  const post = await Post.findOne({
+    slug: postSlug,
+    post_status: 'Publish',
+  }).populate(
     'post_category post_author',
     'first_name last_name category_name category_slug'
   );
@@ -53,7 +56,7 @@ async function getAllPostByViews(filter, limit) {
   return posts;
 }
 
-async function getAllPost({ filter, populate, limit, sortBy }) {
+async function getAllPost(filter, populate, limit, sortBy) {
   const posts = await Post.find(
     filter,
     {
@@ -109,6 +112,7 @@ async function deletePost(postId) {
 async function searchPost(key, category, order_by, limit) {
   let queryFind = { $text: { $search: key } };
   if (category) queryFind['post_category'] = { $in: category };
+  queryFind['post_status'] = 'Publish';
 
   if (!key && category == []) {
     queryFind = {};
@@ -141,6 +145,7 @@ async function searchPostPage(key, category, order_by, perPage, page) {
   let queryFind = {};
   if (key) queryFind['$text'] = { $search: key };
   if (category) queryFind['post_category'] = { $in: category };
+  queryFind['post_status'] = 'Publish';
 
   const data = await Promise.all([
     Post.find(

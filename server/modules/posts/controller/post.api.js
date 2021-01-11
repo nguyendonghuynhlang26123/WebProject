@@ -22,6 +22,7 @@ router.get('/slug/:postSlug', async function (req, res, next) {
 router.get('/popular', async function (req, res) {
   let query = {};
   if (req.query.category) query['post_category'] = req.query.category;
+  query['post_status'] = 'Publish';
   let posts = await postService.getAllPostByViews(query, req.query.limit);
   res.send(posts);
 });
@@ -70,10 +71,14 @@ router.get(
 );
 
 router.get('/', async function (req, res) {
-  let posts = await postService.getAllPost(req.query);
-  console.log(req.query);
-  if (req.query.data) res.send({ data: posts });
-  else res.send(posts);
+  req.query.filter['post_status'] = 'Publish';
+  let posts = await postService.getAllPost(
+    req.query.filter,
+    req.query.populate,
+    req.query.limit,
+    req.query.sortBy
+  );
+  res.send(posts);
 });
 
 router.get('/search/:key', async function (req, res) {
@@ -99,22 +104,6 @@ router.get('/searchPost/query', async function (req, res) {
     res.send(result);
   } catch (err) {
     res.sendStatus(400);
-  }
-});
-
-router.get('/tag/:tagName', async function (req, res, next) {
-  try {
-    console.log(req.params.tagName);
-    const posts = await postService.getAllPost(
-      {
-        post_tags: req.params.tagName,
-      },
-      req.query.select,
-      Number(req.query.n_post)
-    );
-    res.send(posts);
-  } catch (err) {
-    next(err);
   }
 });
 

@@ -16,6 +16,7 @@ router.get('/:categorySlug', async function (req, res, next) {
       req.query.select,
       Number(req.query.limit)
     );
+    console.log(posts.length);
     res.render('categoryPages/categoryPage', {
       category: category,
       posts: posts,

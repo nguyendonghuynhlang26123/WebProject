@@ -96,6 +96,22 @@ router.put(
   }
 );
 
+router.put('/forget/reset-password', async function (req, res, next) {
+  try {
+    if (!req.body.username || !req.body.email) {
+      req.session.error = 'Please fill out all information.';
+      res.redirect('user/reset-password');
+    }
+    const result = await userService.resetPassword(
+      req.body.username,
+      req.body.email
+    );
+    res.send(result);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.delete('/:userId', authService.restrictAdmin, async function (req, res) {
   const result = await userService.deleteUser(req.params.userId);
   res.send(result);
