@@ -530,7 +530,7 @@ ul li {
   color: #333333;
 }
 
-.minimized-header .btn-subscribe {
+.minimized-header .btn {
   padding: 0.4rem 1.2rem;
   margin-right: 1.2rem;
   background: #0c79ff;
@@ -544,12 +544,12 @@ ul li {
   cursor: pointer;
 }
 
-.minimized-header .btn-subscribe:hover {
+.minimized-header .btn:hover {
   opacity: 0.8;
 }
 
 @media (max-width: 767px) {
-  .minimized-header .btn-subscribe {
+  .minimized-header .btn {
     display: none;
   }
 }

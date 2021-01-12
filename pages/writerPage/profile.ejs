@@ -45,7 +45,9 @@
       </li>
       <li class="statistics__entry">
         <a class="description" href="#">Mostly write about</a
-        ><span class="quantity">Politics</span>
+        ><span class="quantity"
+          ><%= favorites.length > 0 ? favorites.join(', ') : '' %>
+        </span>
       </li>
     </ul>
   </div>

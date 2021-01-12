@@ -1,5 +1,5 @@
-@import "variables";
-@import "search_box";
+@import 'variables';
+@import 'search_box';
 
 .header {
   .topbar {
@@ -167,7 +167,7 @@
     color: ($footer-color);
   }
 
-  .btn-subscribe {
+  .btn {
     padding: 0.4rem 1.2rem;
     margin-right: 1.2rem;
     background: ($button-color);

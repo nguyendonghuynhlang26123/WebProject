@@ -133,6 +133,39 @@ async function getUserByUsername(username) {
   return user;
 }
 
+function countFrequency(arr) {
+  var labels = [],
+    counts = [],
+    prev;
+
+  arr.sort();
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] !== prev) {
+      labels.push(arr[i]);
+      counts.push(1);
+    } else {
+      counts[counts.length - 1]++;
+    }
+    prev = arr[i];
+  }
+
+  let result = labels.map((l, i) => ({ label: l, count: counts[i] }));
+  result.sort((a, b) => (a.count > b.count ? -1 : 1));
+  return result;
+}
+
+async function getUserFavoriteCategory(id) {
+  let user = await getUserById(id);
+  //console.log(user);
+  let categories = user.list_post.map(
+    (p) => p.post_id.post_category.category_name
+  );
+  const frequency = countFrequency(categories);
+  if (frequency.length >= 2) return [frequency[0], frequency[1]];
+  else if (frequency.length === 1) return [frequency[0]];
+  else return [];
+}
+
 module.exports = {
   createUser: createUser,
   getUserById: getUserById,
@@ -144,4 +177,5 @@ module.exports = {
   addPostId: addPostId,
   delPostId: delPostId,
   resetPassword: resetPassword,
+  getUserFavoriteCategory: getUserFavoriteCategory,
 };

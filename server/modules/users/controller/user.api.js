@@ -7,7 +7,12 @@ router.get('/writer', authService.restrict, async (req, res, next) => {
   try {
     let user = await userService.getUserById(req.session.userId);
     //console.log(user.list_post, user.list_post.length);
-    res.render('writerPage/dashboard', { user: user });
+    let frequency = await userService.getUserFavoriteCategory(
+      req.session.userId
+    );
+
+    let favorites = frequency.map((f) => f.label);
+    res.render('writerPage/dashboard', { user: user, favorites: favorites });
   } catch (err) {
     next(err);
   }

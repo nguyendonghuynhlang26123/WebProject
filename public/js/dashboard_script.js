@@ -181,9 +181,10 @@ menuItems.forEach((item) => {
 
 //Search
 const handleSearch = (searchKey) => {
+  searchKey = searchKey.toLowerCase();
   let elements = document.querySelectorAll('.card');
   elements.forEach((e) => {
-    let title = e.querySelector('.card-title').textContent;
+    let title = e.querySelector('.card-title').textContent.toLowerCase(0);
     if (title.includes(searchKey)) e.classList.remove(DISABLE);
     else e.classList.add(DISABLE);
   });

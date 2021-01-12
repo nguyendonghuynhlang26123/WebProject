@@ -35,7 +35,7 @@ router.get('/:postId', async function (req, res, next) {
         res.render('post/post', {
           link: '/style/css/post.css',
           post: post,
-          btn_label: 'Edit this post',
+          btn_label: 'Back to dashboard',
         });
         return;
       }

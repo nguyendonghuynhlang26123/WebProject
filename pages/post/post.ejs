@@ -98,12 +98,22 @@
         });
 
       //Subscribe btn
-      document
-        .querySelector('.minimized-header .btn-subscribe')
-        .addEventListener('click', (ev) => {
+      let subBtn = document.querySelector('.minimized-header .btn-subscribe');
+      if (subBtn)
+        subBtn.addEventListener('click', (ev) => {
           let check = document.getElementById('modal-toggle').checked;
           document.getElementById('modal-toggle').checked = !check;
           ev.preventDefault();
+        });
+
+      //Back btn
+      let backBtn = document.querySelector('.minimized-header .btn-back');
+
+      if (backBtn)
+        backBtn.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          console.log('tt');
+          window.location.href = '/user/writer';
         });
     </script>
   </body>
