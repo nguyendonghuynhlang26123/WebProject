@@ -108,12 +108,10 @@ BalloonBlockEditor.create(document.querySelector("#thumbnail-editor"), {
   });
 
 /** FUNCTIONALITY---------------------------*/
-document
-  .getElementsByClassName("btn-subscribe")[0]
-  .addEventListener("click", (ev) => {
-    let check = document.getElementById("modal-toggle").checked;
-    document.getElementById("modal-toggle").checked = !check;
-  });
+document.getElementsByClassName("btn")[0].addEventListener("click", (ev) => {
+  let check = document.getElementById("modal-toggle").checked;
+  document.getElementById("modal-toggle").checked = !check;
+});
 
 const saveEditorAndRedirect = (id, editorData, redirectUrl) => {
   sendRequest("PUT", "/post/" + id, editorData)
