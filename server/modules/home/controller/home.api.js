@@ -71,7 +71,7 @@ router.get('/', async function (req, res) {
       null,
       7
     ),
-    tagService.getAllTag(7),
+    postService.getPostTag(),
   ]);
   res.render('homePage/homePage', {
     link: '/style/css/style.css',
