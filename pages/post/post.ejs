@@ -28,7 +28,7 @@
         <ul class="post-tags">
           <% post.post_tags.forEach((e)=>{%>
           <li class="post-tag">
-            <a href="#">
+            <a href="/tag/<%= e %>">
               <% if(e == "trending") {%>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
