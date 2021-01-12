@@ -4,7 +4,7 @@ const subscriberService = require("../subscribers/services/subscriber.service");
 const sendMailService = require("./sendMail.service");
 
 const schedule = new CronJob(
-  "0 0 6 * * *",
+  "0 0 12 * * *",
   async function () {
     const to = await subscriberService.getAllSubscriber();
     if (to == null) return;
