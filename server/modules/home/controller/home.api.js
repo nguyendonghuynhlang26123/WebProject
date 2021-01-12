@@ -3,6 +3,7 @@ const router = express.Router();
 const postService = require('../../posts/services/post.service');
 const categoryService = require('../../categories/services/category.service');
 const viewService = require('../../views/services/view.service');
+const tagService = require('../../tags/services/tag.service');
 
 router.get('/', async function (req, res) {
   viewService.updateView();
@@ -69,6 +70,7 @@ router.get('/', async function (req, res) {
       null,
       7
     ),
+    tagService.getAllTag(7),
   ]);
   res.render('homePage/homePage', {
     link: '/style/css/style.css',
@@ -81,6 +83,7 @@ router.get('/', async function (req, res) {
     sport: data[6],
     features: data[7],
     politics: data[8],
+    tags: data[9],
   });
 });
 module.exports = router;

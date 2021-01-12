@@ -1,4 +1,4 @@
-const Tag = require("../../../models/tag.schema");
+const Tag = require('../../../models/tag.schema');
 
 async function createTag(tag_name) {
   let data = {
@@ -11,7 +11,7 @@ async function createTag(tag_name) {
 }
 
 async function getAllTag(limit) {
-  const tags = await Tag.find({}, "tag_name", { limit: limit });
+  const tags = await Tag.find({}, 'tag_name', { limit: limit });
   return tags;
 }
 
