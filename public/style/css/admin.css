@@ -779,7 +779,6 @@ main {
 }
 
 .card-container .card {
-  cursor: pointer;
   position: relative;
   background: white;
   border-radius: 24px;
