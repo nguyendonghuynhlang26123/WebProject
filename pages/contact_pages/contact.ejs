@@ -91,19 +91,36 @@ c207 -97 373 -134 602 -134 238 0 404 38 620 144 389 191 654 544 742 985 24
     <!-- SCripts -->
     <script src="/js/particles.min.js"></script>
     <script src="/js/circular_nav.js"></script>
+    <script src="/js/sendRequest.js"></script>
     <script>
-      particlesJS.load("particles-js", "/js/particles.json", function () {
-        console.log("callback - particles-js config loaded");
+      particlesJS.load('particles-js', '/js/particles.json', function () {
+        console.log('callback - particles-js config loaded');
       });
 
-      document.querySelector(".title-logo").addEventListener("click", (ev) => {
-        document.querySelector("#modal").classList.remove("out");
-        document.querySelector("#modal").classList.add("in");
+      document.querySelector('.title-logo').addEventListener('click', (ev) => {
+        document.querySelector('#modal').classList.remove('out');
+        document.querySelector('#modal').classList.add('in');
       });
 
-      document.querySelector(".pseudo-bg").addEventListener("click", (ev) => {
-        document.querySelector("#modal").classList.remove("in");
-        document.querySelector("#modal").classList.add("out");
+      document.querySelector('.pseudo-bg').addEventListener('click', (ev) => {
+        document.querySelector('#modal').classList.remove('in');
+        document.querySelector('#modal').classList.add('out');
+      });
+
+      document.querySelector('[data-form]').addEventListener('submit', (ev) => {
+        ev.preventDefault();
+        let data = {
+          type: ev.target.id,
+          name: document.querySelector('[data-name]').value,
+          email: document.querySelector('[data-email]').value,
+          title: document.querySelector('[data-title]').value,
+          description: document.querySelector('[data-description]').value,
+        };
+
+        sendRequest('POST', '/contact', data).then((res) => {
+          alert('Thanks for sending us feedback! We will response in no time');
+          window.location.href = '/contact/form';
+        });
       });
     </script>
   </body>

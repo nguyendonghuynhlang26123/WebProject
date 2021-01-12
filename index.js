@@ -15,7 +15,7 @@ const auth = require('./server/modules/auth/controller/auth.api');
 const errorHandler = require('./server/modules/errorHandler/errorHandler');
 const schedule = require('./server/modules/sendMail/schedule');
 const search = require('./server/modules/search/controller/search.api');
-const contact = require('./server/modules/contact/controller/contact.api');
+const contact = require('./server/modules/contacts/controller/contact.api');
 const subscriber = require('./server/modules/subscribers/controller/subscriber.api');
 
 const port = process.env.PORT || 3000;

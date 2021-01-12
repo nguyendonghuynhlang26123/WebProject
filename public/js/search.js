@@ -79,7 +79,7 @@ document
       sortBy = 'desc';
     } else sortBy = 'asc';
 
-    searchAndRender('', 1);
+    searchAndRender(document.querySelector('[data-input-search]').value, 1);
   });
 
 //SEARCH BUTTON

@@ -1,9 +1,53 @@
 <div id="admin-dashboard">
   <div class="card-container">
     <div class="card">
-      <div class="img"></div>
-      <div class="title"></div>
+      <div class="img"><i class="fas fa-chart-bar"></i></div>
+      <div class="title">
+        Total views:<br />
+        <b data-views>4</b>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img"><i class="fas fa-users"></i></div>
+      <div class="title">
+        Writers:<br />
+        <b data-writers>4</b>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img"><i class="far fa-newspaper"></i></div>
+      <div class="title">
+        Articles:<br />
+        <b data-posts>4</b>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img"><i class="far fa-envelope-open"></i></div>
+      <div class="title">
+        Subscribed:<br />
+        <b data-subscribed>4</b>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img"><i class="fas fa-inbox"></i></div>
+      <p class="title">
+        Contacted:<br />
+        <b data-contacts>4</b>
+      </p>
     </div>
   </div>
-  <canvas id="myChart" height="400" style="width: 100%"></canvas>
+  <div class="chart-container">
+    <div>
+      <h1>Writer contribution</h1>
+      <canvas id="writerChart" height="400" style="width: 100%"></canvas>
+    </div>
+    <div>
+      <h1>Views</h1>
+      <canvas id="myChart" height="400" style="width: 100%"></canvas>
+    </div>
+  </div>
 </div>

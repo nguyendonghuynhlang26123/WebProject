@@ -70,6 +70,8 @@ let getQuery = (key, page) => {
 //POST
 let controller = new PostListController('post-list');
 let category_id = document.querySelector('body').id;
+curMaxPages = 1;
+curPage = 1;
 searchAndRender('');
 
 //BTNS events

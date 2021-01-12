@@ -80,6 +80,7 @@ $(document).ready(function () {
   let table1 = $('#table1').DataTable({
     dom: 'Bfrtip',
     ajax: '/user?role=writer',
+    'order': [[2, 'desc']],
     columns: [
       {
         title: 'Name',
@@ -178,6 +179,7 @@ $(document).ready(function () {
   $('#table2').DataTable({
     dom: 'Bfrtip',
     ajax: '/user?role=admin',
+    'order': [[2, 'desc']],
     columns: [
       {
         title: 'Name',

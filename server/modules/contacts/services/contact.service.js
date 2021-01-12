@@ -1,12 +1,13 @@
-const Contact = require("../../../models/contact.schema");
+const Contact = require('../../../models/contact.schema');
 
-async function createContact(name, email, title, description) {
+async function createContact(type, name, email, title, description) {
   let data = {
+    type: type,
     name: name,
     email: email,
     title: title,
     description: description,
-    status: "waiting",
+    status: 'waiting',
     created_at: Date.now(),
     updated_at: Date.now(),
   };
@@ -16,7 +17,7 @@ async function createContact(name, email, title, description) {
 
 async function getContactById(contactId) {
   const contact = await Contact.findOne({ _id: contactId });
-  if (!contact) throw new Error("Not Found Contact!");
+  if (!contact) throw new Error('Not Found Contact!');
   return contact;
 }
 

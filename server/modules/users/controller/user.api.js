@@ -13,6 +13,19 @@ router.get('/writer', authService.restrict, async (req, res, next) => {
   }
 });
 
+router.get(
+  '/writer/:writerId',
+  authService.restrictAdmin,
+  async (req, res, next) => {
+    try {
+      let user = await userService.getUserById(req.params.writerId);
+      res.send({ data: user });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
 router.get('/admin', authService.restrictAdmin, async (req, res, next) => {
   res.redirect('./admin/dashboard');
 });

@@ -40,6 +40,7 @@ class PostListController {
   render = (postArr) => {
     let element = document.getElementById(this.containerId);
     element.innerHTML = '';
+    console.log('render');
 
     postArr.forEach((post) => {
       element.appendChild(this.createNode(post));
@@ -48,6 +49,7 @@ class PostListController {
 
   append = (postArr) => {
     let element = document.getElementById(this.containerId);
+    console.log('append');
 
     postArr.forEach((post) => {
       element.appendChild(this.createNode(post));

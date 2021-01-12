@@ -1,7 +1,7 @@
-const User = require("../../../models/user.schema");
-const postService = require("../../posts/services/post.service");
-const sendMailService = require("../../sendMail/sendMail.service");
-const bcrypt = require("bcrypt");
+const User = require('../../../models/user.schema');
+const postService = require('../../posts/services/post.service');
+const sendMailService = require('../../sendMail/sendMail.service');
+const bcrypt = require('bcrypt');
 
 async function hashPassword(password) {
   const saltRounds = 10;
@@ -30,7 +30,7 @@ async function createUser({
     last_name: last_name || null,
     email: email || null,
     list_post: list_post || [],
-    user_role: "writer",
+    user_role: 'writer',
     created_at: Date.now(),
   };
   data.password = await hashPassword(data.password);
@@ -39,23 +39,24 @@ async function createUser({
 
 async function getUserById(userId) {
   const user = await User.findOne({ _id: userId }, { password: 0 }).populate({
-    path: "list_post.post_id",
-    select: "post_title post_thumbnail post_date post_status post_category",
-    populate: { path: "post_category", select: "category_name" },
+    path: 'list_post.post_id',
+    select:
+      'post_title post_thumbnail post_date post_status post_category post_views',
+    populate: { path: 'post_category', select: 'category_name' },
   });
   return user;
 }
 
 async function resetPassword(username, email) {
-  if (!email || !username) throw new Error("Cannot Reset Password!");
+  if (!email || !username) throw new Error('Cannot Reset Password!');
   const user = await User.findOne({ username: username });
-  if (!user) throw new Error("Not Found User!");
-  if (email != user.email) throw new Error("Email Did Not Match!");
+  if (!user) throw new Error('Not Found User!');
+  if (email != user.email) throw new Error('Email Did Not Match!');
   let newPassword = `${Math.random().toString(36).substr(3, 6)}`;
   newPassword = `${Math.random().toString(36).substr(3, 6)}`;
   user.password = await hashPassword(newPassword);
   const mailOption = {
-    from: "thependailynews@gmail.com",
+    from: 'thependailynews@gmail.com',
     to: user.email,
     subject: `Reset password for user: ${user.username}`,
     html: `Dear Writer,
@@ -84,7 +85,7 @@ async function getAllUser({ role, limit }) {
 
 async function updateUserById(userId, dataUpdate) {
   const user = await User.findOne({ _id: userId });
-  if (!user) throw new Error("Update error! Not found user");
+  if (!user) throw new Error('Update error! Not found user');
   delete dataUpdate.password;
   delete dataUpdate.username;
   const result = await User.updateOne({ _id: user._id }, dataUpdate);
@@ -93,7 +94,7 @@ async function updateUserById(userId, dataUpdate) {
 
 async function addPostId(userId, postId) {
   let user = await User.findOne({ _id: userId });
-  if (!user) throw new Error("Add error! Not found user");
+  if (!user) throw new Error('Add error! Not found user');
   user.list_post.push({ post_id: postId });
   const result = await User.updateOne({ _id: user._id }, user);
   return result;
@@ -111,7 +112,7 @@ async function delPostId(userId, postId) {
 
 async function changePassword(userId, newPassword) {
   let user = await User.findOne({ _id: userId });
-  if (!user) throw new Error("Update password error! Not found user");
+  if (!user) throw new Error('Update password error! Not found user');
   user.password = await hashPassword(newPassword);
   const result = await User.updateOne({ _id: user._id }, user);
   return result;

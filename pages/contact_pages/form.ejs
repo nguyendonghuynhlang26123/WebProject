@@ -1,28 +1,29 @@
-<form action="">
+<form action="/contact" method="POST" data-form id="<%=type%>">
   <div class="content">
     <h1><%= title %></h1>
     <p><%= description %></p>
     <div class="input-block">
       <label for="name" class="input-label">Your Name</label>
-      <input name="name" type="text" />
+      <input name="name" type="text" data-name />
     </div>
     <div class="input-block">
       <label for="email" class="input-label">Your email</label>
-      <input type="email" name="email" />
+      <input type="email" name="email" data-email />
     </div>
     <div class="input-block">
       <label for="title" class="input-label">
         <%= title=="Correcting a post" ? "Post URL" : "Title" %>
       </label>
-      <input name="title" type="text" />
+      <input name="title" type="text" data-title />
     </div>
     <div class="input-block">
-      <label for="content" class="input-label">Description</label>
+      <label for="description" class="input-label">Description</label>
       <textarea
-        name="content"
+        name="description"
         cols="30"
         rows="10"
         placeholder="i.e: <%= hint %>"
+        data-description
       ></textarea>
     </div>
     <button type="submit">Send</button>

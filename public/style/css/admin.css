@@ -770,8 +770,8 @@ main {
   margin: 2rem 1rem;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   -webkit-column-gap: 2rem;
           column-gap: 2rem;
   row-gap: 2rem;
@@ -787,16 +787,39 @@ main {
   max-height: 30rem;
   -webkit-box-shadow: 1px 1px 10px -5px #000000;
           box-shadow: 1px 1px 10px -5px #000000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
-.card-container .card:hover {
-  -webkit-box-shadow: 4px 4px 15px -5px #000000;
-          box-shadow: 4px 4px 15px -5px #000000;
+.card-container .card i {
+  font-size: 3rem;
+}
+
+.card-container .card .title {
+  font-size: 1rem;
+  font-family: 'Bitter';
+}
+
+.card-container .card .title b {
+  font-family: 'Roboto';
+  font-weight: normal;
 }
 
 .content h1 {
   font-size: 1.5rem;
   margin: 1rem 0;
+}
+
+.content .tables {
+  overflow: visible;
 }
 
 .content .tables tr {
@@ -822,6 +845,33 @@ main {
 #contact-tab {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 7fr 3fr;
-      grid-template-columns: 7fr 3fr;
+  -ms-grid-columns: 7fr 4fr;
+      grid-template-columns: 7fr 4fr;
+  gap: 2rem;
+}
+
+#contact-tab .details {
+  background-color: #cccccc;
+}
+
+#contact-tab .details + tr {
+  background-color: #cccccc;
+}
+
+#contact-tab .expanded-row {
+  padding: 0.5rem 2rem;
+  border-top: 2px solid #cccccc;
+}
+
+#admin-dashboard h1 {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+#admin-dashboard .chart-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 5fr 5fr;
+      grid-template-columns: 5fr 5fr;
+  gap: 2rem;
 }

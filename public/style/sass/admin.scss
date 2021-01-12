@@ -30,7 +30,7 @@ main {
   z-index: 0;
   margin: 2rem 1rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   column-gap: 2rem;
   row-gap: 2rem;
   position: relative;
@@ -44,8 +44,24 @@ main {
     max-height: 30rem;
     box-shadow: 1px 1px 10px -5px #000000;
 
-    &:hover {
-      box-shadow: 4px 4px 15px -5px #000000;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+
+    i {
+      font-size: 3rem;
+    }
+
+    .title {
+      font-size: 1rem;
+      font-family: 'Bitter';
+
+      b {
+        font-family: 'Roboto';
+        font-weight: normal;
+      }
     }
   }
 }
@@ -57,6 +73,8 @@ main {
   }
 
   .tables {
+    overflow: visible;
+
     tr {
       cursor: pointer;
       &:hover {
@@ -79,5 +97,32 @@ main {
 
 #contact-tab {
   display: grid;
-  grid-template-columns: 7fr 3fr;
+  grid-template-columns: 7fr 4fr;
+  gap: 2rem;
+
+  .details {
+    background-color: $hr-border-color;
+
+    & + tr {
+      background-color: $hr-border-color;
+    }
+  }
+
+  .expanded-row {
+    padding: 0.5rem 2rem;
+    border-top: 2px solid $hr-border-color;
+  }
+}
+
+#admin-dashboard {
+  h1 {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .chart-container {
+    display: grid;
+    grid-template-columns: 5fr 5fr;
+    gap: 2rem;
+  }
 }
