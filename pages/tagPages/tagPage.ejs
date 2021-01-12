@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../head/head', {link: "/style/css/tag-page.css" }); %>
+  </head>
+
+  <body >
+    <!-- ---------- HEADER------------------------ -->
+    <%- include('../post/minimizedHeader/minimizedHeader',
+    {btn_label:"Subscribe"}); %>
+    <!--  -->
+    <%- include('../modal-popup/sidenav'); %>
+    <!-- ----------- Article -------------------- -->
+
+    
+    <div class="container">
+      <header>
+        <p>Tag</p>
+        <h1><%= tag %></h1>
+      </header>
+      <div class="list_wrapper">
+        <ul id="post-list">
+          <% posts.forEach(post => { %> 
+            <a href="<%="/post/" + post._id %>" class="div post">
+              <span class="date">
+                <%= new Date(post.post_date).toLocaleDateString() %>
+              </span>
+            
+              <div>
+                <div class="post_detail">
+                  <h2 class="post_title">
+                    <%= post.post_title %>
+                  </h2>
+                  <p>
+                    <%= post.post_description %>
+                  </p>
+                  <span class="date">By <%=
+                    post.post_author.first_name + " " + post.post_author.last_name %>
+                  </span>
+                </div>
+                <div class="image">
+                  <img src="<%= post.post_thumbnail %>" alt="" loading="lazy" />
+                </div>
+              </div>
+            </a>
+            <% }) %>
+        </ul>
+        <%- include('../post/recommendation/recommendation' ,{label: "Recommendation" ,
+        displayImg: false}) %> 
+      </div>
+    </div>
+    <!--  -->
+    <%- include('../modal-popup/modal', {title: "",
+    formHtml:'../modal-popup/subscribe_form', parameters: {}});%>
+    <!-- ------------- FOOTER ------------------- -->
+    <%- include('../footer/footer'); %>
+
+    <!-- SCripts -->
+    <script src="/js/sidenav.js"></script>
+    <script src="/js/search_btn.js"></script>
+    <script src="/js/recommendation.js"></script>
+    <script src="/js/post-list.js"></script>
+    <script src="/js/sendRequest.js"></script>
+    <script src="/js/subscribe_form.js"></script>
+    <script>
+      SearchButton('btn-search', 'search-input');
+
+      //Subscribe btn
+      document
+        .querySelector('.minimized-header .btn-subscribe')
+        .addEventListener('click', (ev) => {
+          let check = document.getElementById('modal-toggle').checked;
+          document.getElementById('modal-toggle').checked = !check;
+          ev.preventDefault();
+        });
+
+        //Recommendation list
+        const recommendation = new RecommendationController(
+          '[data-recommendation-container]'
+        );
+
+        fetch(`/post/popular?limit=3`)
+          .then((data) => data.json())
+          .then((data) => {
+            recommendation.render(data);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+
+    </script>
+  </body>
+</html>
