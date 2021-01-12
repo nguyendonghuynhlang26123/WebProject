@@ -4,6 +4,7 @@ const postService = require('../../posts/services/post.service');
 const categoryService = require('../../categories/services/category.service');
 const viewService = require('../../views/services/view.service');
 const tagService = require('../../tags/services/tag.service');
+const { post } = require('../../users/controller/user.api');
 
 router.get('/', async function (req, res) {
   viewService.updateView();
