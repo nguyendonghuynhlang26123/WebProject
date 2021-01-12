@@ -202,7 +202,9 @@
         </a>
       </li>
     </ul>
-
+    <!--  -->
+    <%- include('../modal-popup/modal', {title: "",
+    formHtml:'../writerPage/changePass_form', parameters: {}});%>
     <span id="toast"></span>
     <script src="/js/sendRequest.js"></script>
     <script src="/js/toast.js"></script>
@@ -213,6 +215,14 @@
       Array.from(document.querySelectorAll('.card')).forEach((b) => {
         b.classList.add('right_clickable');
       });
+
+      let changeBtn = document.querySelector('[data-change-pass]');
+      if (changeBtn)
+        changeBtn.addEventListener('click', (ev) => {
+          let check = document.getElementById('modal-toggle').checked;
+          document.getElementById('modal-toggle').checked = !check;
+          ev.preventDefault();
+        });
     </script>
     <script src="/js/dashboard_script.js"></script>
     <script src="/js/context-menu.js"></script>

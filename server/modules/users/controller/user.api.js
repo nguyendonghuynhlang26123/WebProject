@@ -99,9 +99,10 @@ router.put('/', authService.restrict, async function (req, res, next) {
 });
 
 router.put(
-  '/change-password',
+  '/info/change/password',
   authService.restrict,
   async function (req, res, next) {
+    console.log(req.body);
     try {
       const result = await userService.changePassword(
         req.session.userId,

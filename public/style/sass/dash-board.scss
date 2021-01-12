@@ -1,7 +1,8 @@
-@import "writer-nav";
-@import "profile";
-@import "context_menu";
-@import "toast";
+@import 'writer-nav';
+@import 'profile';
+@import 'context_menu';
+@import 'toast';
+@import 'modal';
 
 body {
   position: relative;
@@ -200,6 +201,86 @@ button {
   .card.Draft,
   .card.Publish {
     display: none;
+  }
+}
+
+form[data-form] {
+  padding: 2rem;
+  .content {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: $footer-color;
+    h1 {
+      text-align: center;
+      font-family: $article-title-font;
+      margin-bottom: 2rem;
+    }
+    p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: #333333;
+      font-family: $article-description-font;
+    }
+  }
+
+  button {
+    padding: 0.4rem 1.2rem;
+    background: ($button-color);
+    color: white;
+    font-family: ($btn-font);
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 1px 2px 3px gray;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.input-block {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 8px;
+  border: 1px solid $footer-color;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  transition: 0.3s;
+
+  .input-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-weight: 600;
+    letter-spacing: 3px;
+    opacity: 0.9;
+    color: $footer-color;
+    transition: 0.3s;
+  }
+  input {
+    outline: 0;
+    border: 0;
+    padding: 4px 0 0;
+    font-size: 1rem;
+    font-family: sans-serif;
+    border-radius: 12px;
+
+    &::placeholder {
+      color: $hr-border-color;
+      opacity: 1;
+    }
+  }
+
+  &:focus-within {
+    border-color: $footer-color;
+
+    .input-label {
+      color: $hr-border-color;
+      opacity: 0.8;
+    }
   }
 }
 

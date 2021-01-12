@@ -194,3 +194,18 @@ document.querySelector('.search__button').addEventListener('click', (ev) => {
   ev.preventDefault();
   handleSearch(document.querySelector('.search__input').value);
 });
+
+document.querySelector('[data-form]').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  let formData = {
+    newPassword: document.querySelector('[data-new-password]').value,
+  };
+  await sendRequest('PUT', '/user/info/change/password', formData)
+    .then((data) => {
+      window.location.reload();
+    })
+    .catch((err) => {
+      alert('Sorry! Something happens! Please try again');
+      console.error('Update user profile ', err);
+    });
+});
